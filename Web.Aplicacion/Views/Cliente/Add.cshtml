@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<input type="hidden" name="cliente-id" id="cliente-id" value="@ViewBag.IdCliente" />
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-example-wrap mg-t-30">
+            <div class="cmp-tb-hd cmp-int-hd">
+                <h2>Clientes</h2>
+            </div>
+            <div class="form-example-int form-horizental">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Nombre</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control input-sm" placeholder="Nombre" id="nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int form-horizental">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Domicilio</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control input-sm" placeholder="Domicilio" id="domicilio">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int form-horizental">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Telefono</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control input-sm" placeholder="Telefono" id="telefono">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int form-horizental">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">Correo</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control input-sm" placeholder="Correo" id="correo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-example-int form-horizental">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <label class="hrzn-fm">RFC</label>
+                        </div>
+                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="nk-int-st">
+                                <input type="text" class="form-control input-sm" placeholder="RFC" id="rfc">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="guardar()">Guardar</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

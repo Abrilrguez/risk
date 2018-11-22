@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Practica.Nucleo.Entidades.Historial, Practica.Nucleo" table="historial" lazy="false">
+    <id name="Id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="Fecha" type="DateTime">
+      <column name="fecha"/>
+    </property>
+    <property name="Descripcion" type="string">
+      <column name="descripcion"/>
+    </property>
+    <property name="Ciudad" type="string">
+      <column name="ciudad"/>
+    </property>
+    <property name="Estado" type="string">
+      <column name="estado"/>
+    </property>
+    <many-to-one name="Usuario" class="Practica.Nucleo.Entidades.Usuario, Practica.Nucleo">
+      <column name="idUsuario" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

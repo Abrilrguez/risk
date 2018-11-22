@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Practica.Nucleo.Entidades.Usuario, Practica.Nucleo" table="usuario" lazy="false">
+    <id name="Id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" type="string">
+      <column name="nombre"/>
+    </property>
+    <property name="Direccion" type="string">
+      <column name="direccion"/>
+    </property>
+    <property name="Telefono" type="string">
+      <column name="telefono"/>
+    </property>
+    <property name="Cuenta" type="string">
+      <column name="cuenta"/>
+    </property>
+    <property name="Rol" type="int">
+      <column name="rol"/>
+    </property>
+    <property name="Password" type="string">
+      <column name="password"/>
+    </property>
+  </class>
+</hibernate-mapping>

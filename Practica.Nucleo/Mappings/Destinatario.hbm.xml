@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Practica.Nucleo.Entidades.Destinatario, Practica.Nucleo" table="destinatario" lazy="false">
+    <id name="Id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" type="string">
+      <column name="nombre"/>
+    </property>
+    <property name="Calle" type="string">
+      <column name="calle"/>
+    </property>
+    <property name="Numero" type="string">
+      <column name="numero"/>
+    </property>
+    <property name="Avenida" type="string">
+      <column name="avenida"/>
+    </property>
+    <property name="Colonia" type="string">
+      <column name="colonia"/>
+    </property>
+    <property name="Cp" type="string">
+      <column name="cp"/>
+    </property>
+    <property name="Ciudad" type="string">
+      <column name="ciudad"/>
+    </property>
+    <property name="Estado" type="string">
+      <column name="estado"/>
+    </property>
+    <property name="Referencia" type="string">
+      <column name="referencia"/>
+    </property>
+    <property name="Telefono" type="string">
+      <column name="telefono"/>
+    </property>
+    <property name="Correo" type="string">
+      <column name="correo"/>
+    </property>
+    <property name="Persona" type="string">
+      <column name="persona"/>
+    </property>
+  </class>
+</hibernate-mapping>

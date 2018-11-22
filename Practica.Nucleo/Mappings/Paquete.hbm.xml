@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Practica.Nucleo.Entidades.Paquete, Practica.Nucleo" table="paquete" lazy="false">
+    <id name="Id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="Peso" type="string">
+      <column name="peso"/>
+    </property>
+    <property name="Tamanio" type="string">
+      <column name="tamanio"/>
+    </property>
+    <property name="Contenido" type="string">
+      <column name="contenido"/>
+    </property>
+    <property name="Descripcion" type="string">
+      <column name="descripcion"/>
+    </property>
+  </class>
+</hibernate-mapping>
+

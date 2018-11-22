@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Practica.Nucleo.Entidades.Orden, Practica.Nucleo" table="orden" lazy="false">
+    <id name="Id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="Folio" type="string">
+      <column name="folio"/>
+    </property>
+    <property name="Fecha" type="DateTime">
+      <column name="fecha"/>
+    </property>
+    <many-to-one name="Cliente" class="Practica.Nucleo.Entidades.Cliente, Practica.Nucleo">
+      <column name="idCliente" />
+    </many-to-one>
+    <many-to-one name="Destinatario" class="Practica.Nucleo.Entidades.Destinatario, Practica.Nucleo">
+      <column name="idDestinatario" />
+    </many-to-one>
+    <many-to-one name="Usuario" class="Practica.Nucleo.Entidades.Usuario, Practica.Nucleo">
+      <column name="idUsuario" />
+    </many-to-one>
+    <many-to-one name="Paquete" class="Practica.Nucleo.Entidades.Paquete, Practica.Nucleo">
+      <column name="idPaquete" />
+    </many-to-one>
+    <bag name="Historiales" cascade="all-delete-orphan" lazy="false">
+      <key column="idOrden"/>
+      <one-to-many class="Practica.Nucleo.Entidades.Historial, Practica.Nucleo"/>
+    </bag>
+    <property name="Precio" type="double">
+      <column name="precio"/>
+    </property>
+    <property name="NumeroRastreo" type="string">
+      <column name="numeroRastreo"/>
+    </property>
+    <property name="Estado" type="string">
+      <column name="estado"/>
+    </property>
+  </class>
+</hibernate-mapping>
