@@ -11,7 +11,7 @@ namespace Web.Aplicacion.Controllers
     {
         // GET: Orden
 
-        [Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
+        //[Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
         public ActionResult Index()
         {
             return View();
