@@ -1,4 +1,8 @@
-﻿function guardar() {
+﻿function add() {
+    
+}
+
+function guardar() {
     var id = $.trim($("#usuario-id").val());
     var nombre = $.trim($("#nombre").val());
     var direccion = $.trim($("#direccion").val());

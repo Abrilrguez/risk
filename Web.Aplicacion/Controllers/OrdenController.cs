@@ -21,9 +21,6 @@ namespace Web.Aplicacion.Controllers
             return View();
         }
 
-        public ActionResult Guardar()
-        {
-
-        }
+        
     }
 }
