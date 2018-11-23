@@ -41,5 +41,57 @@ namespace Practica.Nucleo.Entidades
             }
             return ordenes;
         }
+
+        public static Orden ObtenerPorId(int id)
+        {
+            Orden o = new Orden();
+            try
+            {
+                using (ISession session = Persistent.SessionFactory.OpenSession())
+                {
+                    ICriteria crit = session.CreateCriteria(o.GetType());
+                    crit.Add(Expression.Eq("Id", id));
+                    o = (crit.UniqueResult<Orden>());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return o;
+        }
+        public bool Guardar(int id, string Folio, DateTime Fecha, Cliente Cliente, Paquete Paquete, double Precio, string NumeroRastreo, string Estado)
+        {
+            bool realizado = false;
+            try
+            {
+                Orden o = id == 0 ? new Orden() : ObtenerPorId(id);
+                o.Folio = Folio;
+                o.Fecha = Fecha;
+                o.Estado = Estado;
+                o.NumeroRastreo = NumeroRastreo;
+                o.Paquete = Paquete;
+                o.Usuario = Usuario;
+                o.Destinatario = Destinatario;
+                o.Cliente = Cliente;
+                o.Precio = Precio;
+                if (id == 0)
+                {
+                    o.Save();
+                }
+                else
+                {
+                    o.Update();
+                }
+
+                realizado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return realizado;
+        }
     }
 }

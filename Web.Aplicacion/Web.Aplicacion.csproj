@@ -360,7 +360,7 @@
     <Content Include="Scripts\notification\bootstrap-growl.min.js" />
     <Content Include="Scripts\notification\notification-active.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
-    <Content Include="Scripts\Paquete.js" />
+    <Content Include="Scripts\orden.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\rangle-slider\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\rangle-slider\jquery-ui-touch-punch.min.js" />
