@@ -22,8 +22,7 @@ namespace Practica.Nucleo.Entidades
         public string Cuenta { get; set; }
         public Rol Rol { get; set; }
         public string Password { get; set; }
-
-        public static string Hash = "hola";
+        public string Sal { get; set; }
 
         public static IList<Usuario> ObtenerTodos()
         {
@@ -49,24 +48,7 @@ namespace Practica.Nucleo.Entidades
             }
             return usuarios;
         }
-        //Test
-        public static string Encrypt(string password)
-        {
-            byte[] data = UTF8Encoding.UTF8.GetBytes(password);
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Hash));
-                using (TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider()
-                { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
-                {
-                    ICryptoTransform transform = tripDes.CreateEncryptor();
-                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
-                    password = Convert.ToBase64String(results, 0, results.Length);
-                    return password;
-                }
-            }
-        }
-
+     
 
         public static Usuario ObtenerPorId(int id)
         {
@@ -94,7 +76,11 @@ namespace Practica.Nucleo.Entidades
             {
                 using (ISession session = Persistent.SessionFactory.OpenSession())
                 {
-                    password = Encrypt(password);
+                    
+                    var sal = session.CreateSQLQuery("SELECT sal FROM trackpackdb.usuario WHERE cuenta='" + cuenta + "'")
+                        .UniqueResult();
+                    password = Encrypt(password, sal.ToString());
+
                     ICriteria crit = session.CreateCriteria(u.GetType());
                     crit.Add(Expression.Eq("Cuenta", cuenta));
                     crit.Add(Expression.Eq("Password", password));
@@ -109,21 +95,57 @@ namespace Practica.Nucleo.Entidades
         }
 
 
-        public static bool Guardar (int id, string nombre, string direccion, string telefono, string cuenta, int rol, string password)
+        public static string GenerarSal()
+        {
+            var random = new RNGCryptoServiceProvider();
+
+            // Tamaño de la cadena de texto
+            int max_length = 15;
+
+            // Creamos un array
+            byte[] salt = new byte[max_length];
+
+            // Generamos los bytes aleatorios
+            random.GetNonZeroBytes(salt);
+
+            // Retornamos el byte convertido a string
+            return Convert.ToBase64String(salt);
+        }
+
+        public static string Encrypt(string password, string sal)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(password);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(sal));
+                using (TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripDes.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    password = Convert.ToBase64String(results, 0, results.Length);
+                    return password;
+
+                }
+            }
+        }
+
+
+        public static bool Guardar(int id, string nombre, string direccion, string telefono, string cuenta, int rol, string password)
         {
             bool realizado = false;
             try
             {
                 //Usuario u = new Usuario();
                 //if (id != 0) u = ObtenerPorId(id);
-
+                string sal = GenerarSal();
                 Usuario u = id == 0 ? new Usuario() : ObtenerPorId(id);
                 u.Nombre = nombre;
                 u.Direccion = direccion;
                 u.Telefono = telefono;
                 u.Cuenta = cuenta;
-                u.Rol = (Rol) rol;
-                password = Encrypt(password);
+                u.Rol = (Rol)rol;
+                u.Sal = sal;
+                password = Encrypt(password, sal);
                 if (id == 0)
                 {
                     u.Password = password;
@@ -133,9 +155,10 @@ namespace Practica.Nucleo.Entidades
                 {
                     u.Update();
                 }
-                
+
                 realizado = true;
-            } catch (Exception ex )
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -143,7 +166,7 @@ namespace Practica.Nucleo.Entidades
             return realizado;
         }
 
-        public static bool ActualizarPassword (int id, string password, string passwordValidar, string passwordNueva)
+        public static bool ActualizarPassword(int id, string password, string passwordValidar, string passwordNueva)
         {
             bool realizado = false;
             try
@@ -151,17 +174,21 @@ namespace Practica.Nucleo.Entidades
                 //Usuario u = new Usuario();
                 //if (id != 0) u = ObtenerPorId(id);
 
+                string salNueva = GenerarSal();
                 Usuario u = ObtenerPorId(id);
-                password = Encrypt(password);
+                string salVieja = u.Sal;
+                password = Encrypt(password, salVieja);
                 if (u.Password == password && passwordNueva == passwordValidar)
                 {
-                    passwordNueva = Encrypt(passwordNueva);
+                    passwordNueva = Encrypt(passwordNueva, salNueva);
+                    u.Sal = salNueva;
                     u.Password = passwordNueva;
                     u.Update();
                 }
-                
+
                 realizado = true;
-            } catch (Exception ex )
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
