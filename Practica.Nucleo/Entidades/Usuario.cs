@@ -49,7 +49,7 @@ namespace Practica.Nucleo.Entidades
             }
             return usuarios;
         }
-
+        //Test
         public static string Encrypt(string password)
         {
             byte[] data = UTF8Encoding.UTF8.GetBytes(password);
