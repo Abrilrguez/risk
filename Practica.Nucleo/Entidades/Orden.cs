@@ -67,29 +67,66 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public bool Guardar(int id, string Folio, DateTime Fecha, Cliente Cliente, Paquete Paquete, double Precio, string NumeroRastreo, string Estado)
+        public static bool Guardar(int idOrden, int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
+                            int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
+                            int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
+                                string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
+                                string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
         {
             bool realizado = false;
             try
             {
-                Orden o = id == 0 ? new Orden() : ObtenerPorId(id);
-                o.Folio = Folio;
-                o.Fecha = Fecha;
-                o.Estado = Estado;
-                o.NumeroRastreo = NumeroRastreo;
-                o.Paquete = Paquete;
-                o.Usuario = Usuario;
-                o.Destinatario = Destinatario;
-                o.Cliente = Cliente;
-                o.Precio = Precio;
-                if (id == 0)
+                Orden o = new Orden();
+                if(idOrden != 0)
                 {
-                    o.Save();
+                    o = Orden.ObtenerPorId(idOrden);
                 }
-                else
-                {
-                    o.Update();
-                }
+
+                Usuario u = new Usuario();
+                u.Nombre = "Bryant";
+                u.Telefono = "612313213";
+                u.Cuenta = "bryant";
+                u.Direccion = "Itson";
+                u.Rol =  Enumeradores.Rol.ADMINISTRADOR;
+                u.Password = "123";
+
+                Paquete p = new Paquete();
+                p.Peso = paquetePeso;
+                p.Tamanio = paqueteTamanio;
+                p.Contenido = paqueteContenido;
+                p.Descripcion = paqueteDescripcion;
+
+                Cliente c = new Cliente();
+                c.Nombre = clienteNombre;
+                c.Domicilio = clienteDomicilio;
+                c.Telefono = clienteTelefono;
+                c.Correo = clienteCorreo;
+                c.Rfc = clienteRfc;
+
+                Destinatario d = new Destinatario();
+                d.Nombre = destinatarioNombre;
+                d.Calle = destinatarioCalle;
+                d.Numero = destinatarioNumero;
+                d.Avenida = destinatarioAvenida;
+                d.Colonia = destinatarioColonia;
+                d.Cp = destinatarioCp;
+                d.Ciudad = destinatarioCiudad;
+                d.Estado = destinatarioEstado;
+                d.Referencia = destinatarioReferencia;
+                d.Telefono = destinatarioTelefono;
+                d.Correo = destinatarioCorreo;
+                d.Persona = destinatarioPersona;
+
+                o.Folio = "123124";
+                o.Fecha = DateTime.Now;
+                o.Cliente = c;
+                o.Destinatario = d;
+                o.Usuario = u;
+                o.Paquete = p;
+                o.Precio = 12.32;
+                o.NumeroRastreo = "1231241";
+                o.Estado = "Entregado";
+                o.Save();
 
                 realizado = true;
             }
