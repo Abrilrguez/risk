@@ -1,17 +1,71 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+﻿<script src="@Url.Content("~/Scripts/orden.js")"></script>
+<!-- Breadcomb area Start-->
+<div class="breadcomb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="notika-icon notika-app"></i>
+                                </div>
+                                <div class="breadcomb-ctn">
+                                    <h2>Ordenes de envio</h2>
+                                    <a onclick="add();" class="btn btn-default" data-toggle="modal">Agregar</a>
+                                    <a onclick="edit();" class="btn btn-default">Editar</a>
+                                    <a onclick="del();" class="btn btn-danger notika-btn-danger">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                            <div class="breadcomb-report">
+                                <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+<!-- Breadcomb area End-->
+<!-- Data Table area Start-->
+<div class="data-table-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="data-table-list">
+                    <div class="table-responsive">
+                        <table id="table-destinatarios" class="table table-striped datatable-selection-single">
+                            <thead>
+                                <tr>
+                                    <th id="ide" hidden>Id</th>
+                                    <th>Folio</th>
+                                    <th>Número de rastreo</th>
+                                    <th>Fecha</th>
+                                    <th>Estado de la orden</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th id="ide" hidden>Id</th>
+                                    <th>Folio</th>
+                                    <th>Número de rastreo</th>
+                                    <th>Fecha</th>
+                                    <th>Estado de la orden</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Data Table area End-->
+<!-- Data Table JS
+        ============================================ -->
+<script src="@Url.Content("~/Scripts/data-table/jquery.dataTables.min.js")"></script>
+<script src="@Url.Content("~/Scripts/data-table-act.js")"></script>
