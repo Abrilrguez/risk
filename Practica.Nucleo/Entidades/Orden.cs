@@ -31,6 +31,13 @@ namespace Practica.Nucleo.Entidades
                 using (ISession session = Persistent.SessionFactory.OpenSession())
                 {
                     ICriteria crit = session.CreateCriteria(new Orden().GetType());
+                    crit.SetProjection(Projections.ProjectionList()
+                    .Add(Projections.Property("Id"), "Id")
+                    .Add(Projections.Property("Folio"), "Folio")
+                    .Add(Projections.Property("NumeroRastreo"), "NumeroRastreo")
+                    .Add(Projections.Property("Estado"), "Estado")
+                    .Add(Projections.Property("Fecha"), "Fecha"));
+                    crit.SetResultTransformer(Transformers.AliasToBean<Orden>());
                     ordenes = crit.List<Orden>();
                     session.Close();
                 }

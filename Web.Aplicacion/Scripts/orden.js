@@ -1,4 +1,31 @@
-﻿function add() {
+﻿$(document).ready(function () {
+    cargarTabla();
+});
+
+function cargarTabla() {
+    var table = $('#table-ordenes').DataTable();
+    table.destroy();
+    $('#table-ordenes').DataTable({
+        "autoWidth": true,
+        "processing": true,
+        "ajax": baseUrl + "Orden/ObtenerTodos",
+        "bDestroy": true,
+        "columns": [
+            { "data": "Id", visible: false, searchable: false },
+            { "data": "Folio" },
+            { "data": "NumeroRastreo" },
+            { "data": "Fecha" },
+            { "data": "Estado" },
+        ]
+    });
+
+    activarRenglon();
+}
+
+
+
+
+function add() {
     
 }
 
@@ -57,3 +84,15 @@ function guardar() {
         });
 }
 
+function activarRenglon() {
+    var singleSelect = $('.datatable-selection-single').DataTable();
+    $('.datatable-selection-single tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('info')) {
+            $(this).removeClass('info');
+        }
+        else {
+            singleSelect.$('tr.info').removeClass('info');
+            $(this).addClass('info');
+        }
+    });
+}

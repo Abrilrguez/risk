@@ -1,4 +1,5 @@
-﻿using Practica.Nucleo.Enumeradores;
+﻿using Practica.Nucleo.Entidades;
+using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,20 @@ namespace Web.Aplicacion.Controllers
             return View();
         }
 
-       
-        
+        public ActionResult ObtenerTodos()
+        {
+            try
+            {
+                IList<Orden> ordenes = Orden.ObtenerTodos();
+                return Json(new { data = ordenes }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+
+
     }
 }
