@@ -23,6 +23,13 @@ namespace Practica.Nucleo.Entidades
         public string NumeroRastreo { get; set; }
         public string Estado { get; set; }
 
+        public string ObtenerFolio()
+        {
+            DateTime date = DateTime.Now;
+            
+            string folio = Convert.ToString(date.Year);
+            return folio;
+        }
         public static IList<Orden> ObtenerTodos()
         {
             IList<Orden> ordenes;
