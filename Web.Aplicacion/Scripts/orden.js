@@ -139,3 +139,67 @@ function activarRenglon() {
         }
     });
 }
+
+function cargarDatos() {
+    var id = $.trim($("#orden-id").val());
+    
+    if (id != "" && id != 0) {
+        $.ajax({
+            url: baseUrl + "Orden/ObtenerPorId",
+            data: { id: id },
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.trim($("#paquete-peso").val(data.paquetePeso));
+                $.trim($("#paquete-tamanio").val(data.paqueteTamanio));
+                $.trim($("#paquete-contenido").val(data.paqueteContenido));
+                $.trim($("#paquete-descripcion").val(data.paqueteDescripcion));
+
+                //Cliente.
+                $.trim($("#cliente-nombre").val(data.clienteNombre));
+                $.trim($("#cliente-telefono").val(data.clienteTelefono));
+                $.trim($("#cliente-correo").val(data.clienteCorreo));
+                $.trim($("#cliente-rfc").val(clienteRfc));
+                $.trim($("#cliente-domicilio").val(data.clienteDomicilio));
+
+                //Destinatario.
+                $.trim($("#destinatario-nombre").val(data.destinatarioNombre));
+                $.trim($("#destinatario-telefono").val(data.destinatarioTelefono));
+                $.trim($("#destinatario-correo").val(data.destinatarioCorreo));
+                $.trim($("#destinatario-persona").val(data.destinatarioPersona));
+                $.trim($("#destinatario-calle").val(data.destinatarioCalle));
+                $.trim($("#destinatario-numero").val(data.destinatarioNumero));
+                $.trim($("#destinatario-avenida").val(data.destinatarioAvenida));
+                $.trim($("#destinatario-colonia").val(data.destinatarioColonia));
+                $.trim($("#destinatario-cp").val(data.destinatarioCp));
+                $.trim($("#destinatario-ciudad").val(data.destinatarioCiudad));
+                $.trim($("#destinatario-estado").val(data.destinatarioEstado));
+                $.trim($("#destinatario-referencia").val(data.destinatarioReferencia));
+
+                
+            }
+        });
+    }
+    return false;
+}
+
+function obtenerIdd() {
+
+}
+
+function edit() {
+    var modalC = $("#mdContent");
+    var id = obtenerId();
+
+    if (id != 0) {
+        $('#mdMain').modal();
+        modalC.load(baseUrl + 'Orden/Add/' + id +'/1/2/3',function () {
+            cargarDatos();
+        });
+    } else {
+        swal("Seleccione un registro");
+        return false;
+    }
+}

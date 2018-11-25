@@ -48,7 +48,7 @@ namespace Web.Aplicacion.Controllers
             {
                 u = Usuario.ObtenerPorId(id);
             }
-            catch (Exception ex)
+            catch (Exception ae)
             {
                 return RedirectToAction("Error", "Home");
             }

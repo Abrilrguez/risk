@@ -92,5 +92,19 @@ namespace Web.Aplicacion.Controllers
             return action;
         }
 
+        public ActionResult ObtenerPorId(int id)
+        {
+            Orden o = new Orden();
+            try
+            {
+                o = Orden.ObtenerPorId(id);
+            }
+            catch (Exception ae)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return Json(o, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
