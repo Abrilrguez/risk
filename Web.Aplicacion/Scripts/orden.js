@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     cargarTabla();
 });
-
 function cargarTabla() {
     var table = $('#table-ordenes').DataTable();
     table.destroy();
@@ -21,13 +20,11 @@ function cargarTabla() {
 
     activarRenglon();
 }
-
 function add() {
     var modalC = $("#mdContent");
     $('#mdMain').modal();
     modalC.load(baseUrl + 'Orden/Add/0/1/2/3', {});
 }
-
 function guardar() {
 
     var idOrden = $.trim($("#orden-id").val());
