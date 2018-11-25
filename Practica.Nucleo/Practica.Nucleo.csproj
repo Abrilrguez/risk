@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Entidades\Class1.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Destinatario.cs" />
     <Compile Include="Entidades\Historial.cs" />
