@@ -1,4 +1,4 @@
-﻿/*$(document).ready(function () {
+﻿$(document).ready(function () {
     cargarTabla();
 });
 
@@ -20,18 +20,17 @@ function cargarTabla() {
     });
 
     activarRenglon();
-}*/
-
-
-
+}
 
 function add() {
-    
+    var modalC = $("#mdContent");
+    $('#mdMain').modal();
+    modalC.load(baseUrl + 'Orden/Add/0/1/2/3', {});
 }
 
 function guardar() {
 
-    var idOrden = 2;
+    var idOrden = $.trim($("#orden-id").val());
     //Paquete.
     var idPaquete = $.trim($("#paquete-id").val());
     var paquetePeso = $.trim($("#paquete-peso").val());
@@ -62,30 +61,29 @@ function guardar() {
     var destinatarioEstado = $.trim($("#destinatario-estado").val());
     var destinatarioReferencia = $.trim($("#destinatario-referencia").val());
 
-
-        $.ajax({
-            url: baseUrl + "Orden/Guardar",
-            type: "POST",
-            data: {
-                idOrden: idOrden, idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
-                idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
-                idDestinatario: idDestinatario, destinatarioNombre: destinatarioNombre, destinatarioTelefono: destinatarioTelefono, destinatarioCorreo: destinatarioCorreo, destinatarioPersona: destinatarioPersona,
-                    destinatarioCalle: destinatarioCalle, destinatarioNumero: destinatarioNumero, destinatarioAvenida: destinatarioAvenida, destinatarioColonia: destinatarioColonia, destinatarioCp: destinatarioCp,
-                    destinatarioCiudad: destinatarioCiudad, destinatarioEstado: destinatarioEstado, destinatarioReferencia: destinatarioReferencia
-            },
-            cache: false,
-            tradicional: true,
-            success: function (data) {
-                if (data === "true") {
-                    var modal = $("#mdMain");
-                    modal.modal("hide");
-                    activarRenglon();
-                }
-            },
-            error: function (xhr, exception) {
-
+    $.ajax({
+        url: baseUrl + "Orden/Guardar/",
+        data: {
+            idOrden: idOrden,
+            idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
+            idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
+            idDestinatario: idDestinatario, destinatarioNombre: destinatarioNombre, destinatarioTelefono: destinatarioTelefono, destinatarioCorreo: destinatarioCorreo, destinatarioPersona: destinatarioPersona,
+            destinatarioCalle: destinatarioCalle, destinatarioNumero: destinatarioNumero, destinatarioAvenida: destinatarioAvenida, destinatarioColonia: destinatarioColonia, destinatarioCp: destinatarioCp,
+            destinatarioCiudad: destinatarioCiudad, destinatarioEstado: destinatarioEstado, destinatarioReferencia: destinatarioReferencia
+        },
+        cache: false,
+        tradicional: true,
+        success: function (data) {
+            if (data == "true") {
+                var modal = $("#mdMain");
+                modal.modal("hide");
+                activarRenglon();
             }
-        });
+        },
+        error: function (xhr, exception) {
+            swal(exception);
+        }
+    });
 }
 
 function activarRenglon() {

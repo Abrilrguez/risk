@@ -10,16 +10,20 @@ namespace Web.Aplicacion.Controllers
 {
     public class OrdenController : Controller
     {
-        // GET: Ordena
 
         //[Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Add()
+        public ActionResult Add(int idOrden, int idPaquete, int idCliente, int idDestinatario)
         {
-            return View();
+            ViewBag.IdOrden = idOrden;
+            ViewBag.IdPaquete = idPaquete;
+            ViewBag.IdCliente = idCliente;
+            ViewBag.IdDestinatario = idDestinatario;
+
+            return PartialView("~/Views/Orden/Add.cshtml");
         }
 
         public ActionResult ObtenerTodos()
@@ -35,20 +39,22 @@ namespace Web.Aplicacion.Controllers
             }
         }
 
-        public ActionResult Guardar(int idOrden, int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
+        public ActionResult Guardar(int idOrden,
+                                    int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
-                                        string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
-                                        string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
+                                    string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
+                                    string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
         {
             ActionResult action = null;
             try
             {
-                if (Orden.Guardar(idOrden, idPaquete,  paquetePeso, paqueteTamanio, paqueteContenido,  paqueteDescripcion,
-                                     idCliente,  clienteNombre,  clienteTelefono,  clienteCorreo,  clienteRfc,  clienteDomicilio,
-                                     idDestinatario,  destinatarioNombre,  destinatarioTelefono,  destinatarioCorreo,  destinatarioPersona,
-                                        destinatarioCalle,  destinatarioNumero,  destinatarioAvenida,  destinatarioColonia,  destinatarioCp,
-                                        destinatarioCiudad,  destinatarioEstado,  destinatarioReferencia))
+                if (Orden.Guardar(idOrden,
+                    idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
+                    idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
+                    idDestinatario, destinatarioNombre, destinatarioTelefono, destinatarioCorreo, destinatarioPersona,
+                    destinatarioCalle, destinatarioNumero, destinatarioAvenida, destinatarioColonia, destinatarioCp,
+                    destinatarioCiudad, destinatarioEstado, destinatarioReferencia))
                 {
                     action = Content("true");
                 }

@@ -67,17 +67,18 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
-                            int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
-                            int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
-                                string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
-                                string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
+        public static bool Guardar(int idOrden,
+                                    int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
+                                    int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
+                                    int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
+                                    string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
+                                    string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
         {
             bool realizado = false;
             try
             {
                 Orden o = new Orden();
-                if(idOrden != 0)
+                if (idOrden != 0)
                 {
                     o = Orden.ObtenerPorId(idOrden);
                 }
@@ -87,14 +88,16 @@ namespace Practica.Nucleo.Entidades
                 u.Telefono = "612313213";
                 u.Cuenta = "bryant";
                 u.Direccion = "Itson";
-                u.Rol =  Enumeradores.Rol.ADMINISTRADOR;
+                u.Rol = Enumeradores.Rol.ADMINISTRADOR;
                 u.Password = "123";
+                u.Save();
 
                 Paquete p = new Paquete();
                 p.Peso = paquetePeso;
                 p.Tamanio = paqueteTamanio;
                 p.Contenido = paqueteContenido;
                 p.Descripcion = paqueteDescripcion;
+                p.Save();
 
                 Cliente c = new Cliente();
                 c.Nombre = clienteNombre;
@@ -102,6 +105,7 @@ namespace Practica.Nucleo.Entidades
                 c.Telefono = clienteTelefono;
                 c.Correo = clienteCorreo;
                 c.Rfc = clienteRfc;
+                c.Save();
 
                 Destinatario d = new Destinatario();
                 d.Nombre = destinatarioNombre;
@@ -116,6 +120,7 @@ namespace Practica.Nucleo.Entidades
                 d.Telefono = destinatarioTelefono;
                 d.Correo = destinatarioCorreo;
                 d.Persona = destinatarioPersona;
+                d.Save();
 
                 o.Folio = "123124";
                 o.Fecha = DateTime.Now;
