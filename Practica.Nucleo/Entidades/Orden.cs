@@ -149,5 +149,22 @@ namespace Practica.Nucleo.Entidades
 
             return realizado;
         }
+
+        public static bool Eliminar(int id)
+        {
+            bool realizado = false;
+            try
+            {
+                Orden o = ObtenerPorId(id);
+                o.Delete();
+                realizado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return realizado;
+        }
     }
 }

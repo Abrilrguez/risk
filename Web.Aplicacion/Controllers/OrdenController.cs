@@ -44,8 +44,7 @@ namespace Web.Aplicacion.Controllers
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
                                     string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
-                                    string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
-        {
+                                    string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia){
             ActionResult action = null;
             try
             {
@@ -72,7 +71,26 @@ namespace Web.Aplicacion.Controllers
             return action;
         }
 
-
+        public ActionResult Eliminar(int id)
+        {
+            ActionResult action = null;
+            try
+            {
+                if (Orden.Eliminar(id))
+                {
+                    action = Content("true");
+                }
+                else
+                {
+                    action = Content("false");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content("false");
+            }
+            return action;
+        }
 
     }
 }

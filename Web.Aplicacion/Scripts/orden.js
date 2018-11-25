@@ -85,7 +85,51 @@ function guardar() {
         }
     });
 }
-
+function del() {
+    var id = obtenerId();
+    swal({
+        title: "¿Estás seguro?",
+        text: "¡Una vez borrado no se podrá ver más tu registro!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: baseUrl + "Orden/Eliminar",
+                    data: {
+                        id: id
+                    },
+                    cache: false,
+                    tradicional: true,
+                    success: function (data) {
+                        if (data == "true") {
+                            swal("¡Genial!", "La acción se realizó con éxito", "success");
+                            cargarTabla();
+                        } else {
+                            swal("¡Error!", "La acción no se realizó con éxito", "error");
+                        }
+                    },
+                    error: function (xhr, exception) {
+                        swal("¡Error!", "La acción no se realizó con éxito", "error");
+                    }
+                });
+            } else {
+                swal("Tu registro de orden no se elimino con éxito");
+            }
+        });
+}
+function obtenerId() {
+    var table = $('#table-ordenes').DataTable();
+    var id = 0;
+    if (table.$('tr.active')[0] != undefined) {
+        var selectedIndex = table.$('tr.active')[0]._DT_RowIndex
+        var row = table.row(selectedIndex).data();
+        id = row.Id;
+    }
+    return id;
+}
 function activarRenglon() {
     var singleSelect = $('.datatable-selection-single').DataTable();
     $('.datatable-selection-single tbody').on('click', 'tr', function () {
