@@ -10,7 +10,7 @@ namespace Web.Aplicacion.Controllers
 {
     public class OrdenController : Controller
     {
-        // GET: Orden
+        // GET: Ordena
 
         //[Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
         public ActionResult Index()
