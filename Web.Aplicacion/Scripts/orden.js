@@ -123,8 +123,8 @@ function del() {
 function obtenerId() {
     var table = $('#table-ordenes').DataTable();
     var id = 0;
-    if (table.$('tr.active')[0] != undefined) {
-        var selectedIndex = table.$('tr.active')[0]._DT_RowIndex
+    if (table.$('tr.info')[0] != undefined) {
+        var selectedIndex = table.$('tr.info')[0]._DT_RowIndex
         var row = table.row(selectedIndex).data();
         id = row.Id;
     }
