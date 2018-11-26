@@ -161,7 +161,9 @@ namespace Practica.Nucleo.Entidades
             try
             {
                 Orden o = ObtenerPorId(id);
+                Paquete p = o.Paquete;
                 o.Delete();
+                p.Delete();
                 realizado = true;
             }
             catch (Exception ex)
