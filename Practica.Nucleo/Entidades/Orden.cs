@@ -76,7 +76,7 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, 
+        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, 
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
@@ -122,15 +122,15 @@ namespace Practica.Nucleo.Entidades
                 
 
                 Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
-                o.Folio = "123124";
+                o.Folio = ordenFolio;
                 o.Fecha = DateTime.Now;
                 o.Cliente = c;
                 o.Destinatario = d;
                 o.Usuario = u;
                 o.Paquete = p;
-                o.Precio = 12.32;
-                o.NumeroRastreo = "1231241";
-                o.Estado = "Pendiente de entrega";
+                o.Precio = ordenPrecio;
+                o.NumeroRastreo = ordenFolio;
+                o.Estado = ordenEstado;
 
                 if (idOrden != 0)
                 {
