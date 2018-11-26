@@ -86,7 +86,6 @@ function guardar() {
                 var modal = $("#mdMain");
                 modal.modal("hide");
                 cargarTabla();
-
             }
         },
         error: function (xhr, exception) {
@@ -103,8 +102,9 @@ function guardar() {
         swal("Listo", "Se ha guardado el usuario", "success");
         activarRenglon();
     }
-    cargarTabla();
+    activarRenglon();
 }
+
 function del() {
     var id = obtenerId();
     swal({
@@ -217,6 +217,7 @@ function cargarDatos() {
     }
     return false;
 }
+
 function edit() {
     var modalC = $("#mdContent");
     var id = obtenerId();
@@ -228,6 +229,7 @@ function edit() {
         });
     } else {
         swal("Seleccione un registro");
+        activarRenglon();
         return false;
     }
     activarRenglon();

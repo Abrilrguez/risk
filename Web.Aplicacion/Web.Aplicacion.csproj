@@ -176,6 +176,7 @@
     <Compile Include="Attribute\ValidateSession.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DestinatarioController.cs" />
+    <Compile Include="Controllers\HistorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Controllers\PaqueteController.cs" />
@@ -341,6 +342,7 @@
     <Content Include="Scripts\flot\jquery.flot.tooltip.min.js" />
     <Content Include="Scripts\google.maps\google.maps-active.js" />
     <Content Include="Scripts\google.maps\google.maps2-active.js" />
+    <Content Include="Scripts\historial.js" />
     <Content Include="Scripts\icheck\icheck-active.js" />
     <Content Include="Scripts\icheck\icheck.min.js" />
     <Content Include="Scripts\jasny-bootstrap.min.js" />
@@ -401,6 +403,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Historial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\fonts\fontawesome-webfont.eot" />
@@ -420,8 +423,6 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Usuario\Add.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Paquete\Index.cshtml" />
-    <Content Include="Views\Paquete\Add.cshtml" />
     <Content Include="Views\Usuario\ChangePassword.cshtml" />
     <Content Include="Views\Destinatario\Index.cshtml" />
     <Content Include="Views\Destinatario\Add.cshtml" />
