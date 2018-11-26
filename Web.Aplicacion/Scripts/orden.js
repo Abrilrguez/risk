@@ -157,7 +157,6 @@ function activarRenglon() {
 }
 function cargarDatos() {
     var id = $.trim($("#orden-id").val());
-    
     if (id != "" && id != 0) {
         $.ajax({
             url: baseUrl + "Orden/ObtenerPorId",
@@ -168,6 +167,11 @@ function cargarDatos() {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 var idOrden = $.trim($("#orden-id").val());
+                $.trim($("#orden-folio").val(data.Folio));
+                $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
+                $.trim($("#orden-fecha").val(data.Fecha));
+                $.trim($("#orden-estado").val(data.Estado));
+                $.trim($("#orden-precio").val(data.Precio));
                 //Paquete.
                 $.trim($("#paquete-id").val(data.Paquete.Id));
                 $.trim($("#paquete-peso").val(data.Paquete.Peso));
@@ -220,18 +224,21 @@ function edit() {
 }
 function cargarDatosOrden()
 {
-    $.ajax({
-        url: baseUrl + "Orden/ObtenerDatosOrden",
-        type: 'GET',
-        dataType: 'json',
-        cache: false,
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            alert(data.Folio);
-            $.trim($("#orden-folio").val(data.Folio));
-            $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
-            $.trim($("#orden-fecha").val(data.Fecha));
-            $.trim($("#orden-estado").val(data.Estado));
-        }
-    });
+    var id = $.trim($("#orden-id").val());
+    if (id == 0) {
+        $.ajax({
+            url: baseUrl + "Orden/ObtenerDatosOrden",
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                alert(data.Folio);
+                $.trim($("#orden-folio").val(data.Folio));
+                $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
+                $.trim($("#orden-fecha").val(data.Fecha));
+                $.trim($("#orden-estado").val(data.Estado));
+            }
+        });
+    }
 }

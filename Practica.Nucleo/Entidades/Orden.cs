@@ -35,11 +35,11 @@ namespace Practica.Nucleo.Entidades
             {
                 var id = session.CreateSQLQuery("Select max(id) from trackpackdb.orden;")
                             .UniqueResult();
-                if (id == null) { idu = 0; }
+                if (id != null) { idu = Convert.ToInt32(id); }
 
             }
             
-            n = idu + 1;
+            n = idu;
             string ceros;
             if (n > 999999)
             {                //001999
