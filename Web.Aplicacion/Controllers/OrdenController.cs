@@ -51,7 +51,7 @@ namespace Web.Aplicacion.Controllers
             try
             {
                 
-                var hola= Session["idUsuario"];
+                 idUsuario = Convert.ToInt32(Session["usuarioId"]);
 
                 if (Orden.Guardar(idOrden, ordenEstado, ordenPrecio, ordenFolio, ordenNumRastreo, ordenFecha,
                     idUsuario,
