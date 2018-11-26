@@ -51,19 +51,16 @@ namespace Practica.Nucleo.Entidades
                 string letra = "A";
                 folio = letra + año + ceros + n;
             }
-
             if (n > 99999)
             {
                 ceros = "";
                 folio = año + ceros + n;
             }
-
             if (n > 9999)
             {
                 ceros = "0";
                 folio = año + ceros + n;
             }
-
             if (n > 999)
             {
                 ceros = "00";
