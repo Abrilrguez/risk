@@ -67,6 +67,7 @@ namespace Practica.Nucleo.Entidades
                     crit.Add(Expression.Eq("Id", id));
                     o = (crit.UniqueResult<Orden>());
                 }
+                
             }
             catch (Exception ex)
             {

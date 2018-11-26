@@ -152,41 +152,38 @@ function cargarDatos() {
             cache: false,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $.trim($("#paquete-peso").val(data.paquetePeso));
-                $.trim($("#paquete-tamanio").val(data.paqueteTamanio));
-                $.trim($("#paquete-contenido").val(data.paqueteContenido));
-                $.trim($("#paquete-descripcion").val(data.paqueteDescripcion));
+                alert(data.Paquete.Peso);
+                $.trim($("#paquete-peso").val(data.Paquete.Peso));
+                $.trim($("#paquete-tamanio").val(data.Paquete.Tamanio));
+                $.trim($("#paquete-contenido").val(data.Paquete.Contenido));
+                $.trim($("#paquete-descripcion").val(data.Paquete.Descripcion));
 
                 //Cliente.
-                $.trim($("#cliente-nombre").val(data.clienteNombre));
-                $.trim($("#cliente-telefono").val(data.clienteTelefono));
-                $.trim($("#cliente-correo").val(data.clienteCorreo));
-                $.trim($("#cliente-rfc").val(clienteRfc));
-                $.trim($("#cliente-domicilio").val(data.clienteDomicilio));
+                $.trim($("#cliente-nombre").val(data.Cliente.Nombre));
+                $.trim($("#cliente-telefono").val(data.Cliente.Telefono));
+                $.trim($("#cliente-correo").val(data.Cliente.Correo));
+                $.trim($("#cliente-rfc").val(data.Cliente.Rfc));
+                $.trim($("#cliente-domicilio").val(data.Cliente.Domicilio));
 
                 //Destinatario.
-                $.trim($("#destinatario-nombre").val(data.destinatarioNombre));
-                $.trim($("#destinatario-telefono").val(data.destinatarioTelefono));
-                $.trim($("#destinatario-correo").val(data.destinatarioCorreo));
-                $.trim($("#destinatario-persona").val(data.destinatarioPersona));
-                $.trim($("#destinatario-calle").val(data.destinatarioCalle));
-                $.trim($("#destinatario-numero").val(data.destinatarioNumero));
-                $.trim($("#destinatario-avenida").val(data.destinatarioAvenida));
-                $.trim($("#destinatario-colonia").val(data.destinatarioColonia));
-                $.trim($("#destinatario-cp").val(data.destinatarioCp));
-                $.trim($("#destinatario-ciudad").val(data.destinatarioCiudad));
-                $.trim($("#destinatario-estado").val(data.destinatarioEstado));
-                $.trim($("#destinatario-referencia").val(data.destinatarioReferencia));
+                $.trim($("#destinatario-nombre").val(data.Destinatario.Nombre));
+                $.trim($("#destinatario-telefono").val(data.Destinatario.Telefono));
+                $.trim($("#destinatario-correo").val(data.Destinatario.Correo));
+                $.trim($("#destinatario-persona").val(data.Destinatario.Persona));
+                $.trim($("#destinatario-calle").val(data.Destinatario.Calle));
+                $.trim($("#destinatario-numero").val(data.Destinatario.Numero));
+                $.trim($("#destinatario-avenida").val(data.Destinatario.Avenida));
+                $.trim($("#destinatario-colonia").val(data.Destinatario.Colonia));
+                $.trim($("#destinatario-cp").val(data.Destinatario.Cp));
+                $.trim($("#destinatario-ciudad").val(data.Destinatario.Ciudad));
+                $.trim($("#destinatario-estado").val(data.Destinatario.Estado));
+                $.trim($("#destinatario-referencia").val(data.Destinatario.Referencia));
 
                 
             }
         });
     }
     return false;
-}
-
-function obtenerIdd() {
-
 }
 
 function edit() {

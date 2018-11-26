@@ -99,7 +99,7 @@ namespace Web.Aplicacion.Controllers
             {
                 o = Orden.ObtenerPorId(id);
             }
-            catch (Exception ae)
+            catch (Exception ex)
             {
                 return RedirectToAction("Error", "Home");
             }
