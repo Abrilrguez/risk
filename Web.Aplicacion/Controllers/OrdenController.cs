@@ -50,7 +50,7 @@ namespace Web.Aplicacion.Controllers
             try
             {
                 idUsuario = Convert.ToInt32(Session["idUsuario"]);
-                if (Orden.Guardar(idOrden,idUsuario
+                if (Orden.Guardar(idOrden,idUsuario,
                     idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
                     idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
                     idDestinatario, destinatarioNombre, destinatarioTelefono, destinatarioCorreo, destinatarioPersona,
