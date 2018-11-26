@@ -436,15 +436,14 @@
     </fieldset>
     <fieldset>
         <input type="hidden" name="orden-id" id="orden-id" value="@ViewBag.IdOrden" />
-        <input type="hidden" name="paquete-id" id="paquete-id" value="@ViewBag.IdPaquete" />
-        <h2>Datos del paquete</h2>
+        <h2>Datos de la orden</h2>
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-example-int mg-t-15">
                     <div class="form-group">
-                        <label>Peso</label>
+                        <label>Folio</label>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control input-sm" id="paquete-peso" placeholder="Peso en kg.">
+                            <input type="text" disabled="disabled" class="form-control input-sm" id="orden-folio">
                         </div>
                     </div>
                 </div>
@@ -452,9 +451,9 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-example-int mg-t-15">
                     <div class="form-group">
-                        <label>Tamaño</label>
+                        <label>Número de rastreo</label>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control input-sm" id="paquete-tamanio" placeholder="Tamaño">
+                            <input type="text" disabled="disabled" class="form-control input-sm" id="paquete-tamanio" placeholder="orden-numRastreo">
                         </div>
                     </div>
                 </div>
@@ -462,9 +461,9 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="form-example-int mg-t-15">
                     <div class="form-group">
-                        <label>Contenido</label>
+                        <label>Fecha</label>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control input-sm" id="paquete-contenido" placeholder="Contenido">
+                            <input type="text"  disabled="disabled" class="form-control input-sm" id="orden-fecha">
                         </div>
                     </div>
                 </div>
@@ -474,9 +473,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-example-int mg-t-15">
                     <div class="form-group">
-                        <label>Descripción</label>
+                        <label>Estado de la orden</label>
                         <div class="nk-int-st">
-                            <textarea class="form-control auto-size" rows="1" id="paquete-descripcion" placeholder="Descripción"></textarea>
+                            <input disabled="disabled" class="form-control auto-size" rows="1" id="orden-estado">
                         </div>
                     </div>
                 </div>
