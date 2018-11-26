@@ -102,8 +102,8 @@
         #msform fieldset {
             padding: 20px 30px;
             box-sizing: border-box;
-            width: 80%;
-            margin: 0 10%;
+            width: 100%;
+            margin: 0;
             /*stacking fieldsets above each other*/
             position: relative;
         }
@@ -126,7 +126,7 @@
             color: black;
             text-transform: uppercase;
             font-size: 9px;
-            width: 33.33%;
+            width: 25%;
             float: left;
             position: relative;
         }
@@ -178,6 +178,7 @@
         <li class="active">Datos del paquete</li>
         <li>Datos del cliente</li>
         <li>Datos del destinatario</li>
+        <li>Datos de la orden</li>
     </ul>
     <!-- fieldsets -->
     <fieldset>
@@ -424,6 +425,57 @@
                         <label>Referencia</label>
                         <div class="nk-int-st">
                             <input type="text" class="form-control input-sm" id="destinatario-referencia" placeholder="Referencia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a class="previous btn btn-default notika-btn-default">Anterior</a>
+        <a class="next btn btn-default notika-btn-default">Siguiente</a>
+    </fieldset>
+    <fieldset>
+        <input type="hidden" name="orden-id" id="orden-id" value="@ViewBag.IdOrden" />
+        <h2>Datos de la orden</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="form-example-int mg-t-15">
+                    <div class="form-group">
+                        <label>Folio</label>
+                        <div class="nk-int-st">
+                            <input type="text" disabled="disabled" class="form-control input-sm" id="orden-folio">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="form-example-int mg-t-15">
+                    <div class="form-group">
+                        <label>Número de rastreo</label>
+                        <div class="nk-int-st">
+                            <input type="text" disabled="disabled" class="form-control input-sm" id="paquete-tamanio" placeholder="orden-numRastreo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-example-int mg-t-15">
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <div class="nk-int-st">
+                            <input type="text"  disabled="disabled" class="form-control input-sm" id="orden-fecha">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-example-int mg-t-15">
+                    <div class="form-group">
+                        <label>Estado de la orden</label>
+                        <div class="nk-int-st">
+                            <input disabled="disabled" class="form-control auto-size" rows="1" id="orden-estado">
                         </div>
                     </div>
                 </div>

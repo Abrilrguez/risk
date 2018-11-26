@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Practica.Nucleo.Enumeradores;
 
 namespace Practica.Nucleo.Entidades
 {
@@ -22,7 +21,7 @@ namespace Practica.Nucleo.Entidades
         public IList<Historial> Historiales { get; set; }
         public double Precio { get; set; }
         public string NumeroRastreo { get; set; }
-        public Estado Estado { get; set; }
+        public string Estado { get; set; }
 
         public string ObtenerFolio()
         {
@@ -76,7 +75,7 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, int estado,
+        public static bool Guardar(int idOrden, int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
@@ -86,15 +85,8 @@ namespace Practica.Nucleo.Entidades
             bool realizado = false;
             try
             {
-               
-                Usuario u = new Usuario();
-                u.Nombre = "Bryant";
-                u.Telefono = "612313213";
-                u.Cuenta = "bryant";
-                u.Direccion = "Itson";
-                u.Rol = Enumeradores.Rol.ADMINISTRADOR;
-                u.Password = "123";
-                u.Save();
+
+                Usuario u = Usuario.ObtenerPorId(idUsuario);
 
                 Paquete p = idPaquete == 0 ? new Paquete() : Paquete.ObtenerPorId(idPaquete);
                 p.Peso = paquetePeso;
@@ -136,7 +128,7 @@ namespace Practica.Nucleo.Entidades
                 o.Paquete = p;
                 o.Precio = 12.32;
                 o.NumeroRastreo = "1231241";
-                o.Estado = (Estado)estado;
+                o.Estado = "Entregado";
 
                 if (idOrden != 0)
                 {

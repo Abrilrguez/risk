@@ -29,6 +29,7 @@ function guardar() {
 
     var idOrden = $.trim($("#orden-id").val());
     //Paquete.
+    var idUsuario = 0;
     var idPaquete = $.trim($("#paquete-id").val());
     var paquetePeso = $.trim($("#paquete-peso").val());
     var paqueteTamanio = $.trim($("#paquete-tamanio").val());
@@ -69,6 +70,7 @@ function guardar() {
     $.ajax({
         url: baseUrl + "Orden/Guardar/",
         data: {
+            idUsuario: idUsuario,
             idOrden: idOrden,
             idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
             idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
