@@ -33,7 +33,7 @@
     <property name="NumeroRastreo" type="string">
       <column name="numeroRastreo"/>
     </property>
-    <property name="Estado" type="string">
+    <property name="Estado" type="Practica.Nucleo.Enumeradores.Estado, Practica.Nucleo">
       <column name="estado"/>
     </property>
   </class>

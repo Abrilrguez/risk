@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Practica.Nucleo.Entidades
 {
     public class Orden : Persistent
@@ -22,7 +21,7 @@ namespace Practica.Nucleo.Entidades
         public IList<Historial> Historiales { get; set; }
         public double Precio { get; set; }
         public string NumeroRastreo { get; set; }
-        public string Estado { get; set; }
+        public Estado Estado { get; set; }
 
         public static string ObtenerFolio()
         {
@@ -110,7 +109,7 @@ namespace Practica.Nucleo.Entidades
                     .Add(Projections.Property("Id"), "Id")
                     .Add(Projections.Property("Folio"), "Folio")
                     .Add(Projections.Property("NumeroRastreo"), "NumeroRastreo")
-                    .Add(Projections.Property("Estado"), "Estado")
+                    //.Add(Projections.Property("Estado"), "Estado")
                     .Add(Projections.Property("Fecha"), "Fecha"));
                     crit.SetResultTransformer(Transformers.AliasToBean<Orden>());
                     ordenes = crit.List<Orden>();
@@ -130,7 +129,7 @@ namespace Practica.Nucleo.Entidades
             o.Folio = ObtenerFolio();
             o.Fecha = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
             o.NumeroRastreo = o.Folio;
-            o.Estado = "Pendiente";
+            o.Estado = Estado.PENDIENTE;
             return o;
         }
         public static Orden ObtenerPorId(int id)
@@ -152,7 +151,7 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
+        public static bool Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
@@ -206,7 +205,7 @@ namespace Practica.Nucleo.Entidades
                 o.Paquete = p;
                 o.Precio = ordenPrecio;
                 o.NumeroRastreo = ordenNumRastreo;
-                o.Estado = ordenEstado;
+                o.Estado = (Estado) ordenEstado;
 
                 if (idOrden != 0)
                 {

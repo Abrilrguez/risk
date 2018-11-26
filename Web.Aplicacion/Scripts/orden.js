@@ -67,6 +67,17 @@ function guardar() {
     var destinatarioEstado = $.trim($("#destinatario-estado").val());
     var destinatarioReferencia = $.trim($("#destinatario-referencia").val());
 
+    
+    if (ordenEstado === "PENDIENTE") {
+        ordenEstado = 1;
+    }
+    if (ordenEstado === "ENTREGADO") {
+        ordenEstado = 2;
+    }
+    if (ordenEstado === "CANCELADO" ) {
+        ordenEstado = 3;
+    }
+
     $.ajax({
         url: baseUrl + "Orden/Guardar/",
         data: {
@@ -85,6 +96,7 @@ function guardar() {
             if (data == "true") {
                 var modal = $("#mdMain");
                 modal.modal("hide");
+
                 cargarTabla();
             }
         },
@@ -245,11 +257,23 @@ function cargarDatosOrden()
             cache: false,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                alert(data.Folio);
                 $.trim($("#orden-folio").val(data.Folio));
                 $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
                 $.trim($("#orden-fecha").val(data.Fecha));
-                $.trim($("#orden-estado").val(data.Estado));
+
+                var estado = data.Estado;
+                if (estado === 1) {
+                    estado = "PENDIENTE"
+                }
+                if (estado === 2) {
+                    estado = "ENTREGADO"
+                }
+                if (estado === 3) {
+                    estado = "CANCELADO"
+                }
+
+                $.trim($("#orden-estado").val(estado));
+                alert(estado);
             }
         });
     }

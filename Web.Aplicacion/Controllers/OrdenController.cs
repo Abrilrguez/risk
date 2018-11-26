@@ -40,7 +40,7 @@ namespace Web.Aplicacion.Controllers
             }
         }
 
-        public ActionResult Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
+        public ActionResult Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
