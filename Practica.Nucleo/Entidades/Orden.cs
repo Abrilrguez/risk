@@ -85,12 +85,7 @@ namespace Practica.Nucleo.Entidades
             bool realizado = false;
             try
             {
-                Orden o = new Orden();
-                if (idOrden != 0)
-                {
-                    o = Orden.ObtenerPorId(idOrden);
-                }
-
+               
                 Usuario u = new Usuario();
                 u.Nombre = "Bryant";
                 u.Telefono = "612313213";
@@ -100,22 +95,22 @@ namespace Practica.Nucleo.Entidades
                 u.Password = "123";
                 u.Save();
 
-                Paquete p = new Paquete();
+                Paquete p = idPaquete == 0 ? new Paquete() : Paquete.ObtenerPorId(idPaquete);
                 p.Peso = paquetePeso;
                 p.Tamanio = paqueteTamanio;
                 p.Contenido = paqueteContenido;
                 p.Descripcion = paqueteDescripcion;
-                p.Save();
+                if (idPaquete != 0) { p.Update(); } else { p.Save(); }
 
-                Cliente c = new Cliente();
+                Cliente c = idCliente == 0 ? new Cliente() : Cliente.ObtenerPorId(idCliente);
                 c.Nombre = clienteNombre;
                 c.Domicilio = clienteDomicilio;
                 c.Telefono = clienteTelefono;
                 c.Correo = clienteCorreo;
                 c.Rfc = clienteRfc;
-                c.Save();
+                if (idCliente != 0) { c.Update(); } else { c.Save(); }
 
-                Destinatario d = new Destinatario();
+                Destinatario d = idDestinatario == 0 ? new Destinatario() : Destinatario.ObtenerPorId(idDestinatario);
                 d.Nombre = destinatarioNombre;
                 d.Calle = destinatarioCalle;
                 d.Numero = destinatarioNumero;
@@ -128,8 +123,10 @@ namespace Practica.Nucleo.Entidades
                 d.Telefono = destinatarioTelefono;
                 d.Correo = destinatarioCorreo;
                 d.Persona = destinatarioPersona;
-                d.Save();
+                if (idDestinatario != 0) { d.Update(); } else { d.Save(); }
+                
 
+                Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
                 o.Folio = "123124";
                 o.Fecha = DateTime.Now;
                 o.Cliente = c;
@@ -139,8 +136,15 @@ namespace Practica.Nucleo.Entidades
                 o.Precio = 12.32;
                 o.NumeroRastreo = "1231241";
                 o.Estado = "Entregado";
-                o.Save();
 
+                if (idOrden != 0)
+                {
+                    o.Update();
+                }
+                else
+                {
+                    o.Save();
+                }
                 realizado = true;
             }
             catch (Exception ex)

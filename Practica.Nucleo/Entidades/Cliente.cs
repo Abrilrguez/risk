@@ -47,21 +47,21 @@ namespace Practica.Nucleo.Entidades
 
         public static Cliente ObtenerPorId(int id)
         {
-            Cliente u = new Cliente();
+            Cliente c = new Cliente();
             try
             {
                 using (ISession session = Persistent.SessionFactory.OpenSession())
                 {
-                    ICriteria crit = session.CreateCriteria(u.GetType());
+                    ICriteria crit = session.CreateCriteria(c.GetType());
                     crit.Add(Expression.Eq("Id", id));
-                    u = (crit.UniqueResult<Cliente>());
+                    c = (crit.UniqueResult<Cliente>());
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return u;
+            return c;
         }
 
         public static bool Guardar(string nombre, string domicilio, string telefono, string correo, string rfc)

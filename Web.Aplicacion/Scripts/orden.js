@@ -81,6 +81,12 @@ function guardar() {
             swal(exception);
         }
     });
+    if (id != 0) {
+        swal("Listo", "Se ha actualizado el usuario", "success");
+    } else {
+        swal("Listo", "Se ha guardado el usuario", "success");
+    }
+    cargarTabla();
 }
 function del() {
     var id = obtenerId();
@@ -139,7 +145,6 @@ function activarRenglon() {
         }
     });
 }
-
 function cargarDatos() {
     var id = $.trim($("#orden-id").val());
     
@@ -152,13 +157,16 @@ function cargarDatos() {
             cache: false,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                alert(data.Paquete.Peso);
+                var idOrden = $.trim($("#orden-id").val());
+                //Paquete.
+                $.trim($("#paquete-id").val(data.Paquete.Id));
                 $.trim($("#paquete-peso").val(data.Paquete.Peso));
                 $.trim($("#paquete-tamanio").val(data.Paquete.Tamanio));
                 $.trim($("#paquete-contenido").val(data.Paquete.Contenido));
                 $.trim($("#paquete-descripcion").val(data.Paquete.Descripcion));
 
                 //Cliente.
+                $.trim($("#cliente-id").val(data.Cliente.Id));
                 $.trim($("#cliente-nombre").val(data.Cliente.Nombre));
                 $.trim($("#cliente-telefono").val(data.Cliente.Telefono));
                 $.trim($("#cliente-correo").val(data.Cliente.Correo));
@@ -166,6 +174,7 @@ function cargarDatos() {
                 $.trim($("#cliente-domicilio").val(data.Cliente.Domicilio));
 
                 //Destinatario.
+                $.trim($("#destinatario-id").val(data.Destinatario.Id));
                 $.trim($("#destinatario-nombre").val(data.Destinatario.Nombre));
                 $.trim($("#destinatario-telefono").val(data.Destinatario.Telefono));
                 $.trim($("#destinatario-correo").val(data.Destinatario.Correo));
@@ -185,7 +194,6 @@ function cargarDatos() {
     }
     return false;
 }
-
 function edit() {
     var modalC = $("#mdContent");
     var id = obtenerId();
