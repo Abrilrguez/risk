@@ -40,7 +40,7 @@ namespace Web.Aplicacion.Controllers
             }
         }
 
-        public ActionResult Guardar(int idOrden, 
+        public ActionResult Guardar(int idOrden, int estado, 
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
@@ -49,7 +49,7 @@ namespace Web.Aplicacion.Controllers
             ActionResult action = null;
             try
             {
-                if (Orden.Guardar(idOrden,
+                if (Orden.Guardar(idOrden, estado, 
                     idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
                     idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
                     idDestinatario, destinatarioNombre, destinatarioTelefono, destinatarioCorreo, destinatarioPersona,

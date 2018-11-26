@@ -58,6 +58,14 @@ function guardar() {
     var destinatarioEstado = $.trim($("#destinatario-estado").val());
     var destinatarioReferencia = $.trim($("#destinatario-referencia").val());
 
+    if (estado == "ENTREGADO") {
+        estado = 1;
+    } if (estado == "PENDIENTE") {
+        estado = 2;
+    } if (estado == "CANCELADO") {
+        estado = 3;
+    }
+
     $.ajax({
         url: baseUrl + "Orden/Guardar/",
         data: {

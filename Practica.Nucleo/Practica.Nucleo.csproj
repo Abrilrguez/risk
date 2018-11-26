@@ -83,6 +83,7 @@
     <Compile Include="Entidades\Paquete.cs" />
     <Compile Include="Entidades\Persistent.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Enumeradores\Estado.cs" />
     <Compile Include="Enumeradores\Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
