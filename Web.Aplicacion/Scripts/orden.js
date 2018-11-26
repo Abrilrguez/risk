@@ -23,7 +23,7 @@ function cargarTabla() {
 function add() {
     var modalC = $("#mdContent");
     $('#mdMain').modal();
-    modalC.load(baseUrl + 'Orden/Add/0/1/2/3', {});
+    modalC.load(baseUrl + 'Orden/Add/0/0/0/0', {});
 }
 function guardar() {
 
