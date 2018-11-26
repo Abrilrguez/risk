@@ -453,7 +453,7 @@
                     <div class="form-group">
                         <label>Número de rastreo</label>
                         <div class="nk-int-st">
-                            <input type="text" disabled="disabled" class="form-control input-sm" id="paquete-tamanio" placeholder="orden-numRastreo">
+                            <input type="text" disabled="disabled" class="form-control input-sm" id="orden-numRastreo" >
                         </div>
                     </div>
                 </div>
@@ -470,16 +470,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="form-example-int mg-t-15">
                     <div class="form-group">
                         <label>Estado de la orden</label>
                         <div class="nk-int-st">
-                            <select type="text" class="form-control input-sm" id="rol">
-                                <option value="Pendiente">Pendiente</option>
+                            <select type="text" class="form-control input-sm" disabled="disabled" id="orden-estado">
+                                <option selected="selected" value="Pendiente">Pendiente</option>
                                 <option value="Entregado">Entregado</option>
                                 <option value="Cancelado">Cancelado</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-example-int mg-t-15">
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <div class="nk-int-st">
+                            <input type="text" class="form-control input-sm" id="orden-precio">
                         </div>
                     </div>
                 </div>
