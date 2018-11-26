@@ -28,19 +28,32 @@ namespace Practica.Nucleo.Entidades
         {
             DateTime date = DateTime.Now;
             string folio ="";
-            int idu = 0;
+            string idu = "";
             int n;
             string año = Convert.ToString(date.Year);
+
             using (ISession session = Persistent.SessionFactory.OpenSession())
             {
-                var id = session.CreateSQLQuery("Select max(id) from trackpackdb.orden;")
+                var id = session.CreateSQLQuery("Select max(folio) from trackpackdb.orden;")
                             .UniqueResult();
-                if (id != null) { idu = Convert.ToInt32(id); }
+                if (id != null) {
+                    idu = Convert.ToString(id);
+                    idu = idu.Remove(0, 4);
+                }
+                else
+                {
+                    idu = "0";
+                }
+
 
             }
             
-            n = idu;
+            
+
+            n = Convert.ToInt32(idu) +1;
             string ceros;
+
+            
             if (n > 999999)
             {                //001999
                 if (n != 0)
@@ -76,7 +89,7 @@ namespace Practica.Nucleo.Entidades
                 ceros = "0000";
                 folio = año + ceros + n;
             }
-            if (n < 9)
+            if (n <= 9)
             {
                 ceros = "00000";
                 folio = año + ceros + n;

@@ -24,6 +24,7 @@ function add() {
     var modalC = $("#mdContent");
     $('#mdMain').modal();
     modalC.load(baseUrl + 'Orden/Add/0/0/0/0', {});
+    activarRenglon();
 }
 function guardar() {
 
@@ -84,17 +85,23 @@ function guardar() {
             if (data == "true") {
                 var modal = $("#mdMain");
                 modal.modal("hide");
-                activarRenglon();
+                cargarTabla();
+
             }
         },
         error: function (xhr, exception) {
             swal(exception);
         }
+
     });
-    if (id != 0) {
+    
+    if (idOrden != 0) {
         swal("Listo", "Se ha actualizado el usuario", "success");
+        activarRenglon();
+
     } else {
         swal("Listo", "Se ha guardado el usuario", "success");
+        activarRenglon();
     }
     cargarTabla();
 }
@@ -130,8 +137,10 @@ function del() {
                 });
             } else {
                 swal("Tu registro de orden no se elimino con éxito");
+                cargarTabla();
             }
         });
+    cargarTabla();
 }
 function obtenerId() {
     var table = $('#table-ordenes').DataTable();
@@ -221,6 +230,7 @@ function edit() {
         swal("Seleccione un registro");
         return false;
     }
+    activarRenglon();
 }
 function cargarDatosOrden()
 {
