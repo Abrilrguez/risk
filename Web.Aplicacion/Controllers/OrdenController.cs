@@ -36,10 +36,11 @@ namespace Web.Aplicacion.Controllers
             catch (Exception ex)
             {
                 return RedirectToAction("Error", "Home");
+                
             }
         }
 
-        public ActionResult Guardar(int idOrden,
+        public ActionResult Guardar(int idOrden, 
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
