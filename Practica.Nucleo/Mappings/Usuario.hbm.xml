@@ -17,7 +17,7 @@
     <property name="Cuenta" type="string">
       <column name="cuenta"/>
     </property>
-    <property name="Rol" type="int">
+    <property name="Rol" type="Practica.Nucleo.Enumeradores.Rol, Practica.Nucleo">
       <column name="rol"/>
     </property>
     <property name="Password" type="string">
