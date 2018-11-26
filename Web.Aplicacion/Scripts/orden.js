@@ -27,8 +27,13 @@ function add() {
 }
 function guardar() {
 
+    //Orden.
     var idOrden = $.trim($("#orden-id").val());
-    var estado = $.trim($("#estado").val());
+    var ordenFecha = $.trim($("#orden-fecha").val());
+    var ordenFolio = $.trim($("#orden-folio").val());
+    var ordenNumRastreo = $.trim($("#orden-numRastreo").val());
+    var ordenPrecio = $.trim($("#orden-precio").val());
+    var ordenEstado = $.trim($("#orden-estado").val());
 
     //Paquete.
     var idUsuario = 0;
@@ -61,19 +66,12 @@ function guardar() {
     var destinatarioEstado = $.trim($("#destinatario-estado").val());
     var destinatarioReferencia = $.trim($("#destinatario-referencia").val());
 
-    if (estado == "PENDIENTE") {
-        estado = 1;
-    } if (estado == "ENTREGADO") {
-        estado = 2;
-    } if (estado == "CANCELADO") {
-        estado = 3;
-    }
-
     $.ajax({
         url: baseUrl + "Orden/Guardar/",
         data: {
             idUsuario: idUsuario,
             idOrden: idOrden,
+            ordenEstado: ordenEstado, ordenPrecio: ordenPrecio, ordenFolio: ordenFolio, ordenNumRastreo: ordenNumRastreo, ordenFecha: ordenFecha,
             idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
             idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
             idDestinatario: idDestinatario, destinatarioNombre: destinatarioNombre, destinatarioTelefono: destinatarioTelefono, destinatarioCorreo: destinatarioCorreo, destinatarioPersona: destinatarioPersona,
@@ -219,4 +217,21 @@ function edit() {
         swal("Seleccione un registro");
         return false;
     }
+}
+function cargarDatosOrden()
+{
+    $.ajax({
+        url: baseUrl + "Orden/ObtenerDatosOrden",
+        type: 'GET',
+        dataType: 'json',
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            alert(data.Folio);
+            $.trim($("#orden-folio").val(data.Folio));
+            $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
+            $.trim($("#orden-fecha").val(data.Fecha));
+            $.trim($("#orden-estado").val(data.Estado));
+        }
+    });
 }

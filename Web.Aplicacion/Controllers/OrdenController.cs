@@ -40,7 +40,7 @@ namespace Web.Aplicacion.Controllers
             }
         }
 
-        public ActionResult Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio,
+        public ActionResult Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
@@ -50,8 +50,10 @@ namespace Web.Aplicacion.Controllers
             ActionResult action = null;
             try
             {
-                idUsuario = Convert.ToInt32(Session["idUsuario"]);
-                if (Orden.Guardar(idOrden, ordenEstado, ordenPrecio, ordenFolio,
+                
+                var hola= Session["idUsuario"];
+
+                if (Orden.Guardar(idOrden, ordenEstado, ordenPrecio, ordenFolio, ordenNumRastreo, ordenFecha,
                     idUsuario,
                     idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
                     idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
@@ -109,6 +111,21 @@ namespace Web.Aplicacion.Controllers
             }
             return Json(o, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ObtenerDatosOrden()
+        {
+            Orden o = new Orden();
+            try
+            {
+                o = Orden.ObtenerDatosOrden();
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return Json(o, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

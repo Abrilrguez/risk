@@ -14,7 +14,7 @@ namespace Practica.Nucleo.Entidades
     {
         public override int Id { get; set; }
         public string Folio { get; set; }
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         public Cliente Cliente { get; set; }
         public Destinatario Destinatario { get; set; }
         public Usuario Usuario { get; set; }
@@ -27,21 +27,19 @@ namespace Practica.Nucleo.Entidades
         public static string ObtenerFolio()
         {
             DateTime date = DateTime.Now;
-            string folio;
-            string fl;
+            string folio ="";
+            int idu = 0;
+            int n;
             string año = Convert.ToString(date.Year);
             using (ISession session = Persistent.SessionFactory.OpenSession())
             {
                 var id = session.CreateSQLQuery("Select max(id) from trackpackdb.orden;")
-                            .UniqueResult().ToString();
-
-                fl = session.CreateSQLQuery("Select folio from trackpackdb.orden where id=" + id)
-                            .UniqueResult().ToString();
+                            .UniqueResult();
+                if (id == null) { idu = 0; }
 
             }
-            fl = fl.Remove(0, 4);
-            double n = Double.Parse(fl);
-            n = n + 1;
+            
+            n = idu + 1;
             string ceros;
             if (n > 999999)
             {                //001999
@@ -51,38 +49,43 @@ namespace Practica.Nucleo.Entidades
                 }
                 ceros = "00000";
                 string letra = "A";
-                return folio = letra + año + ceros + n;
+                folio = letra + año + ceros + n;
             }
 
             if (n > 99999)
             {
                 ceros = "";
-                return folio = año + ceros + n;
+                folio = año + ceros + n;
             }
 
             if (n > 9999)
             {
                 ceros = "0";
-                return folio = año + ceros + n;
+                folio = año + ceros + n;
             }
 
             if (n > 999)
             {
                 ceros = "00";
-                return folio = año + ceros + n;
+                folio = año + ceros + n;
             }
             if (n > 99)
             {
                 ceros = "000";
-                return folio = año + ceros + n;
+                folio = año + ceros + n;
             }
             if (n > 9)
             {
                 ceros = "0000";
-                return folio = año + ceros + n;
+                folio = año + ceros + n;
+            }
+            if (n < 9)
+            {
+                ceros = "00000";
+                folio = año + ceros + n;
             }
 
-            return folio = año;
+            return folio;
         }
 
         public static IList<Orden> ObtenerTodos()
@@ -111,6 +114,15 @@ namespace Practica.Nucleo.Entidades
             return ordenes;
         }
 
+        public static Orden ObtenerDatosOrden()
+        {
+            Orden o = new Orden();
+            o.Folio = ObtenerFolio();
+            o.Fecha = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+            o.NumeroRastreo = o.Folio;
+            o.Estado = "Pendiente";
+            return o;
+        }
         public static Orden ObtenerPorId(int id)
         {
             Orden o = new Orden();
@@ -130,7 +142,7 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, 
+        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
@@ -176,14 +188,14 @@ namespace Practica.Nucleo.Entidades
                 
 
                 Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
-                o.Folio = ObtenerFolio();
-                o.Fecha = DateTime.Now;
+                o.Folio = ordenFolio;
+                o.Fecha = ordenFecha;
                 o.Cliente = c;
                 o.Destinatario = d;
                 o.Usuario = u;
                 o.Paquete = p;
                 o.Precio = ordenPrecio;
-                o.NumeroRastreo = ordenFolio;
+                o.NumeroRastreo = ordenNumRastreo;
                 o.Estado = ordenEstado;
 
                 if (idOrden != 0)
