@@ -22,7 +22,7 @@ namespace Practica.Nucleo.Entidades
         public IList<Historial> Historiales { get; set; }
         public double Precio { get; set; }
         public string NumeroRastreo { get; set; }
-        public Estado Estado { get; set; }
+        public string Estado { get; set; }
 
         public string ObtenerFolio()
         {
@@ -76,7 +76,8 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, int idUsuario, int estado,
+        public static bool Guardar(int idOrden, string ordenEstado, double ordenPrecio, 
+                                    int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
                                     int idDestinatario, string destinatarioNombre, string destinatarioTelefono, string destinatarioCorreo, string destinatarioPersona,
@@ -129,7 +130,7 @@ namespace Practica.Nucleo.Entidades
                 o.Paquete = p;
                 o.Precio = 12.32;
                 o.NumeroRastreo = "1231241";
-                o.Estado = (Estado)estado;
+                o.Estado = "Pendiente de entrega";
 
                 if (idOrden != 0)
                 {
