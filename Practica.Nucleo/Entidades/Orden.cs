@@ -24,13 +24,67 @@ namespace Practica.Nucleo.Entidades
         public string NumeroRastreo { get; set; }
         public string Estado { get; set; }
 
-        public string ObtenerFolio()
+        public static string ObtenerFolio()
         {
             DateTime date = DateTime.Now;
-            
-            string folio = Convert.ToString(date.Year);
-            return folio;
+            string folio;
+            string fl;
+            string año = Convert.ToString(date.Year);
+            using (ISession session = Persistent.SessionFactory.OpenSession())
+            {
+                var id = session.CreateSQLQuery("Select max(id) from trackpackdb.orden;")
+                            .UniqueResult().ToString();
+
+                fl = session.CreateSQLQuery("Select folio from trackpackdb.orden where id=" + id)
+                            .UniqueResult().ToString();
+
+            }
+            fl = fl.Remove(0, 4);
+            double n = Double.Parse(fl);
+            n = n + 1;
+            string ceros;
+            if (n > 999999)
+            {                //001999
+                if (n != 0)
+                {
+                    n = 1;
+                }
+                ceros = "00000";
+                string letra = "A";
+                return folio = letra + año + ceros + n;
+            }
+
+            if (n > 99999)
+            {
+                ceros = "";
+                return folio = año + ceros + n;
+            }
+
+            if (n > 9999)
+            {
+                ceros = "0";
+                return folio = año + ceros + n;
+            }
+
+            if (n > 999)
+            {
+                ceros = "00";
+                return folio = año + ceros + n;
+            }
+            if (n > 99)
+            {
+                ceros = "000";
+                return folio = año + ceros + n;
+            }
+            if (n > 9)
+            {
+                ceros = "0000";
+                return folio = año + ceros + n;
+            }
+
+            return folio = año;
         }
+
         public static IList<Orden> ObtenerTodos()
         {
             IList<Orden> ordenes;
@@ -122,7 +176,7 @@ namespace Practica.Nucleo.Entidades
                 
 
                 Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
-                o.Folio = ordenFolio;
+                o.Folio = ObtenerFolio();
                 o.Fecha = DateTime.Now;
                 o.Cliente = c;
                 o.Destinatario = d;
