@@ -16,6 +16,9 @@ namespace Practica.Nucleo.Entidades
         public string Descripcion { get; set; }
         public string Ciudad { get; set; }
         public string Estado { get; set; }
+        public string Latitud { get; set; }
+        public string Longitud { get; set; }
+
         public Usuario Usuario { get; set; }
 
         public static IList<Historial> ObtenerTodos()
