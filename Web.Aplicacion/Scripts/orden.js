@@ -28,6 +28,8 @@ function add() {
 function guardar() {
 
     var idOrden = $.trim($("#orden-id").val());
+    var estado = $.trim($("#estado").val());
+
     //Paquete.
     var idUsuario = 0;
     var idPaquete = $.trim($("#paquete-id").val());
@@ -59,9 +61,9 @@ function guardar() {
     var destinatarioEstado = $.trim($("#destinatario-estado").val());
     var destinatarioReferencia = $.trim($("#destinatario-referencia").val());
 
-    if (estado == "ENTREGADO") {
+    if (estado == "PENDIENTE") {
         estado = 1;
-    } if (estado == "PENDIENTE") {
+    } if (estado == "ENTREGADO") {
         estado = 2;
     } if (estado == "CANCELADO") {
         estado = 3;

@@ -8,6 +8,6 @@ namespace Practica.Nucleo.Enumeradores
 {
     public enum Estado
     {
-        ENTREGADO = 1, PENDIENTE = 2, CANCELADO = 3
+        PENDIENTE = 1, ENTREGADO = 2, CANCELADO = 3
     }
 }
