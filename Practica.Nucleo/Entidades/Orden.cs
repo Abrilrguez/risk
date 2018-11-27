@@ -13,7 +13,7 @@ namespace Practica.Nucleo.Entidades
     {
         public override int Id { get; set; }
         public string Folio { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public Cliente Cliente { get; set; }
         public Destinatario Destinatario { get; set; }
         public Usuario Usuario { get; set; }
@@ -97,22 +97,41 @@ namespace Practica.Nucleo.Entidades
             return folio;
         }
 
-        public static IList<Orden> ObtenerTodos()
+        public static IList<OrdenDTO> ObtenerTodos()
         {
             IList<Orden> ordenes;
+            IList<OrdenDTO> ordenesTransporte = new List<OrdenDTO>();
             try
             {
                 using (ISession session = Persistent.SessionFactory.OpenSession())
                 {
                     ICriteria crit = session.CreateCriteria(new Orden().GetType());
-                    crit.SetProjection(Projections.ProjectionList()
-                    .Add(Projections.Property("Id"), "Id")
-                    .Add(Projections.Property("Folio"), "Folio")
-                    .Add(Projections.Property("NumeroRastreo"), "NumeroRastreo")
-                    //.Add(Projections.Property("Estado"), "Estado")
-                    .Add(Projections.Property("Fecha"), "Fecha"));
-                    crit.SetResultTransformer(Transformers.AliasToBean<Orden>());
                     ordenes = crit.List<Orden>();
+
+
+                    for(int i = 0; i<ordenes.Count; i++)
+                    {
+                        OrdenDTO odt = new OrdenDTO();
+                        odt.Id = ordenes[i].Id;
+                        odt.Folio = ordenes[i].Folio;
+                        odt.NumeroRastreo = ordenes[i].NumeroRastreo;
+                        int estado = (int)ordenes[i].Estado;
+                        if(estado == 1)
+                        {
+                            odt.Estado = "PENDIENTE";
+                        }else if (estado== 2)
+                        {
+                            odt.Estado = "ENTREGADO";
+                        }
+                        else
+                        {
+                            odt.Estado = "CANCELADO";
+                        }
+
+                        odt.Fecha = ordenes[i].Fecha.ToString("MM/dd/yyyy");
+                        ordenesTransporte.Add(odt);
+                    }
+                    
                     session.Close();
                 }
             }
@@ -120,16 +139,16 @@ namespace Practica.Nucleo.Entidades
             {
                 throw ex;
             }
-            return ordenes;
+            return ordenesTransporte;
         }
 
-        public static Orden ObtenerDatosOrden()
+        public static OrdenDTO ObtenerDatosOrden()
         {
-            Orden o = new Orden();
+            OrdenDTO o = new OrdenDTO();
             o.Folio = ObtenerFolio();
-            o.Fecha = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+            o.Fecha = DateTime.Now.ToString("MM/dd/yyyy");
             o.NumeroRastreo = o.Folio;
-            o.Estado = Estado.PENDIENTE;
+            o.Estado = Estado.PENDIENTE.ToString();
             return o;
         }
         public static Orden ObtenerPorId(int id)
@@ -151,7 +170,7 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-        public static bool Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
+        public static bool Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, DateTime ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,

@@ -8,7 +8,7 @@
     <property name="Folio" type="string">
       <column name="folio"/>
     </property>
-    <property name="Fecha" type="string">
+    <property name="Fecha" type="DateTime">
       <column name="fecha"/>
     </property>
     <many-to-one name="Cliente" class="Practica.Nucleo.Entidades.Cliente, Practica.Nucleo">

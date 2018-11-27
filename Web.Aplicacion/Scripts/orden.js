@@ -14,10 +14,10 @@ function cargarTabla() {
             { "data": "Folio" },
             { "data": "NumeroRastreo" },
             { "data": "Fecha" },
-            { "data": "Estado" },
+            { "data": "Estado" }
         ]
+        
     });
-
     activarRenglon();
 }
 function add() {
@@ -260,20 +260,18 @@ function cargarDatosOrden()
                 $.trim($("#orden-folio").val(data.Folio));
                 $.trim($("#orden-numRastreo").val(data.NumeroRastreo));
                 $.trim($("#orden-fecha").val(data.Fecha));
-
                 var estado = data.Estado;
                 if (estado === 1) {
-                    estado = "PENDIENTE"
+                    estado = "PENDIENTE";
                 }
                 if (estado === 2) {
-                    estado = "ENTREGADO"
+                    estado = "ENTREGADO";
                 }
                 if (estado === 3) {
-                    estado = "CANCELADO"
+                    estado = "CANCELADO";
                 }
 
                 $.trim($("#orden-estado").val(estado));
-                alert(estado);
             }
         });
     }

@@ -12,7 +12,7 @@ namespace Web.Aplicacion.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            IList<Orden> ordenes = Orden.ObtenerTodos();
+            IList<OrdenDTO> ordenes = Orden.ObtenerTodos();
             return View();
         }
 

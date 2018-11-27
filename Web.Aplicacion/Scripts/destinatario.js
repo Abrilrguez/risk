@@ -125,6 +125,7 @@ function cargarDatos() {
     return false;
 }
 
+
 function guardar() {
     var id = $.trim($("#destinatario-id").val());
     var nombre = $.trim($("#nombre").val());
@@ -139,7 +140,7 @@ function guardar() {
     var telefono = $.trim($("#telefono").val());
     var correo = $.trim($("#correo").val());
     var persona = $.trim($("#persona").val());
-
+    
         $.ajax({
             url: baseUrl + "Destinatario/Guardar/",
             data: {

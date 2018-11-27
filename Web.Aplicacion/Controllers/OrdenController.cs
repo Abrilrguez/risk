@@ -30,7 +30,7 @@ namespace Web.Aplicacion.Controllers
         {
             try
             {
-                IList<Orden> ordenes = Orden.ObtenerTodos();
+                IList<OrdenDTO> ordenes = Orden.ObtenerTodos();
                 return Json(new { data = ordenes }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace Web.Aplicacion.Controllers
             }
         }
 
-        public ActionResult Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
+        public ActionResult Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, DateTime ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
                                     int idCliente, string clienteNombre, string clienteTelefono, string clienteCorreo, string clienteRfc, string clienteDomicilio,
@@ -114,7 +114,7 @@ namespace Web.Aplicacion.Controllers
 
         public ActionResult ObtenerDatosOrden()
         {
-            Orden o = new Orden();
+            OrdenDTO o = new OrdenDTO();
             try
             {
                 o = Orden.ObtenerDatosOrden();

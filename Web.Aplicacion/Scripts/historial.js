@@ -75,12 +75,16 @@ function cargarDatos() {
     return false;
 }
 
+
+
 function guardar() {
     var id = $.trim($("#historial-id").val());
     var fecha = $.trim($("#fecha").val());
     var descripcion = $.trim($("#descripcion").val());
     var ciudad = $.trim($("#municipio").val());
     var estado = $.trim($("#estado").val());
+
+    obtenerLatLng();
     
         $.ajax({
             url: baseUrl + "Historial/Guardar/",
