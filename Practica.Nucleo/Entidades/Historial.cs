@@ -47,6 +47,28 @@ namespace Practica.Nucleo.Entidades
             return historiales;
         }
 
+        public static IList<Historial> ObtenerPorOrden(string folio)
+        {
+            IList<Historial> historiales;
+            try
+            {
+                using (ISession session = Persistent.SessionFactory.OpenSession())
+                {
+                    Orden o = Orden.ObtenerPorFolio(folio);
+                    ICriteria crit = session.CreateCriteria(new Historial().GetType());
+                    crit.Add(Expression.Eq("IdCurso", o.Id));
+                    crit.SetResultTransformer(Transformers.AliasToBean<Historial>());
+                    historiales = crit.List<Historial>();
+                    session.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return historiales;
+        }
+
         public static Historial ObtenerPorId(int id)
         {
             Historial h = new Historial();
