@@ -96,6 +96,7 @@ function del() {
 
 function cargarDatos() {
     var id = $.trim($("#destinatario-id").val());
+
     if (id != "" && id != 0) {
         $.ajax({
             url: baseUrl + "Destinatario/ObtenerPorId",
@@ -111,7 +112,8 @@ function cargarDatos() {
                 $("#avenida").val(data.Avenida);
                 $("#colonia").val(data.Colonia);
                 $("#cp").val(data.Cp);
-                $("#ciudad").val(data.Ciudad);
+                $("#municipio").val(data.Ciudad);
+               
                 $("#estado").val(data.Estado);
                 $("#referencia").val(data.Referencia);
                 $("#Telefono").val(data.Telefono);
@@ -131,7 +133,7 @@ function guardar() {
     var avenida = $.trim($("#avenida").val());
     var colonia = $.trim($("#colonia").val());
     var cp = $.trim($("#cp").val());
-    var ciudad = $.trim($("#ciudad").val());
+    var ciudad = $.trim($("#municipio").val());
     var estado = $.trim($("#estado").val());
     var referencia = $.trim($("#referencia").val());
     var telefono = $.trim($("#telefono").val());

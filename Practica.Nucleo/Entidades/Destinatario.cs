@@ -1,11 +1,17 @@
-﻿using NHibernate;
+﻿using GoogleMaps.LocationServices;
+using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Transform;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Practica.Nucleo.Entidades
 {
@@ -82,6 +88,8 @@ namespace Practica.Nucleo.Entidades
                 u.Cp = cp;
                 u.Ciudad = ciudad;
                 u.Estado = estado;
+
+                GetdtLatLong(estado, ciudad);
                 u.Referencia = referencia;
                 u.Telefono = telefono;
                 u.Correo = correo;
@@ -115,5 +123,26 @@ namespace Practica.Nucleo.Entidades
 
             return realizado;
         }
+
+
+
+
+        public static string GetdtLatLong(string estado, string ciudad)
+        {
+            //string direccion = ciudad +","+estado;
+            //string url = "http://maps.google.com/maps/api/geocode/xml?address=" + direccion + "&sensor=false";
+            //string address = ciudad + ", " + estado.ToLower();
+            var address = "Stavanger, Norway";
+
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(address);
+
+            var latitude = point.Latitude;
+            var longitude = point.Longitude;
+
+            var asd = longitude + latitude;
+            return asd.ToString();
+        }
+
     }
 }

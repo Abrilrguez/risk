@@ -359,6 +359,7 @@
     <Content Include="Scripts\meanmenu\jquery.meanmenu.js" />
     <Content Include="Scripts\metisMenu\metisMenu-active.js" />
     <Content Include="Scripts\metisMenu\metisMenu.min.js" />
+    <Content Include="Scripts\municipios.js" />
     <Content Include="Scripts\notification\bootstrap-growl.min.js" />
     <Content Include="Scripts\notification\notification-active.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
@@ -381,6 +382,7 @@
     <Content Include="Scripts\wave\wave-active.js" />
     <Content Include="Scripts\wave\waves.min.js" />
     <Content Include="Scripts\wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Scripts\select_estados.js" />
     <Content Include="Scripts\wizard\wizard-active.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config">

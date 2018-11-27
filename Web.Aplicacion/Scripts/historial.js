@@ -67,7 +67,7 @@ function cargarDatos() {
             success: function (data) {
                 $("#fecha").val(data.Nombre);
                 $("#descripcion").val(data.Direccion);
-                $("#ciudad").val(data.Telefono);
+                $("#municipio").val(data.Telefono);
                 $("#estado").val(data.Cuenta);
             }
         });
@@ -79,7 +79,7 @@ function guardar() {
     var id = $.trim($("#historial-id").val());
     var fecha = $.trim($("#fecha").val());
     var descripcion = $.trim($("#descripcion").val());
-    var ciudad = $.trim($("#ciudad").val());
+    var ciudad = $.trim($("#municipio").val());
     var estado = $.trim($("#estado").val());
     
         $.ajax({
