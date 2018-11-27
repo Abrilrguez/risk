@@ -151,6 +151,26 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
+
+        public static Orden ObtenerPorFolio(string folio)
+        {
+            Orden o = new Orden();
+            try
+            {
+                using (ISession session = Persistent.SessionFactory.OpenSession())
+                {
+                    ICriteria crit = session.CreateCriteria(o.GetType());
+                    crit.Add(Expression.Eq("Folio", folio));
+                    o = (crit.UniqueResult<Orden>());
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return o;
+        }
         public static bool Guardar(int idOrden, int ordenEstado, double ordenPrecio, string ordenFolio, string ordenNumRastreo, string ordenFecha,
                                     int idUsuario,
                                     int idPaquete, string paquetePeso, string paqueteTamanio, string paqueteContenido, string paqueteDescripcion,
