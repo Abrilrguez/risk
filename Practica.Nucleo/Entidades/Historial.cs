@@ -3,6 +3,7 @@ using NHibernate.Criterion;
 using NHibernate.Transform;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Practica.Nucleo.Entidades
     public class Historial : Persistent
     {
         public override int Id { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string Ciudad { get; set; }
         public string Estado { get; set; }
@@ -47,20 +48,13 @@ namespace Practica.Nucleo.Entidades
             return historiales;
         }
 
-        public static IList<Historial> ObtenerPorOrden(string folio)
+        public static IList<Historial> ObtenerPorOrden(int id)
         {
             IList<Historial> historiales;
             try
             {
-                using (ISession session = Persistent.SessionFactory.OpenSession())
-                {
-                    Orden o = Orden.ObtenerPorFolio(folio);
-                    ICriteria crit = session.CreateCriteria(new Historial().GetType());
-                    crit.Add(Expression.Eq("IdCurso", o.Id));
-                    crit.SetResultTransformer(Transformers.AliasToBean<Historial>());
-                    historiales = crit.List<Historial>();
-                    session.Close();
-                }
+                Orden o = Orden.ObtenerPorId(id);
+                historiales = o.Historiales;
             }
             catch (Exception ex)
             {
@@ -88,22 +82,19 @@ namespace Practica.Nucleo.Entidades
             return h;
         }
 
-
-        public static bool Guardar(int id, string fecha, string descripcion, string ciudad, string estado, int idUsuario)
+        public static bool Guardar(int id, string descripcion, string ciudad, string estado, int idUsuario, int idOrden)
         {
             bool realizado = false;
             try
             {
 
                 Usuario u = Usuario.ObtenerPorId(idUsuario);
-                //if (id != 0) u = ObtenerPorId(id);
                 Historial h = id == 0 ? new Historial() : ObtenerPorId(id);
-                h.Fecha = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                h.Fecha = DateTime.Now;
                 h.Descripcion = descripcion;
                 h.Ciudad = ciudad;
                 h.Estado = estado;
                 h.Usuario = u;
-                u.Save();
 
                 if (id != 0)
                 {
@@ -111,7 +102,11 @@ namespace Practica.Nucleo.Entidades
                 }
                 else
                 {
-                    h.Save();
+                    Orden o = Orden.ObtenerPorId(idOrden);
+                    IList<Historial> historiales = o.Historiales;
+                    historiales.Add(h);
+                    o.Historiales = historiales;
+                    o.Update();
                 }
                 realizado = true;
             }
@@ -123,7 +118,23 @@ namespace Practica.Nucleo.Entidades
             return realizado;
         }
 
+        public static bool Borrar(int id)
+        {
+            bool realizado = false;
+            try
+            {
+                Historial h = ObtenerPorId(id);
+                h.Delete();
 
+                realizado = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return realizado;
+        }
 
 
 

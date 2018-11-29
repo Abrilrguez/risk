@@ -151,6 +151,8 @@ namespace Practica.Nucleo.Entidades
             o.Estado = Estado.PENDIENTE.ToString();
             return o;
         }
+
+
         public static Orden ObtenerPorId(int id)
         {
             Orden o = new Orden();
@@ -160,6 +162,26 @@ namespace Practica.Nucleo.Entidades
                 {
                     ICriteria crit = session.CreateCriteria(o.GetType());
                     crit.Add(Expression.Eq("Id", id));
+                    o = (crit.UniqueResult<Orden>());
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return o;
+        }
+
+        public static Orden ObtenerPorFolio(String folio)
+        {
+            Orden o = new Orden();
+            try
+            {
+                using (ISession session = Persistent.SessionFactory.OpenSession())
+                {
+                    ICriteria crit = session.CreateCriteria(o.GetType());
+                    crit.Add(Expression.Eq("Folio", folio));
                     o = (crit.UniqueResult<Orden>());
                 }
                 

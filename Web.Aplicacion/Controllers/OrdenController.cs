@@ -112,6 +112,20 @@ namespace Web.Aplicacion.Controllers
             return Json(o, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ObtenerPorFolio(string folio)
+        {
+            Orden o = new Orden();
+            try
+            {
+                o = Orden.ObtenerPorFolio(folio);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return Json(o, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult ObtenerDatosOrden()
         {
             OrdenDTO o = new OrdenDTO();

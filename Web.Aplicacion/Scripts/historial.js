@@ -1,17 +1,33 @@
-﻿$(document).ready(function () {
-    cargarTabla();
-});
+﻿function obtenerIdCurso() {
+    var folio = $('#folio').val();
+    if (folio != "") {
+        $.ajax({
+            url: baseUrl + "Orden/ObtenerPorFolio",
+            data: { folio: folio },
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $("#orden-id").val(data.Id);
+            }
+        });
+    }
+    return false;
+}
 
 function cargarTabla() {
+    obtenerIdCurso();
     var table = $('#table-historiales').DataTable();
+    var id = $('#orden-id').val();
     table.destroy();
     $('#table-historiales').DataTable({
         "autoWidth": true,
         "processing": true,
-        "ajax": baseUrl + "Historial/ObtenerTodos",
+        "ajax": baseUrl + "Historial/ObtenerPorOrden/" + id,
         "columns": [
             { "data": "Id", visible: false, searchable: false },
-            { "data": "Fecha" },
+            { "data": "Fecha", className: "fecha" },
             { "data": "Descripcion" },
             { "data": "Ciudad" },
             { "data": "Estado" }
@@ -55,7 +71,7 @@ function activarRenglon() {
 
 
 function cargarDatos() {
-    var id = $.trim($("#historial-id").val());
+    var id = $.trim($("#estado-id").val());
     if (id != "" && id != 0) {
         $.ajax({
             url: baseUrl + "Historial/ObtenerPorId",
@@ -65,10 +81,9 @@ function cargarDatos() {
             cache: false,
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $("#fecha").val(data.Nombre);
-                $("#descripcion").val(data.Direccion);
-                $("#municipio").val(data.Telefono);
-                $("#estado").val(data.Cuenta);
+                $("#descripcion").val(data.Descripcion);
+                $("#ciudad").val(data.Ciudad);
+                $("#estado").val(data.Estado);
             }
         });
     }
@@ -78,18 +93,19 @@ function cargarDatos() {
 
 
 function guardar() {
-    var id = $.trim($("#historial-id").val());
-    var fecha = $.trim($("#fecha").val());
+    var id = $.trim($("#estado-id").val());
     var descripcion = $.trim($("#descripcion").val());
-    var ciudad = $.trim($("#municipio").val());
+    var ciudad = $.trim($("#ciudad").val());
     var estado = $.trim($("#estado").val());
+    var idUsuario = 34;
+    var idOrden = $('#orden-id').val();
 
-    obtenerLatLng();
+    //obtenerLatLng();
     
         $.ajax({
             url: baseUrl + "Historial/Guardar/",
             data: {
-                id: id, fecha: fecha, descripcion: descripcion, ciudad: ciudad, estado:estado
+                id: id, descripcion: descripcion, ciudad: ciudad, estado:estado, idUsuario: idUsuario, idOrden: idOrden
             },
             cache: false,
             tradicional: true,
