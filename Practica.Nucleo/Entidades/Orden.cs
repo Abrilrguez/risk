@@ -5,6 +5,8 @@ using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 namespace Practica.Nucleo.Entidades
@@ -248,21 +250,26 @@ namespace Practica.Nucleo.Entidades
                 o.NumeroRastreo = ordenNumRastreo;
                 o.Estado = (Estado) ordenEstado;
 
+                string subject = "";
                 if (idOrden != 0)
                 {
+                    subject = "Orden Actualizada.";
                     o.Update();
                 }
                 else
                 {
+                    subject = "Orden Creada.";
                     o.Save();
                 }
+
+                EnviarEmail(clienteCorreo, clienteNombre, subject);
                 realizado = true;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
+            
             return realizado;
         }
 
@@ -284,5 +291,43 @@ namespace Practica.Nucleo.Entidades
 
             return realizado;
         }
+
+        public static void EnviarEmail(string correo, string nombre, string subject)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Credentials = new NetworkCredential("track.paack@gmail.com", "tp2018**");
+                MailMessage mmsg = new MailMessage();
+
+                mmsg.To.Add(correo);
+                mmsg.Subject = subject;
+                mmsg.SubjectEncoding = Encoding.UTF8;
+
+                mmsg.Body = body.Replace("[NOMBRE]", nombre);
+                mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+                mmsg.IsBodyHtml = true;
+                mmsg.From = new MailAddress("track.paack@gmail.com");
+                client.Send(mmsg);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        static string body = "<html>" +
+                            "<head>" +
+                            "<title>Envio de Orden</title>" +
+                            "</head>" +
+                            "<body>" +
+                            "Hola [NOMBRE], se agrego/modifico una orden de tu cuenta. Saludos." +
+                            "</body>" +
+                            "</html>";
     }
 }
