@@ -10,6 +10,7 @@ namespace Practica.Nucleo.Entidades
 {
     public class Paquete : Persistent
     {
+        //Test
         public  override int Id { get; set; }
         public string Peso { get; set; }
         public string Tamanio { get; set; }
