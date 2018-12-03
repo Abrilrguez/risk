@@ -8,5 +8,6 @@ namespace Practica.Nucleo.Entidades
 {
     class Class1
     {
+        //wfegrhyujyhgtrfedwsdefrgh
     }
 }
