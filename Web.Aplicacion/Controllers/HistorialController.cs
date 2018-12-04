@@ -47,7 +47,7 @@ namespace Web.Aplicacion.Controllers
             return Json(h, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ObtenerPorOrden(int id)
+        public ActionResult ObtenerPorOrden(String id)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Web.Aplicacion.Controllers
 
                 foreach (var estado in historiales)
                 { 
-                    fechas.Add(estado.Fecha.ToString("dd MMM yyy"));
+                    fechas.Add(estado.Fecha.ToString("dd/MMM/yyyy"));
                 }
                 return Json(new { data = historiales, data2 = fechas }, JsonRequestBehavior.AllowGet);
             }

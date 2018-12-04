@@ -405,7 +405,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Historial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\fonts\fontawesome-webfont.eot" />
@@ -432,6 +431,8 @@
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Orden\Index.cshtml" />
     <Content Include="Views\Orden\Add.cshtml" />
+    <Content Include="Views\Historial\Add.cshtml" />
+    <Content Include="Views\Historial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Practica.Nucleo\Practica.Nucleo.csproj">

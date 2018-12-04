@@ -48,12 +48,12 @@ namespace Practica.Nucleo.Entidades
             return historiales;
         }
 
-        public static IList<Historial> ObtenerPorOrden(int id)
+        public static IList<Historial> ObtenerPorOrden(String id)
         {
             IList<Historial> historiales;
             try
             {
-                Orden o = Orden.ObtenerPorId(id);
+                Orden o = Orden.ObtenerPorFolio(id);
                 historiales = o.Historiales;
             }
             catch (Exception ex)
