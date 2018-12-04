@@ -52,12 +52,7 @@ namespace Web.Aplicacion.Controllers
             {
                 IList<HistorialDTO> historiales = Historial.ObtenerPorOrden(id);
                 List<string> fechas = new List<string>();
-
-                foreach (var estado in historiales)
-                { 
-                    fechas.Add(estado.Fecha.ToString("dd/MMM/yyyy"));
-                }
-                return Json(new { data = historiales, data2 = fechas }, JsonRequestBehavior.AllowGet);
+                return Json(new { data = historiales}, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -66,12 +61,13 @@ namespace Web.Aplicacion.Controllers
         }
 
 
-        public ActionResult Guardar(int id, String descripcion, String ciudad, int estado, int idUsuario, int idOrden)
+        public ActionResult Guardar(int id, String descripcion, String ciudad, String estado, int estadoPaquete, int idUsuario, String idOrden)
         {
             ActionResult action = null;
             try
             {
-                if (Historial.Guardar(id, descripcion, ciudad, estado, idUsuario, idOrden))
+                idUsuario = Convert.ToInt32(Session["usuarioId"]);
+                if (Historial.Guardar(id, descripcion, ciudad, estado,estadoPaquete, idUsuario, idOrden))
                 {
                     action = Content("true");
                 }

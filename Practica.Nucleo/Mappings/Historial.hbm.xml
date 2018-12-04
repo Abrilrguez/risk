@@ -11,11 +11,14 @@
     <property name="Descripcion" type="string">
       <column name="descripcion"/>
     </property>
+    <property name="Estado" type="string">
+      <column name="estado"/>
+    </property>
     <property name="Ciudad" type="string">
       <column name="ciudad"/>
     </property>
-    <property name="Estado" type="Practica.Nucleo.Enumeradores.Estado, Practica.Nucleo">
-      <column name="estado"/>
+    <property name="EstadoPaquete" type="Practica.Nucleo.Enumeradores.Estado, Practica.Nucleo">
+      <column name="estadopaquete"/>
     </property>
     <many-to-one name="Usuario" class="Practica.Nucleo.Entidades.Usuario, Practica.Nucleo">
       <column name="idUsuario" />

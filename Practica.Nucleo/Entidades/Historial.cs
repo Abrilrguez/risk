@@ -16,8 +16,9 @@ namespace Practica.Nucleo.Entidades
         public override int Id { get; set; }
         public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
+        public string Estado { get; set; }
         public string Ciudad { get; set; }
-        public Estado Estado { get; set; }
+        public Estado EstadoPaquete { get; set; }
         public Usuario Usuario { get; set; }
         
 
@@ -37,21 +38,23 @@ namespace Practica.Nucleo.Entidades
                     {
                         HistorialDTO hdt = new HistorialDTO();
                         hdt.Id = historiales[i].Id;
-                        hdt.Fecha = historiales[i].Fecha;
+                        hdt.Fecha = historiales[i].Fecha.ToString("MM/dd/yyyy");
+                        hdt.Ciudad = historiales[i].Ciudad;
+                        hdt.Estado = historiales[i].Estado;
                         hdt.Descripcion = historiales[i].Descripcion;
-                        int estado = (int)historiales[i].Estado;
+                        int estado = (int)historiales[i].EstadoPaquete;
 
                         if (estado == 1)
                         {
-                            hdt.Estado = "PENDIENTE";
+                            hdt.EstadoPaquete = "PENDIENTE";
                         }
                         else if (estado == 2)
                         {
-                            hdt.Estado = "ENTREGADO";
+                            hdt.EstadoPaquete = "ENTREGADO";
                         }
                         else
                         {
-                            hdt.Estado = "CANCELADO";
+                            hdt.EstadoPaquete = "CANCELADO";
                         }
                         
                         historialesTransporte.Add(hdt);
@@ -79,21 +82,23 @@ namespace Practica.Nucleo.Entidades
                 {
                     HistorialDTO hdt = new HistorialDTO();
                     hdt.Id = historiales[i].Id;
-                    hdt.Fecha = historiales[i].Fecha;
+                    hdt.Fecha = historiales[i].Fecha.ToString("MM/dd/yyyy");
                     hdt.Descripcion = historiales[i].Descripcion;
-                    int estado = (int)historiales[i].Estado;
+                    hdt.Estado = historiales[i].Estado;
+                    hdt.Ciudad = historiales[i].Ciudad;
+                    int estado = (int)historiales[i].EstadoPaquete;
 
                     if (estado == 1)
                     {
-                        hdt.Estado = "PENDIENTE";
+                        hdt.EstadoPaquete = "PENDIENTE";
                     }
                     else if (estado == 2)
                     {
-                        hdt.Estado = "ENTREGADO";
+                        hdt.EstadoPaquete = "ENTREGADO";
                     }
                     else
                     {
-                        hdt.Estado = "CANCELADO";
+                        hdt.EstadoPaquete = "CANCELADO";
                     }
 
                     historialTransporte.Add(hdt);
@@ -126,7 +131,7 @@ namespace Practica.Nucleo.Entidades
             return h;
         }
 
-        public static bool Guardar(int id, string descripcion, string ciudad, int estado, int idUsuario, int idOrden)
+        public static bool Guardar(int id, string descripcion, string ciudad, string estado,int estadoPaquete, int idUsuario, String idOrden)
         {
             bool realizado = false;
             try
@@ -136,8 +141,9 @@ namespace Practica.Nucleo.Entidades
                 Historial h = id == 0 ? new Historial() : ObtenerPorId(id);
                 h.Fecha = DateTime.Now;
                 h.Descripcion = descripcion;
+                h.Estado = estado;
                 h.Ciudad = ciudad;
-                h.Estado = (Estado) estado;
+                h.EstadoPaquete = (Estado) estadoPaquete;
                 h.Usuario = u;
 
                 if (id != 0)
@@ -146,7 +152,7 @@ namespace Practica.Nucleo.Entidades
                 }
                 else
                 {
-                    Orden o = Orden.ObtenerPorId(idOrden);
+                    Orden o = Orden.ObtenerPorFolio(idOrden);
                     IList<Historial> historiales = o.Historiales;
                     historiales.Add(h);
                     o.Historiales = historiales;

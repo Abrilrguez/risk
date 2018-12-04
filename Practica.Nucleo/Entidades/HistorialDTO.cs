@@ -9,10 +9,11 @@ namespace Practica.Nucleo.Entidades
     public class HistorialDTO
     {
         public int Id { get; set; }
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         public string Descripcion { get; set; }
-        public string Ciudad { get; set; }
         public string Estado { get; set; }
+        public string Ciudad { get; set; }
+        public string EstadoPaquete { get; set; }
         public Usuario Usuario { get; set; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿<script src="@Url.Content("~/Scripts/historial.js")"></script>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/municipios.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/select_estados.js")"></script>
 <!-- Inbox area Start-->
 <div class="inbox-area">
     <div class="container">
@@ -32,7 +35,6 @@
                             </button>
                         </div>
                     </div>
-                    <input name="orden-id" id="orden-id" value="0" />
                     <div class="table-responsive">
                         <table id="table-historiales" class="table table-striped datatable-selection-single">
                             <thead>
@@ -40,8 +42,10 @@
                                     <th id="ide" hidden>Id</th>
                                     <th>Fecha</th>
                                     <th>Descripción</th>
-                                    <th>Ciudad</th>
                                     <th>Estado</th>
+                                    <th>Ciudad</th>
+                                    <th>Estado de Paquete</th>
+
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -50,8 +54,9 @@
                                     <th id="ide" hidden>Id</th>
                                     <th>Fecha</th>
                                     <th>Descripción</th>
-                                    <th>Ciudad</th>
                                     <th>Estado</th>
+                                    <th>Ciudad</th>
+                                    <th>Estado de Paquete</th>
                                 </tr>
                             </tfoot>
                         </table>

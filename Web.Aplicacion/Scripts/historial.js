@@ -29,21 +29,20 @@ function cargarTabla() {
             { "data": "Id", visible: false, searchable: false },
             { "data": "Fecha", className: "fecha" },
             { "data": "Descripcion" },
+            { "data": "Estado" },
             { "data": "Ciudad" },
-            { "data": "Estado" }
+            { "data": "EstadoPaquete" }
         ]
     });
 
     activarRenglon();
 }
 
-
 function add() {
     var modalC = $("#mdContent");
     $('#mdMain').modal();
     modalC.load(baseUrl + 'Historial/Add/0', {});
 }
-
 
 function obtenerId() {
     var table = $('#table-historiales').DataTable();
@@ -82,8 +81,9 @@ function cargarDatos() {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 $("#descripcion").val(data.Descripcion);
-                $("#ciudad").val(data.Ciudad);
+                $("#municipio").val(data.Ciudad);
                 $("#estado").val(data.Estado);
+                $("#estadoPaquete").val(data.EstadoPaquete);
             }
         });
     }
@@ -95,10 +95,11 @@ function cargarDatos() {
 function guardar() {
     var id = $.trim($("#estado-id").val());
     var descripcion = $.trim($("#descripcion").val());
-    var ciudad = $.trim($("#ciudad").val());
     var estado = $.trim($("#estado").val());
-    var idUsuario = 34;
-    var idOrden = $('#orden-id').val();
+    var ciudad = $.trim($("#municipio").val());
+    var estadoPaquete = $.trim($("#estadoPaquete").val());
+    var idUsuario = 0;
+    var idOrden = $('#folio').val();
 
     if (estado === "PENDIENTE") {
         estado = 1;
@@ -115,7 +116,7 @@ function guardar() {
         $.ajax({
             url: baseUrl + "Historial/Guardar/",
             data: {
-                id: id, descripcion: descripcion, ciudad: ciudad, estado:estado, idUsuario: idUsuario, idOrden: idOrden
+                id: id, descripcion: descripcion, ciudad: ciudad, estado: estado, estadoPaquete: estadoPaquete, idUsuario: idUsuario, idOrden: idOrden
             },
             cache: false,
             tradicional: true,
