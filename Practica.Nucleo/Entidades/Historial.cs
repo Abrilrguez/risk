@@ -147,19 +147,44 @@ namespace Practica.Nucleo.Entidades
                 h.Ciudad = ciudad;
                 h.EstadoPaquete = (Estado) estadoPaquete;
                 h.Usuario = u;
+
+                string subject  = "La localizacion de tu paquete se ha actualizado.";
+
+                Orden o = Orden.ObtenerPorFolio(idOrden);
                 if (id != 0)
                 {
+                    
+                    if ((int)h.EstadoPaquete == 2) {
+                        subject = "Tu paquete ha sido entregado.";
+                        o.Estado = (Estado)2;
+                    }
+                    if ((int)h.EstadoPaquete == 3)
+                    {
+                        subject = "Tu paquete ha sido cancelado.";
+                        o.Estado = (Estado)2;
+                    }
+                    o.Update();
                     h.Update();
                 }
                 else
                 {
-                    Orden o = Orden.ObtenerPorFolio(idOrden);
+                    
                     IList<Historial> historiales = o.Historiales;
                     historiales.Add(h);
                     o.Historiales = historiales;
+                    if ((int)h.EstadoPaquete == 2)
+                    {
+                        subject = "Tu paquete ha sido entregado.";
+                        o.Estado = (Estado) 2;
+                    }
+                    if ((int)h.EstadoPaquete == 3)
+                    {
+                        subject = "Tu paquete ha sido cancelado.";
+                        o.Estado = (Estado)3;
+                    }
                     o.Update();
                 }
-                EnviarEmail(h, idOrden);
+                EnviarEmail(h, idOrden, subject);
                 realizado = true;
             }
             catch (Exception ex)
@@ -189,7 +214,7 @@ namespace Practica.Nucleo.Entidades
         }
 
 
-        public static void EnviarEmail(Historial h, string idOrden)
+        public static void EnviarEmail(Historial h, string idOrden, string subject)
         {
             try
             {
@@ -213,17 +238,16 @@ namespace Practica.Nucleo.Entidades
 
                 mmsg.To.Add(correoCliente);
                 mmsg.To.Add(correoDestinatario);
-                mmsg.Subject = "La localizacion de tu paquete se ha actualizado.";
+                mmsg.Subject = subject;
                 mmsg.SubjectEncoding = Encoding.UTF8;
 
-                body = body.Replace("[NOMBRECLIENTE]", c.Nombre).Replace("[NOMBREDESTINATARIO]", d.Nombre)
-                    .Replace("[FECHAORDEN]", o.Fecha.ToString("dd/MM/YYYY"))
+                body = body.Replace("[NOMBRECLIENTE]", c.Nombre)
+                    .Replace("[NOMBREDESTINATARIO]", d.Nombre)
                     .Replace("[FECHAORDEN]", o.Fecha.ToString("dd/MM/YYYY"))
                     .Replace("[PRECIOORDEN]", o.Precio.ToString())
                     .Replace("[NUMRASTREOORDEN]", o.NumeroRastreo)
                     .Replace("[ESTADOORDEN]", o.Estado.ToString())
-                    .Replace("[FECHAHISTORIAL]", h.Fecha.ToString("dd/MM/YYYY"))
-                    .Replace("[FECHAHISTORIAL]", h.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[FECHAHISTORIAL]", h.Fecha.ToString("dd/MM/yyyy"))
                     .Replace("[DESCRIPCIONHISTORIAL]", h.Descripcion)
                     .Replace("[ESTADOHISTORIAL]", h.Estado)
                     .Replace("[CIUDADHISTORIAL]", h.Ciudad)
@@ -246,15 +270,15 @@ namespace Practica.Nucleo.Entidades
                            "<title>Historial de paquete.</title>" +
                            "</head>" +
                            "<body>" +
-                           "Hola [NOMBRECLIENTE], tu orden ha sido actualizada." +
-                           "Con los siguientes datos: " +
-                           "Fecha: [FECHAORDEN] Número de rastreo: [NUMRASTREOORDEN] Precio: [PRECIOORDEN] Estado de la orden: [ESTADOORDEN]." +
-                           "Remitente: " +
-                           "Nombre: [NOMBRECLIENTE] " +
-                           "Destinatario: " +
-                           "Nombre: [NOMBREDESTINATARIO] " +
-                           "Historial: " +
-                           "Fecha: [FECHAHISTORIAL] Descripcion: [DESCRIPCIONHISTORIAL] Estado: [ESTADOHISTORIAL] Ciudad: [CIUDADHISTORIAL] Ciudad: [CIUDADHISTORIAL] Estado de paquete [EPHISTORIAL]" +
+                           "Hola [NOMBRECLIENTE], tu orden ha sido actualizada.</br>" +
+                           "Con los siguientes datos: </br>" +
+                           "Fecha: [FECHAORDEN] Número de rastreo: [NUMRASTREOORDEN] Precio: [PRECIOORDEN] Estado de la orden: [ESTADOORDEN].</br>" +
+                           "Remitente: </br>" +
+                           "Nombre: [NOMBRECLIENTE] </br>" +
+                           "Destinatario: </br>" +
+                           "Nombre: [NOMBREDESTINATARIO] </br>" +
+                           "Historial: </br>" +
+                           "Fecha: [FECHAHISTORIAL] Descripcion: [DESCRIPCIONHISTORIAL] Estado: [ESTADOHISTORIAL] Ciudad: [CIUDADHISTORIAL] Ciudad: [CIUDADHISTORIAL] Estado de paquete [EPHISTORIAL]</br>" +
                            "</body>" +
                            "</html>";
     }

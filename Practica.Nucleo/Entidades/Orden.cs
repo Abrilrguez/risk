@@ -254,7 +254,7 @@ namespace Practica.Nucleo.Entidades
                 string subject = "";
                 if (idOrden != 0)
                 {
-                    subject = "Información actualizada de orden de envío Trackpack";
+                    subject = "Información de orden de envío actualizado Trackpack";
                     o.Update();
                 }
                 else
@@ -311,35 +311,36 @@ namespace Practica.Nucleo.Entidades
                 mmsg.Subject = subject;
                 mmsg.SubjectEncoding = Encoding.UTF8;
 
-                mmsg.Body = body.Replace("[NOMBRECLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Domicilio);
-                mmsg.Body = body.Replace("[TELEFONOCLIENTE]", orden.Cliente.Telefono);
-                mmsg.Body = body.Replace("[CORREOCLIENTE]", orden.Cliente.Correo);
-                mmsg.Body = body.Replace("[RFCCLIENTE]", orden.Cliente.Rfc);
+                body = body.Replace("[NOMBRECLIENTE]", orden.Cliente.Nombre)
+                    .Replace("[DOMICILIOCLIENTE]", orden.Cliente.Domicilio)
+                    .Replace("[TELEFONOCLIENTE]", orden.Cliente.Telefono)
+                    .Replace("[CORREOCLIENTE]", orden.Cliente.Correo)
+                    .Replace("[RFCCLIENTE]", orden.Cliente.Rfc)
 
-                mmsg.Body = body.Replace("[NOMBREDESTINATARIO]", orden.Destinatario.Nombre);
-                mmsg.Body = body.Replace("[CALLEDESTINATARIO]", orden.Destinatario.Calle);
-                mmsg.Body = body.Replace("[AVENIDADESTINATARIO]", orden.Destinatario.Avenida);
-                mmsg.Body = body.Replace("[COLONIADESTINATARIO]", orden.Destinatario.Colonia);
-                mmsg.Body = body.Replace("[CPDESTINATARIO]", orden.Destinatario.Cp);
-                mmsg.Body = body.Replace("[CIUDADDESTINATARIO]", orden.Destinatario.Ciudad);
-                mmsg.Body = body.Replace("[ESTADODESTINATARIO]", orden.Destinatario.Estado);
-                mmsg.Body = body.Replace("[REFERENCIADESTINATARIO]", orden.Destinatario.Referencia);
-                mmsg.Body = body.Replace("[TELEFONODESTINATARIO]", orden.Destinatario.Telefono);
-                mmsg.Body = body.Replace("[CORREODESTINATARIO]", orden.Destinatario.Correo);
-                mmsg.Body = body.Replace("[PERSONADESTINATARIO]", orden.Destinatario.Persona);
+                    .Replace("[NOMBREDESTINATARIO]", orden.Destinatario.Nombre)
+                    .Replace("[CALLEDESTINATARIO]", orden.Destinatario.Calle)
+                    .Replace("[AVENIDADESTINATARIO]", orden.Destinatario.Avenida)
+                    .Replace("[COLONIADESTINATARIO]", orden.Destinatario.Colonia)
+                    .Replace("[CPDESTINATARIO]", orden.Destinatario.Cp)
+                    .Replace("[CIUDADDESTINATARIO]", orden.Destinatario.Ciudad)
+                    .Replace("[ESTADODESTINATARIO]", orden.Destinatario.Estado)
+                    .Replace("[REFERENCIADESTINATARIO]", orden.Destinatario.Referencia)
+                    .Replace("[TELEFONODESTINATARIO]", orden.Destinatario.Telefono)
+                    .Replace("[CORREODESTINATARIO]", orden.Destinatario.Correo)
+                    .Replace("[PERSONADESTINATARIO]", orden.Destinatario.Persona)
 
-                mmsg.Body = body.Replace("[PESOPAQUETE]", orden.Paquete.Peso);
-                mmsg.Body = body.Replace("[TAMANIOPAQUETE]", orden.Paquete.Tamanio);
-                mmsg.Body = body.Replace("[CONTENIDOPAQUETE]", orden.Paquete.Contenido);
-                mmsg.Body = body.Replace("[DESCRIPCIONPAQUETE]", orden.Paquete.Descripcion);
+                    .Replace("[PESOPAQUETE]", orden.Paquete.Peso)
+                    .Replace("[TAMANIOPAQUETE]", orden.Paquete.Tamanio)
+                    .Replace("[CONTENIDOPAQUETE]", orden.Paquete.Contenido)
+                    .Replace("[DESCRIPCIONPAQUETE]", orden.Paquete.Descripcion)
 
-                mmsg.Body = body.Replace("[FECHAORDEN]", orden.Fecha.ToString("dd/MM/YYYY"));
-                mmsg.Body = body.Replace("[PRECIOORDEN]", orden.Precio.ToString());
-                mmsg.Body = body.Replace("[NUMRASTREOORDEN]", orden.NumeroRastreo);
-                mmsg.Body = body.Replace("[ESTADOORDEN]", orden.Estado.ToString());
+                    .Replace("[FECHAORDEN]", orden.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[PRECIOORDEN]", orden.Precio.ToString())
+                    .Replace("[NUMRASTREOORDEN]", orden.NumeroRastreo)
+                    .Replace("[ESTADOORDEN]", orden.Estado.ToString());
 
-                mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+                mmsg.Body = body;
+                mmsg.BodyEncoding = Encoding.UTF8;
                 mmsg.IsBodyHtml = true;
                 mmsg.From = new MailAddress("track.paack@gmail.com");
                 client.Send(mmsg);
