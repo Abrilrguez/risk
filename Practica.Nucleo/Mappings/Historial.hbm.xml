@@ -14,7 +14,7 @@
     <property name="Ciudad" type="string">
       <column name="ciudad"/>
     </property>
-    <property name="Estado" type="string">
+    <property name="Estado" type="Practica.Nucleo.Enumeradores.Estado, Practica.Nucleo">
       <column name="estado"/>
     </property>
     <many-to-one name="Usuario" class="Practica.Nucleo.Entidades.Usuario, Practica.Nucleo">

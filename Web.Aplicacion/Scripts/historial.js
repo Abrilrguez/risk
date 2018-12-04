@@ -100,6 +100,16 @@ function guardar() {
     var idUsuario = 34;
     var idOrden = $('#orden-id').val();
 
+    if (estado === "PENDIENTE") {
+        estado = 1;
+    }
+    if (estado === "ENTREGADO") {
+        estado = 2;
+    }
+    if (estado === "CANCELADO") {
+        estado = 3;
+    }
+
     //obtenerLatLng();
     
         $.ajax({

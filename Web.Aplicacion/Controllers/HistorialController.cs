@@ -12,7 +12,6 @@ namespace Web.Aplicacion.Controllers
         // GET: Historial
         public ActionResult Index()
         {
-            IList<Historial> historiales = Historial.ObtenerTodos();
             return View();
         }
         public ActionResult Add(int id)
@@ -24,7 +23,7 @@ namespace Web.Aplicacion.Controllers
         {
             try
             {
-                IList<Historial> historiales = Historial.ObtenerTodos();
+                IList<HistorialDTO> historiales = Historial.ObtenerTodos();
                 return Json(new { data = historiales }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -51,7 +50,7 @@ namespace Web.Aplicacion.Controllers
         {
             try
             {
-                IList<Historial> historiales = Historial.ObtenerPorOrden(id);
+                IList<HistorialDTO> historiales = Historial.ObtenerPorOrden(id);
                 List<string> fechas = new List<string>();
 
                 foreach (var estado in historiales)
@@ -67,7 +66,7 @@ namespace Web.Aplicacion.Controllers
         }
 
 
-        public ActionResult Guardar(int id, String descripcion, String ciudad, String estado, int idUsuario, int idOrden)
+        public ActionResult Guardar(int id, String descripcion, String ciudad, int estado, int idUsuario, int idOrden)
         {
             ActionResult action = null;
             try

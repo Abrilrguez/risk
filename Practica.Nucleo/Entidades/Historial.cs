@@ -1,6 +1,7 @@
 ﻿using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Transform;
+using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,28 +17,46 @@ namespace Practica.Nucleo.Entidades
         public DateTime Fecha { get; set; }
         public string Descripcion { get; set; }
         public string Ciudad { get; set; }
-        public string Estado { get; set; }
-        public string Latitud { get; set; }
-        public string Longitud { get; set; }
-
+        public Estado Estado { get; set; }
         public Usuario Usuario { get; set; }
+        
 
-        public static IList<Historial> ObtenerTodos()
+        public static IList<HistorialDTO> ObtenerTodos()
         {
             IList<Historial> historiales;
+            IList<HistorialDTO> historialesTransporte = new List<HistorialDTO>();
             try
             {
                 using (ISession session = Persistent.SessionFactory.OpenSession())
                 {
                     ICriteria crit = session.CreateCriteria(new Historial().GetType());
-                    crit.SetProjection(Projections.ProjectionList()
-                        .Add(Projections.Property("Id"), "Id")
-                        .Add(Projections.Property("Fecha"), "Fecha")
-                        .Add(Projections.Property("Descripcion"), "Descripcion")
-                        .Add(Projections.Property("Ciudad"), "Ciudad")
-                        .Add(Projections.Property("Estado"), "Estado"));
-                    crit.SetResultTransformer(Transformers.AliasToBean<Historial>());
                     historiales = crit.List<Historial>();
+
+
+                    for (int i = 0; i < historiales.Count; i++)
+                    {
+                        HistorialDTO hdt = new HistorialDTO();
+                        hdt.Id = historiales[i].Id;
+                        hdt.Fecha = historiales[i].Fecha;
+                        hdt.Descripcion = historiales[i].Descripcion;
+                        int estado = (int)historiales[i].Estado;
+
+                        if (estado == 1)
+                        {
+                            hdt.Estado = "PENDIENTE";
+                        }
+                        else if (estado == 2)
+                        {
+                            hdt.Estado = "ENTREGADO";
+                        }
+                        else
+                        {
+                            hdt.Estado = "CANCELADO";
+                        }
+                        
+                        historialesTransporte.Add(hdt);
+                    }
+
                     session.Close();
                 }
             }
@@ -45,22 +64,47 @@ namespace Practica.Nucleo.Entidades
             {
                 throw ex;
             }
-            return historiales;
+            return historialesTransporte;
         }
 
-        public static IList<Historial> ObtenerPorOrden(String id)
+        public static IList<HistorialDTO> ObtenerPorOrden(String id)
         {
             IList<Historial> historiales;
+            IList<HistorialDTO> historialTransporte = new List<HistorialDTO>(); ;
             try
             {
                 Orden o = Orden.ObtenerPorFolio(id);
                 historiales = o.Historiales;
+                for (int i = 0; i < historiales.Count; i++)
+                {
+                    HistorialDTO hdt = new HistorialDTO();
+                    hdt.Id = historiales[i].Id;
+                    hdt.Fecha = historiales[i].Fecha;
+                    hdt.Descripcion = historiales[i].Descripcion;
+                    int estado = (int)historiales[i].Estado;
+
+                    if (estado == 1)
+                    {
+                        hdt.Estado = "PENDIENTE";
+                    }
+                    else if (estado == 2)
+                    {
+                        hdt.Estado = "ENTREGADO";
+                    }
+                    else
+                    {
+                        hdt.Estado = "CANCELADO";
+                    }
+
+                    historialTransporte.Add(hdt);
+                }
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return historiales;
+            return historialTransporte;
         }
 
         public static Historial ObtenerPorId(int id)
@@ -82,7 +126,7 @@ namespace Practica.Nucleo.Entidades
             return h;
         }
 
-        public static bool Guardar(int id, string descripcion, string ciudad, string estado, int idUsuario, int idOrden)
+        public static bool Guardar(int id, string descripcion, string ciudad, int estado, int idUsuario, int idOrden)
         {
             bool realizado = false;
             try
@@ -93,7 +137,7 @@ namespace Practica.Nucleo.Entidades
                 h.Fecha = DateTime.Now;
                 h.Descripcion = descripcion;
                 h.Ciudad = ciudad;
-                h.Estado = estado;
+                h.Estado = (Estado) estado;
                 h.Usuario = u;
 
                 if (id != 0)
