@@ -312,11 +312,10 @@ namespace Practica.Nucleo.Entidades
                 mmsg.SubjectEncoding = Encoding.UTF8;
 
                 mmsg.Body = body.Replace("[NOMBRECLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[TELEFONOCLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[CORREOCLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[RFCCLIENTE]", orden.Cliente.Nombre);
-                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Domicilio);
+                mmsg.Body = body.Replace("[TELEFONOCLIENTE]", orden.Cliente.Telefono);
+                mmsg.Body = body.Replace("[CORREOCLIENTE]", orden.Cliente.Correo);
+                mmsg.Body = body.Replace("[RFCCLIENTE]", orden.Cliente.Rfc);
 
                 mmsg.Body = body.Replace("[NOMBREDESTINATARIO]", orden.Destinatario.Nombre);
                 mmsg.Body = body.Replace("[CALLEDESTINATARIO]", orden.Destinatario.Calle);
@@ -357,8 +356,16 @@ namespace Practica.Nucleo.Entidades
                             "</head>" +
                             "<body>" +
                             "Hola [NOMBRE], tu orden de envío esta en proceso." +
-                            "con los siguientes datos: "+
-                            "Remitente: "+
+                            "Con los siguientes datos: "+
+                            "Fecha: [FECHAORDEN] Número de rastreo: [NUMRASTREOORDEN] Precio: [PRECIOORDEN] Estado de la orden: [ESTADOORDEN]." +
+                            "Remitente: " +
+                            "Nombre: [NOMBRECLIENTE] Domicilio: [DOMICILIOCLIENTE] Telefono: [TELEFONOCLIENTE] Correo: [CORREOCLIENTE] RFC: [RFCCLIENTE]."+
+                            "Destinatario: " +
+                            "Nombre: [NOMBREDESTINATARIO] Calle: [CALLEDESTINATARIO] Número: [NUMERODESTINATARIO] Avenida: [AVENIDADESTINATARIO] Colonia: [COLONIADESTINATARIO] " +
+                            "Cp: [CPDESTINATARIO] Ciudad: [CIUDADDESTINATARIO]  Estado: [ESTADODESTINATARIO] Referencia: [REFERENCIADESTINATARIO] Telefono: [TELEFONODESTINATARIO] " +
+                            "Correo: [CORREODESTINATARIO] Persona de referencia: [PERSONADESTINATARIO]" +
+                            "Paquete: " +
+                            "Peso: [PESOPAQUETE] Tamaño: [TAMANIOPAQUETE] Contenido: [CONTENIDOPAQUETE] Descripción: [DESCRIPCIONPAQUETE]" +
                             "</body>" +
                             "</html>";
     }
