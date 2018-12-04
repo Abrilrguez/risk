@@ -254,16 +254,16 @@ namespace Practica.Nucleo.Entidades
                 string subject = "";
                 if (idOrden != 0)
                 {
-                    subject = "Orden Actualizada.";
+                    subject = "Información actualizada de orden de envío Trackpack";
                     o.Update();
                 }
                 else
                 {
-                    subject = "Orden Creada.";
+                    subject = "Información de orden de envío Trackpack";
                     o.Save();
                 }
 
-                EnviarEmail(clienteCorreo, clienteNombre, subject);
+                EnviarEmail(o, subject);
                 realizado = true;
             }
             catch (Exception ex)
@@ -293,7 +293,7 @@ namespace Practica.Nucleo.Entidades
             return realizado;
         }
 
-        public static void EnviarEmail(string correo, string nombre, string subject)
+        public static void EnviarEmail(Orden orden, string subject)
         {
             try
             {
@@ -306,11 +306,40 @@ namespace Practica.Nucleo.Entidades
                 client.Credentials = new NetworkCredential("track.paack@gmail.com", "tp2018**");
                 MailMessage mmsg = new MailMessage();
 
-                mmsg.To.Add(correo);
+                mmsg.To.Add(orden.Cliente.Correo);
+                mmsg.To.Add(orden.Destinatario.Correo);
                 mmsg.Subject = subject;
                 mmsg.SubjectEncoding = Encoding.UTF8;
 
-                mmsg.Body = body.Replace("[NOMBRE]", nombre);
+                mmsg.Body = body.Replace("[NOMBRECLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[TELEFONOCLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[CORREOCLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[RFCCLIENTE]", orden.Cliente.Nombre);
+                mmsg.Body = body.Replace("[DOMICILIOCLIENTE]", orden.Cliente.Nombre);
+
+                mmsg.Body = body.Replace("[NOMBREDESTINATARIO]", orden.Destinatario.Nombre);
+                mmsg.Body = body.Replace("[CALLEDESTINATARIO]", orden.Destinatario.Calle);
+                mmsg.Body = body.Replace("[AVENIDADESTINATARIO]", orden.Destinatario.Avenida);
+                mmsg.Body = body.Replace("[COLONIADESTINATARIO]", orden.Destinatario.Colonia);
+                mmsg.Body = body.Replace("[CPDESTINATARIO]", orden.Destinatario.Cp);
+                mmsg.Body = body.Replace("[CIUDADDESTINATARIO]", orden.Destinatario.Ciudad);
+                mmsg.Body = body.Replace("[ESTADODESTINATARIO]", orden.Destinatario.Estado);
+                mmsg.Body = body.Replace("[REFERENCIADESTINATARIO]", orden.Destinatario.Referencia);
+                mmsg.Body = body.Replace("[TELEFONODESTINATARIO]", orden.Destinatario.Telefono);
+                mmsg.Body = body.Replace("[CORREODESTINATARIO]", orden.Destinatario.Correo);
+                mmsg.Body = body.Replace("[PERSONADESTINATARIO]", orden.Destinatario.Persona);
+
+                mmsg.Body = body.Replace("[PESOPAQUETE]", orden.Paquete.Peso);
+                mmsg.Body = body.Replace("[TAMANIOPAQUETE]", orden.Paquete.Tamanio);
+                mmsg.Body = body.Replace("[CONTENIDOPAQUETE]", orden.Paquete.Contenido);
+                mmsg.Body = body.Replace("[DESCRIPCIONPAQUETE]", orden.Paquete.Descripcion);
+
+                mmsg.Body = body.Replace("[FECHAORDEN]", orden.Fecha.ToString("dd/MM/YYYY"));
+                mmsg.Body = body.Replace("[PRECIOORDEN]", orden.Precio.ToString());
+                mmsg.Body = body.Replace("[NUMRASTREOORDEN]", orden.NumeroRastreo);
+                mmsg.Body = body.Replace("[ESTADOORDEN]", orden.Estado.ToString());
+
                 mmsg.BodyEncoding = System.Text.Encoding.UTF8;
                 mmsg.IsBodyHtml = true;
                 mmsg.From = new MailAddress("track.paack@gmail.com");
@@ -324,10 +353,12 @@ namespace Practica.Nucleo.Entidades
 
         static string body = "<html>" +
                             "<head>" +
-                            "<title>Envio de Orden</title>" +
+                            "<title>Información de envío de orden.</title>" +
                             "</head>" +
                             "<body>" +
-                            "Hola [NOMBRE], se agrego/modifico una orden de tu cuenta. Saludos." +
+                            "Hola [NOMBRE], tu orden de envío esta en proceso." +
+                            "con los siguientes datos: "+
+                            "Remitente: "+
                             "</body>" +
                             "</html>";
     }
