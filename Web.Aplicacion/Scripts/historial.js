@@ -19,7 +19,7 @@
 function cargarTabla() {
     obtenerIdCurso();
     var table = $('#table-historiales').DataTable();
-    var id = $('#orden-id').val();
+    var id = $('#folio').val();
     table.destroy();
     $('#table-historiales').DataTable({
         "autoWidth": true,
