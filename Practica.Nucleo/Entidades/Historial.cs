@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -145,7 +147,6 @@ namespace Practica.Nucleo.Entidades
                 h.Ciudad = ciudad;
                 h.EstadoPaquete = (Estado) estadoPaquete;
                 h.Usuario = u;
-
                 if (id != 0)
                 {
                     h.Update();
@@ -158,6 +159,7 @@ namespace Practica.Nucleo.Entidades
                     o.Historiales = historiales;
                     o.Update();
                 }
+                EnviarEmail(h, idOrden);
                 realizado = true;
             }
             catch (Exception ex)
@@ -187,6 +189,76 @@ namespace Practica.Nucleo.Entidades
         }
 
 
+        public static void EnviarEmail(Historial h, string idOrden)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Credentials = new NetworkCredential("track.paack@gmail.com", "tp2018**");
+                MailMessage mmsg = new MailMessage();
 
+                Orden o = Orden.ObtenerPorFolio(idOrden);
+                int idCliente = o.Cliente.Id;
+                int idDestinatario = o.Destinatario.Id;
+                Cliente c = Cliente.ObtenerPorId(idCliente);
+                string correoCliente = c.Correo;
+                Destinatario d = Destinatario.ObtenerPorId(idDestinatario);
+                string correoDestinatario = d.Correo;
+
+
+                mmsg.To.Add(correoCliente);
+                mmsg.To.Add(correoDestinatario);
+                mmsg.Subject = "La localizacion de tu paquete se ha actualizado.";
+                mmsg.SubjectEncoding = Encoding.UTF8;
+
+                body = body.Replace("[NOMBRECLIENTE]", c.Nombre).Replace("[NOMBREDESTINATARIO]", d.Nombre)
+                    .Replace("[FECHAORDEN]", o.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[FECHAORDEN]", o.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[PRECIOORDEN]", o.Precio.ToString())
+                    .Replace("[NUMRASTREOORDEN]", o.NumeroRastreo)
+                    .Replace("[ESTADOORDEN]", o.Estado.ToString())
+                    .Replace("[FECHAHISTORIAL]", h.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[FECHAHISTORIAL]", h.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[DESCRIPCIONHISTORIAL]", h.Descripcion)
+                    .Replace("[ESTADOHISTORIAL]", h.Estado)
+                    .Replace("[CIUDADHISTORIAL]", h.Ciudad)
+                    .Replace("[EPHISTORIAL]", h.EstadoPaquete.ToString());
+
+
+                mmsg.Body = body;
+                mmsg.BodyEncoding = Encoding.UTF8;
+                mmsg.IsBodyHtml = true;
+                mmsg.From = new MailAddress("track.paack@gmail.com");
+                client.Send(mmsg);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        static string body = "<html>" +
+                           "<head>" +
+                           "<title>Historial de paquete.</title>" +
+                           "</head>" +
+                           "<body>" +
+                           "Hola [NOMBRECLIENTE], tu orden ha sido actualizada." +
+                           "Con los siguientes datos: " +
+                           "Fecha: [FECHAORDEN] Número de rastreo: [NUMRASTREOORDEN] Precio: [PRECIOORDEN] Estado de la orden: [ESTADOORDEN]." +
+                           "Remitente: " +
+                           "Nombre: [NOMBRECLIENTE] " +
+                           "Destinatario: " +
+                           "Nombre: [NOMBREDESTINATARIO] " +
+                           "Historial: " +
+                           "Fecha: [FECHAHISTORIAL] Descripcion: [DESCRIPCIONHISTORIAL] Estado: [ESTADOHISTORIAL] Ciudad: [CIUDADHISTORIAL] Ciudad: [CIUDADHISTORIAL] Estado de paquete [EPHISTORIAL]" +
+                           "</body>" +
+                           "</html>";
     }
+
+
+
 }
