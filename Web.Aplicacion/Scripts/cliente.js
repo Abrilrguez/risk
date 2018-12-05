@@ -165,3 +165,42 @@ function activarRenglon() {
         }
     });
 }
+
+$('#searchDestinatario').keyup(function () {
+    $('#resultDestinatario').html('');
+    $('#state').val('');
+    var searchField = $('#searchDestinatario').val();
+    var expression = new RegExp(searchField, "i");
+
+    $.ajax({
+        url: baseUrl + "Destinatario/ObtenerTodos",
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, value) {
+                $.each(value, function (key, desti) {
+                    if (desti.Nombre.search(expression) != -1 || desti.Correo.search(expression) != -1) {
+                        if ($('#searchDestinatario').val() != "") {
+                            $('#resultDestinatario').append('<li class="list-group-item link-class list-group-item-info">' + desti.Nombre + ' | <span class="text-muted">' + desti.Correo + '</span><span hidden class="text-muted"> |' + desti.Id + '</span></li>');
+                            $('#nombreDestinatario').val("").prop('disabled', false);
+                            $('#telefonoDestinatario').val("").prop('disabled', false);
+                            $('#correoDestinatario').val("").prop('disabled', false);
+                            $('#calleDomicilioD').val("").prop('disabled', false);
+                            $('#numeroDomicilioD').val("").prop('disabled', false);
+                            $('#avenidaDomicilioD').val("").prop('disabled', false);
+                            $('#cpDomicilioD').val("").prop('disabled', false);
+                            $('#coloniaDomicilioD').val("").prop('disabled', false);
+                            $('#estadoDomicilioD').val("").prop('disabled', false);
+                            $('#estadoDomicilioD').val("").prop('disabled', false);
+                            $('#referenciaDomicilioD').val("").prop('disabled', false);
+
+                        }
+
+
+                    }
+                });
+            });
+        }
+    });
+
+});
