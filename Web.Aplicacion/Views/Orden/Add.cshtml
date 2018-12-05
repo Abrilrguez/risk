@@ -1,4 +1,6 @@
 ﻿<script src="@Url.Content("~/Scripts/orden.js")"></script>
+<script src="@Url.Content("~/Scripts/cliente.js")"></script>
+<script src="@Url.Content("~/Scripts/destinatario.js")"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script>
 
@@ -88,6 +90,171 @@
     $(".submit").click(function () {
         return false;
     })
+
+    $('#buscar-cliente').keyup(function () {
+        $('#result-cliente').html('');
+        $('#state').val('');
+        var searchField = $('#buscar-cliente').val();
+        var expression = new RegExp(searchField, "i");
+
+        $.ajax({
+            url: baseUrl + "Cliente/ObtenerTodos",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    $.each(value, function (key, cliente) {
+                        if (cliente.Nombre.search(expression) != -1 || cliente.Correo.search(expression) != -1) {
+                            if ($('#buscar-cliente').val() != "") {
+                                $('#result-cliente').append('<li class="list-group-item link-class list-group-item-info">' + cliente.Nombre + ' | <span class="text-muted">' + cliente.Correo + '</span><span hidden class="text-muted"> |' + cliente.Id + '</span></li>');
+                                $('#cliente-nombre').val("").prop('disabled', false);
+                                $('#cliente-telefono').val("").prop('disabled', false);
+                                $('#cliente-correo').val("").prop('disabled', false);
+                                $('#cliente-rfc').val("").prop('disabled', false);
+                                $('#cliente-domicilio').val("").prop('disabled', false);
+
+                            }
+
+
+                        }
+                    });
+                });
+            }
+        });
+
+    });
+
+    $('#result-cliente').on('click', 'li', function () {
+        var click_text = $(this).text().split('|');
+        $('#buscar-cliente').val($.trim(click_text[0]));
+        loadCliente(click_text[2]);
+        
+        $('#idCliente').val(click_text[2]);
+        $('#cliente-nombre').prop('disabled', true);
+        $('#cliente-correo').prop('disabled', true);
+        $('#cliente-rfc').prop('disabled', true);
+        $('#cliente-telefono').prop('disabled', true);
+        $('#cliente-domicilio').prop('disabled', true);
+
+        $("#result-cliente").html('');
+        $('#buscar-cliente').val("");
+    });
+
+    function loadCliente(idCliente) {
+        var id = idCliente;
+        if (id != "" && id != 0) {
+            $.ajax({
+                url: baseUrl + "Cliente/ObtenerPorId",
+                data: { id: id },
+                type: 'GET',
+                dataType: 'json',
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $("#cliente-nombre").val(data.Nombre);
+                    $("#cliente-domicilio").val(data.Domicilio);
+                    $("#cliente-telefono").val(data.Telefono);
+                    $("#cliente-correo").val(data.Correo);
+                    $("#cliente-rfc").val(data.Rfc);
+                }
+            });
+        }
+        return false;
+
+    }
+
+    $('#buscar-destinatario').keyup(function () {
+        $('#result-destinatario').html('');
+        $('#state').val('');
+        var searchField = $('#buscar-destinatario').val();
+        var expression = new RegExp(searchField, "i");
+
+        $.ajax({
+            url: baseUrl + "Destinatario/ObtenerTodos",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    $.each(value, function (key, destinatario) {
+                        if (destinatario.Nombre.search(expression) != -1 || destinatario.Correo.search(expression) != -1) {
+                            if ($('#buscar-destinatario').val() != "") {
+                                $('#result-destinatario').append('<li class="list-group-item link-class list-group-item-info">' + destinatario.Nombre + ' | <span class="text-muted">' + destinatario.Correo + '</span><span hidden class="text-muted"> |' + destinatario.Id + '</span></li>');
+                                $('#destinatario-nombre').val("").prop('disabled', false);
+                                $('#destinatario-telefono').val("").prop('disabled', false);
+                                $('#destinatario-correo').val("").prop('disabled', false);
+                                $('#destinatario-persona').val("").prop('disabled', false);
+                                $('#destinatario-calle').val("").prop('disabled', false);
+                                $('#destinatario-numero').val("").prop('disabled', false);
+                                $('#destinatario-avenida').val("").prop('disabled', false);
+                                $('#destinatario-colonia').val("").prop('disabled', false);
+                                $('#destinatario-cp').val("").prop('disabled', false);
+                                $('#destinatario-ciudad').val("").prop('disabled', false);
+                                $('#destinatario-estado').val("").prop('disabled', false);
+                                $('#destinatario-referencia').val("").prop('disabled', false);
+                            }
+
+
+                        }
+                    });
+                });
+            }
+        });
+
+    });
+
+    $('#result-destinatario').on('click', 'li', function () {
+        var click_text = $(this).text().split('|');
+        $('#buscar-destinatario').val($.trim(click_text[0]));
+        loadDestinatario(click_text[2]);
+        $('#idDestinatario').val(click_text[2]);
+        $('#destinatario-nombre').prop('disabled', true);
+        $('#destinatario-telefono').val("").prop('disabled', true);
+        $('#destinatario-correo').val("").prop('disabled', true);
+        $('#destinatario-persona').val("").prop('disabled', true);
+        $('#destinatario-calle').val("").prop('disabled', true);
+        $('#destinatario-numero').val("").prop('disabled', true);
+        $('#destinatario-avenida').val("").prop('disabled', true);
+        $('#destinatario-colonia').val("").prop('disabled', true);
+        $('#destinatario-cp').val("").prop('disabled', true);
+        $('#destinatario-ciudad').val("").prop('disabled', true);
+        $('#destinatario-estado').val("").prop('disabled', true);
+        $('#destinatario-referencia').val("").prop('disabled', true);
+
+        $("#result-destinatario").html('');
+        $('#buscar-destinatario').val("");
+    });
+
+
+
+    function loadDestinatario(idDestinatario) {
+        var id = idDestinatario;
+        if (id != "" && id != 0) {
+            $.ajax({
+                url: baseUrl + "Destinatario/ObtenerPorId",
+                data: { id: id },
+                type: 'GET',
+                dataType: 'json',
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $("#destinatario-nombre").val(data.Nombre);
+                    $("#destinatario-calle").val(data.Calle);
+                    $("#destinatario-numero").val(data.Numero);
+                    $("#destinatario-avenida").val(data.Avenida);
+                    $("#destinatario-colonia").val(data.Colonia);
+                    $("#destinatario-cp").val(data.Cp);
+                    $("#destinatario-ciudad").val(data.Ciudad);
+                    $("#destinatario-estado").val(data.Estado);
+                    $("#destinatario-referencia").val(data.Referencia);
+                    $("#destinatario-Telefono").val(data.Telefono);
+                    $("#destinatario-correo").val(data.Correo);
+                    $("#destinatario-persona").val(data.Persona);
+                }
+            });
+        }
+        return false;
+
+    }
 </script>
 <style>
 
@@ -241,6 +408,9 @@
                     <div class="form-group">
                         <label>Nombre</label>
                         <div class="nk-int-st">
+
+                            <input type="text" class="form-control input-sm" id="buscar-cliente" placeholder="Buscar...">
+                            <ul class="list-group" id="result-cliente"></ul>
                             <input type="text" class="form-control input-sm" id="cliente-nombre" placeholder="Nombre">
                             <button class="btn btn-default btn-icon-notika waves-effect">
                                 <i class="notika-icon notika-menu"></i>
@@ -308,6 +478,9 @@
                     <div class="form-group">
                         <label>Nombre</label>
                         <div class="nk-int-st">
+
+                            <input type="text" class="form-control input-sm" id="buscar-destinatario" placeholder="Buscar...">
+                            <ul class="list-group" id="result-destinatario"></ul>
                             <input type="text" class="form-control input-sm" id="destinatario-nombre" placeholder="Nombre">
                         </div>
                     </div>
