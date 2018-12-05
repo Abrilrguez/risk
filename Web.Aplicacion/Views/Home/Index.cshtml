@@ -1,50 +1,320 @@
-﻿  <!-- Start Status area -->
-@{
-    ViewBag.Title = "Inicio";
+﻿@{
+    Layout = null;
 }
-<div class="notika-status-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">50,000</span></h2>
-                        <p>Total Website Traffics</p>
-                    </div>
-                    <div class="sparkline-bar-stats1">9,4,8,5,6,4,8,3,5,9,5</div>
-                </div>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Showtracker landing page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap/css/bootstrap.min.css")">
+    <!-- Ionicons CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/ionicons.min.css")">
+    <!-- Device mockups CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/device-mockups.css")">
+    <!-- Google fonts - Source Sans Pro-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <!-- Swiper sLider-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/swiper/swiper.min.css")">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.default.css")" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/img/logo/Logo-1.png")">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Navbar brand--><a href="index.html" class="navbar-brand font-weight-bold">
+                    <img src="@Url.Content("~/Content/assets/img/logo/logo.png")" alt="..."
+                         class="img-fluid">
+                </a>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">90,000</span>k</h2>
-                        <p>Website Impressions</p>
-                    </div>
-                    <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
+        </nav>
+    </header>
+    <!-- Login Modal-->
+    <div id="info" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade bd-example-modal-lg">
+        <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                    <div class="website-traffic-ctn">
-                        <h2>$<span class="counter">40,000</span></h2>
-                        <p>Total Online Sales</p>
+                <div class="modal-body p-4 p-lg-5">
+                    <h2>Rastreo y seguimiento</h2>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-0">Número de rastreo</p>
+                            <h5>2018000001</h5>
+                        </div>
+                        <div class="col-6">
+                            <p class="mb-0">Destino</p>
+                            <h5>Ciudad de México - Guaymas</h5>
+                        </div>
                     </div>
-                    <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                    <div class="website-traffic-ctn">
-                        <h2><span class="counter">1,000</span></h2>
-                        <p>Total Support Tickets</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-0">Estado</p>
+                            <h5 class="mb-0">Envio entregado a El Brayan</h5>
+                            <p>04 de Diciembre del 2018 a las 07:16 p.m.</p>
+                            <p>
+                                <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse"
+                                        aria-expanded="false" aria-controls="collapse">
+                                    Más información del envio
+                                </button>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <p class="mb-0">Precio</p>
+                            <h5>$124.00 M/N</h5>
+                        </div>
                     </div>
-                    <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="collapse multi-collapse" id="collapse">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Remitente</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Nombre</p>
+                                            <h6>Eiprols Rguez</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Domicilio</p>
+                                            <h6>Ciudad de México - Guaymas</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Telefono</p>
+                                            <h6>Ciudad de México - Guaymas</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Correo</p>
+                                            <h6>rguez@gmail.com</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">RFC</p>
+                                            <h6>asd234567 098</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h5>Destinatario</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Nombre</p>
+                                            <h6>Eiprols Rguez</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Persona que recogera</p>
+                                            <h6>asd234567 098</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Correo</p>
+                                            <h6>rguez@gmail.com</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Teléfono 1</p>
+                                            <h6>622 100 0000</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Teléfono 2</p>
+                                            <h6>622 100 0000</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Teléfono 3</p>
+                                            <h6>622 100 0000</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Código postal</p>
+                                            <h6>asd244567 098</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Calle</p>
+                                            <h6>rguez@gmail.com</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Número</p>
+                                            <h6>rguez@gmail.com</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-0">Colonia</p>
+                                            <h6>asd244567 098</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Ciudad</p>
+                                            <h6>rguez@gmail.com</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-0">Estado</p>
+                                            <h6>asd234567 098</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="mb-0">Referencia</p>
+                                            <h6>asd244567 098</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-3">
+                            <h6>04 de Diciembre del 2018 a las 07:16 p.m.</h6>
+                        </div>
+                        <div class="col-9">
+                            <h4>Super mega descripcion bien pinches chida</h4>
+                            <p>Hermosillo, Sonora</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-3">
+                            <h6>04 de Diciembre del 2018 a las 07:16 p.m.</h6>
+                        </div>
+                        <div class="col-9">
+                            <h4>Super mega descripcion bien pinches chida</h4>
+                            <p>Hermosillo, Sonora</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-3">
+                            <h6>04 de Diciembre del 2018 a las 07:16 p.m.</h6>
+                        </div>
+                        <div class="col-9">
+                            <h4>Super mega descripcion bien pinches chida</h4>
+                            <p>Hermosillo, Sonora</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="page-holder">
+        <!-- Hero Section-->
+        <section class="hero shape-1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 align-self-start">
+                        <h1 class="hero-heading">Trackpack - Más que solo un envio</h1>
+                        <p class="lead mt-5 font-weight-light">
+                            Nunca más pierdas la pista de tus paquetes, envio eficaz y
+                            simple, lo encontrarás con nosotros. 📦
+                        </p>
+                        <!-- Subscription form-->
+                        <form action="#" class="subscription-form mt-5">
+                            <div class="form-group">
+                                <label>Número de rastreo</label>
+                                <input type="text" name="numero-rastreo" placeholder="Número de 10 digitos" class="form-control" maxlength="10">
+                                <button data-toggle="modal" data-target="#info" type="submit" class="btn btn-primary">
+                                    Rastrea tu
+                                    paquete
+                                </button>
+                            </div>
+                        </form>
 
+                    </div>
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="device-wrapper mx-auto">
+                            <div data-device="iPhone7" data-orientation="portrait" data-color="black" class="device">
+                                <div class="screen"><img src="@Url.Content("~/Content/assets/img/screen.jpeg")" alt="..." class="img-fluid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Features Section-->
+        <section class="features shape-2">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-header-title">Disfruta la diferencia</span>
+                    <h2 class="h1">¿Necesitas algo más?</h2>
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <p class="lead">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ducimus, rem totam
+                                sint, qui perferendis iure necessitatibus alias eligendi quidem expedita id architecto ad? Tenetur
+                                pariatur accusantium asperiores inventore dolor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5 text-center">
+                    <div class="col-lg-4">
+                        <div class="features-item mb-5 mb-lg-0">
+                            <div class="gradient-icon gradient-1"><i class="icon ion-ios-heart"></i></div>
+                            <h3 class="h5">Empresa 100% mexicana</h3>
+                            <p>Nuestras sucursales se encuentran en todo México.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-item mb-5 mb-lg-0">
+                            <div class="gradient-icon gradient-2"><i class="icon ion-ios-calculator"></i></div>
+                            <h3 class="h5">Cotiza tu envio</h3>
+                            <p>¡Por medio de nuestra aplicación movil puedes cotizar el costo del envio de tu paquete!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-item mb-5 mb-lg-0">
+                            <div class="gradient-icon gradient-3"><i class="icon ion-ios-notifications"></i></div>
+                            <h3 class="h5">Notificaciones inteligentes</h3>
+                            <p>Recibe notificaciones en cada actualización de la ubicación de tu pedido ¡Asi nunca lo pierdes de vista!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <!-- Copyrights-->
+            <div class="copyrights">
+                <!-- Social menu-->
 
-
-
+                <p class="copyrights-text mb-0">Copyright &copy; 2018 All rights reserved - Trackpack &copy;</p>
+                <p class="copyrights-text mb-0">
+                    Coded by <a href="https://bootstrapious.com/landing-pages" target="_blank"
+                                class="copyrights-link">Bootstrapious</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript files-->
+    <script src="@Url.Content("~/Scripts/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/popper.js/popper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Scripts/swiper/swiper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/front.js")"></script>
+</body>
+</html>
