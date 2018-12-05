@@ -111,12 +111,12 @@ namespace Web.Aplicacion.Controllers
             return Json(o, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ObtenerPorFolio(string folio)
+        public ActionResult ObtenerPorFolio(string id)
         {
             Orden o = new Orden();
             try
             {
-                o = Orden.ObtenerPorFolio(folio);
+                o = Orden.ObtenerPorFolio(id);
             }
             catch (Exception ex)
             {

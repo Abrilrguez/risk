@@ -1,13 +1,15 @@
 ﻿function rastrear()
 {
-    var folio = $('#numero-rastreo').val();
-    alert(folio);
+    var id = $('#numero-rastreo').val();
+    alert(id);
     $.ajax({
-        url: baseUrl + "Orden/ObtenerPorFolio/"+folio,
+        url: baseUrl + "Orden/ObtenerPorFolio/"+id,
         cache: false,
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            alert(data.Fecha);
+            
+            var modalC = $("#info");
+            $('#info').modal();
         }
     });
 }
