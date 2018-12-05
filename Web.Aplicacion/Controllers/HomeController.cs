@@ -59,7 +59,7 @@ namespace Web.Aplicacion.Controllers
                     Session["usuarioCuenta"] = u.Cuenta;
                     Session["usuarioNombre"] = u.Nombre;
                     Session["usuarioRol"] = u.Rol;
-                    action = RedirectToAction("Index", "Home");
+                    action = RedirectToAction("Index", "Orden");
                 }else
                 {
                     ViewBag.Message = "Los datos de usuario ingresado son incorrectos";
@@ -86,10 +86,13 @@ namespace Web.Aplicacion.Controllers
 
             return View();
         }
-
         public ActionResult Error()
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Orden");
+        }
+        public ActionResult Error2()
+        {
+            return RedirectToAction("Login", "Home");
         }
     }
 }

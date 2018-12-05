@@ -33,7 +33,7 @@ namespace Web.Aplicacion.Attribute
             {
                 
             }
-            return base.AuthorizeCore(httpContext);
+            return authorize;
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext context)
         {
