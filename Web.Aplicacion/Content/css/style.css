@@ -213,7 +213,7 @@ body {}
 	padding: 20px 30px 20px 0px;
 }
 .nav.navbar-nav.notika-top-nav li a{
-	font-size:20px;
+	font-size:18px;
 	position:relative;
 }
 .header-top-menu .nav.notika-top-nav li .search-dd {
@@ -234,9 +234,9 @@ body {}
     position: absolute;
     top: 100%;
     left: -100px;
-    width: 300px;
+    width: 200px;
     border: none;
-    padding: 20px 0px;
+    padding: 5px 0px;
 	z-index:9999;
 }
 .header-top-menu .nav.notika-top-nav li .message-dd .hd-mg-tt h2{
@@ -324,7 +324,7 @@ body {}
 	left:-200px;
 }
 .header-top-menu .nav.notika-top-nav li .message-dd.chat-dd{
-	left:-250px;
+	left:-100px;
 }
 .hd-message-img img{
 	border-radius:50%;
