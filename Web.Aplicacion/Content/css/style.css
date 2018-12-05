@@ -1684,10 +1684,10 @@ ul.wizard-nav-ac li .disabled{
     width: 910px;
 	margin-top: 110px;
 }
-.modal-dialog.modals-default .modal-content, .modal-dialog.modal-sm .modal-content, .modal-dialog.modal-large .modal-content{
-    border-radius: 0px;
-    padding: 30px 35px;
-}
+    .modal-dialog.modals-default .modal-content, .modal-dialog.modal-sm .modal-content, .modal-dialog.modal-large .modal-content {
+        border-radius: 0px;
+        padding: 0px 40px 30px 30px;
+    }
 .modals-default .modal-header, .modals-default .modal-footer, .modals-default .modal-body, .modal-sm .modal-body, .modal-sm .modal-header, .modal-sm .modal-footer, .modal-large .modal-body, .modal-large .modal-header, .modal-large .modal-footer {
     padding: 0px;
     border-bottom: 0px solid #e5e5e5;
