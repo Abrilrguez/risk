@@ -27,10 +27,14 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/style.default.css")" id="theme-stylesheet">
     <!-- Favicon-->
     <link rel="shortcut icon" href="@Url.Content("~/Content/assets/img/logo/Logo-1.png")">
+    <script src="@Url.Content("~/Scripts/rastreo.js")"></script>
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script type="text/javascript">
+        var baseUrl = "@Url.Content("~")";
+    </script>
 </head>
 
 <body>
@@ -234,8 +238,8 @@
                         <form action="#" class="subscription-form mt-5">
                             <div class="form-group">
                                 <label>Número de rastreo</label>
-                                <input type="text" name="numero-rastreo" placeholder="Número de 10 digitos" class="form-control" maxlength="10">
-                                <button data-toggle="modal" data-target="#info" type="submit" class="btn btn-primary">
+                                <input type="text" name="numero-rastreo" placeholder="Número de 10 digitos" id="numero-rastreo" class="form-control" maxlength="10">
+                                <button data-toggle="modal" data-target="#info" type="submit" class="btn btn-primary" onclick="rastrear();">
                                     Rastrea tu
                                     paquete
                                 </button>

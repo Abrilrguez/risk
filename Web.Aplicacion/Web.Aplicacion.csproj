@@ -369,6 +369,7 @@
     <Content Include="Scripts\rangle-slider\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\rangle-slider\jquery-ui-touch-punch.min.js" />
     <Content Include="Scripts\rangle-slider\rangle-active.js" />
+    <Content Include="Scripts\rastreo.js" />
     <Content Include="Scripts\scrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\sparkline\sparkline-active.js" />

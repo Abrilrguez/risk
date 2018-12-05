@@ -177,7 +177,6 @@ namespace Practica.Nucleo.Entidades
 
         public static Orden ObtenerPorFolio(String folio)
         {
-            String hola = folio;
             Orden o = new Orden();
             try
             {
