@@ -1,5 +1,8 @@
 ﻿<script src="@Url.Content("~/Scripts/usuario.js")"></script>
 <!-- Breadcomb area Start-->
+@{
+    ViewBag.Title = "Usuarios";
+ }
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -13,6 +16,7 @@
                                 </div>
                                 <div class="breadcomb-ctn">
                                     <h2>Usuarios</h2>
+
                                     <a onclick="add();" class="btn btn-default" data-toggle="modal">Agregar</a>
                                     <a onclick="edit();" class="btn btn-default">Editar</a>
                                     <a onclick="del();" class="btn btn-danger notika-btn-danger">Eliminar</a>

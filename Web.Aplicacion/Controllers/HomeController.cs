@@ -46,6 +46,7 @@ namespace Web.Aplicacion.Controllers
                 string cuenta = model["cuenta"].Trim();
                 string password = model["password"].Trim();
                 Usuario u = Usuario.ObtenerPorLogin(cuenta, password);
+                
                 if (u != null)
                 {
                     HttpCookie ck = new HttpCookie("ckPractica");
@@ -57,6 +58,7 @@ namespace Web.Aplicacion.Controllers
                     Session["usuarioId"] = u.Id;
                     Session["usuarioCuenta"] = u.Cuenta;
                     Session["usuarioNombre"] = u.Nombre;
+                    Session["usuarioRol"] = u.Rol;
                     action = RedirectToAction("Index", "Home");
                 }else
                 {

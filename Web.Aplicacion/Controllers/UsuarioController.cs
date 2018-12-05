@@ -1,6 +1,8 @@
 ﻿using Practica.Nucleo.Entidades;
+using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
+using Practica.Nucleo.Enumeradores;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +11,8 @@ namespace Web.Aplicacion.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: Usuario
+
+        [Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
         public ActionResult Index()
         {
             IList<OrdenDTO> ordenes = Orden.ObtenerTodos();

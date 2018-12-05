@@ -504,76 +504,28 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active">
-                            <a data-toggle="tab" href="@Url.Action("Index", "Home")"><i class="notika-icon notika-house"></i> Inicio</a>
+                        <li  @if (ViewBag.Title == "Inicio") { <text> class="active" </text> }>
+                            <a href="@Url.Action("Index", "Home")"><i class="notika-icon notika-house"></i> Index</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#Interface2"><i class="notika-icon notika-edit"></i> Usuarios</a>
+                        <li @if (ViewBag.Title == "Usuarios") { <text> class="active" </text>  }
+                            @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>}>
+                            <a href="@Url.Action("Index", "Usuario")"><i class="notika-icon notika-edit"></i> Usuarios</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#Interface3"><i class="notika-icon notika-edit"></i> Clientes</a>
+                        <li @if (ViewBag.Title == "Clientes") { <text> class="active" </text> }
+                            @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>}>
+                            <a href="@Url.Action("Index", "Cliente")"><i class="notika-icon notika-edit"></i> Clientes</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#Interface4"><i class="notika-icon notika-edit"></i> Destinatarios</a>
+                        <li  @if (ViewBag.Title == "Destinatarios") { <text> class="active" </text> }
+                            @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>}>
+                            <a href="@Url.Action("Index", "Destinatario")"><i class="notika-icon notika-edit"></i> Destinatarios</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#Interface5"><i class="notika-icon notika-edit"></i> Orden</a>
+                        <li @if (ViewBag.Title == "Orden") { <text> class="active" </text> }>
+                            <a href="@Url.Action("Index", "Orden")"><i class="notika-icon notika-edit"></i> Orden</a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#Interface6"><i class="notika-icon notika-edit"></i> Historial</a>
+                        <li @if (ViewBag.Title == "Historial") { <text> class="active" </text> }>
+                            <a href="@Url.Action("Index", "Historial")"><i class="notika-icon notika-edit"></i> Historial</a>
                         </li>
                     </ul>
-                    <div class="tab-content custom-menu-content">
-                        <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="index.html">Dashboard One</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface1" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Paquete")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface2" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Usuario")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface3" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Cliente")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface4" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Destinatario")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface5" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Orden")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Interface6" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li>
-                                    <a href="@Url.Action("Index", "Historial")">Index</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

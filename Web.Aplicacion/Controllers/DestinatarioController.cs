@@ -1,4 +1,5 @@
 ﻿using Practica.Nucleo.Entidades;
+using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Web.Aplicacion.Controllers
     public class DestinatarioController : Controller
     {
         // GET: Usuario
+        [Attribute.ValidateSession(Rls = new Rol[] { Rol.ADMINISTRADOR })]
         public ActionResult Index()
         {
             return View();
