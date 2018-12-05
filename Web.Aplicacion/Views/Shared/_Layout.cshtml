@@ -96,13 +96,19 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
-                            <li class="nav-item">
-                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-chat">@Session["usuarioNombre"]</i></span></a>
-                                <ul role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
-                                    <li class="hd-mg-va">
-                                        <a href="@Url.Action("Login", "Home")">Cerrar sesion</a>
-                                    </li>
-                                </ul>
+                            <li class="nav-item dropdown">
+                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">@Session["usuarioNombre"]</a>
+                                <div role="menu" class="dropdown-menu message-dd animated zoomIn">
+                                    <div class="hd-message-info">
+                                        <a href="@Url.Action("Login", "Home")">
+                                            <div class="hd-message-sn">
+                                                <div class="hd-mg-ctn">
+                                                    <h3>Cerrar sesion</h3>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
