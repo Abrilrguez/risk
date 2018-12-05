@@ -10,8 +10,7 @@ namespace Web.Aplicacion.Controllers
 {
     public class OrdenController : Controller
     {
-
-        //[Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
+        
         public ActionResult Index()
         {
             return View();

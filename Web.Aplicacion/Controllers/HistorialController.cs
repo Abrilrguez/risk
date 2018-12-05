@@ -1,4 +1,5 @@
 ﻿using Practica.Nucleo.Entidades;
+using Practica.Nucleo.Enumeradores;
 using System;
 using System.Collections.Generic;
 using System.Linq;

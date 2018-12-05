@@ -130,7 +130,10 @@ function guardar() {
     var id = $.trim($("#destinatario-id").val());
     var nombre = $.trim($("#nombre").val());
     var calle = $.trim($("#calle").val());
-    var numero = $.trim($("#numero").val());
+    var numero1 = $.trim($("#numero1").val());
+    var numero2 = $.trim($("#numero2").val());
+    var numero3 = $.trim($("#numero3").val());
+    var numero = numero1 + "," + numero2 + "," + numero3;
     var avenida = $.trim($("#avenida").val());
     var colonia = $.trim($("#colonia").val());
     var cp = $.trim($("#cp").val());

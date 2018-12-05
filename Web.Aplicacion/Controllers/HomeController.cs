@@ -86,5 +86,10 @@ namespace Web.Aplicacion.Controllers
 
             return View();
         }
+
+        public ActionResult Error()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

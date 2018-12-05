@@ -27,8 +27,19 @@ namespace Web.Aplicacion.Attribute
                         }
                     }
                 }
+
+            }
+            if(authorize == false)
+            {
+                
             }
             return base.AuthorizeCore(httpContext);
         }
+        protected override void HandleUnauthorizedRequest(AuthorizationContext context)
+        {
+            Web.Aplicacion.Controllers.HomeController home = new Web.Aplicacion.Controllers.HomeController();
+            context.Result = home.Error();
+        }
+
     }
 }

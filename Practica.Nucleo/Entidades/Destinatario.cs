@@ -35,6 +35,7 @@ namespace Practica.Nucleo.Entidades
                 {
                     ICriteria crit = session.CreateCriteria(new Destinatario().GetType());
                     destinatarios = crit.List<Destinatario>();
+                    
                     session.Close();
                 }
             }
