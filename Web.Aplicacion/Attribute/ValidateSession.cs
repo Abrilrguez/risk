@@ -38,6 +38,7 @@ namespace Web.Aplicacion.Attribute
         protected override void HandleUnauthorizedRequest(AuthorizationContext context)
         {
             Web.Aplicacion.Controllers.HomeController home = new Web.Aplicacion.Controllers.HomeController();
+
             context.Result = home.Error();
         }
 
