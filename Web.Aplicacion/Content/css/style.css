@@ -1686,7 +1686,7 @@ ul.wizard-nav-ac li .disabled{
 }
 .modal-dialog.modals-default .modal-content, .modal-dialog.modal-sm .modal-content, .modal-dialog.modal-large .modal-content{
     border-radius: 0px;
-    padding: 40px 100px;
+    padding: 30px 35px;
 }
 .modals-default .modal-header, .modals-default .modal-footer, .modals-default .modal-body, .modal-sm .modal-body, .modal-sm .modal-header, .modal-sm .modal-footer, .modal-large .modal-body, .modal-large .modal-header, .modal-large .modal-footer {
     padding: 0px;

@@ -98,12 +98,11 @@
                         <ul class="nav navbar-nav notika-top-nav">
                             <li class="nav-item">
                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-chat">@Session["usuarioNombre"]</i></span></a>
-                                <div role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
-                                    <div class="hd-mg-va">
-                                        <a href="#">Cuenta</a>
+                                <ul role="menu" class="dropdown-menu message-dd chat-dd animated zoomIn">
+                                    <li class="hd-mg-va">
                                         <a href="@Url.Action("Login", "Home")">Cerrar sesion</a>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
