@@ -285,6 +285,7 @@
     <Content Include="Content\css\images\sort_both.png" />
     <Content Include="Content\css\images\sort_desc.png" />
     <Content Include="Content\css\images\sort_desc_disabled.png" />
+    <Content Include="CustomErrors\Errors.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Content\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.svg" />

@@ -509,7 +509,7 @@ namespace Practica.Nucleo.Entidades
 "                <table cellpadding = '0' cellspacing='0' width='600' class='w320'>"+
 "                  <tr>"+
 "                    <td class='pull-left mobile-header-padding-left' style='vertical-align: middle; text-align:center'>"+
-"                      <a href = '' >< img width='auto' height='47' src='logo.png' alt='logo'></a>"+
+"                      <a href = '' >< img width='auto' height='47' src='https://drive.google.com/file/d/1ZKpiZUso9DJC6sL-IPdH9ty_bXklsWgC/view?usp=sharing' alt='logo'></a>" +
 "                    </td>"+                  
 "                  </tr>"+
 "                </table>"+
@@ -531,7 +531,7 @@ namespace Practica.Nucleo.Entidades
 "          </tr>"+
 "          <tr>"+
 "            <td class='free-text'>"+
-"              We wanted to let you know that we just shipped off your order<a href="">#23141</a>. You'll find all the details below."+
+"              We wanted to let you know that we just shipped off your order<a href=''>#23141</a>. You'll find all the details below."+
 "            </td>"+
 "          </tr>"+
 "          <tr>"+
