@@ -47,30 +47,41 @@ namespace Web.Aplicacion.Controllers
                                     string destinatarioCalle, string destinatarioNumero, string destinatarioAvenida, string destinatarioColonia, string destinatarioCp,
                                     string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia){
             ActionResult action = null;
-            try
+            if (ordenEstado.ToString() !="" &&ordenPrecio.ToString() != ""&& ordenFolio != "" && ordenNumRastreo != "" && ordenFecha.ToString() != "" &&
+                paquetePeso != "" && paqueteTamanio != "" && paqueteContenido != "" && paqueteDescripcion != "" && 
+                clienteNombre != "" && clienteTelefono != "" && clienteCorreo != "" && clienteRfc != "" && clienteDomicilio != "" && 
+                destinatarioNombre != "" && destinatarioTelefono != "" && destinatarioCorreo != "" && destinatarioPersona != "" &&destinatarioCalle != "" && destinatarioNumero != "" &&
+                destinatarioAvenida != "" && destinatarioColonia != "" && destinatarioCp != "" && destinatarioCiudad != "" && destinatarioEstado != "" && destinatarioReferencia != "" )
             {
-                
-                 idUsuario = Convert.ToInt32(Session["usuarioId"]);
-
-                if (Orden.Guardar(idOrden, ordenEstado, ordenPrecio, ordenFolio, ordenNumRastreo, ordenFecha,
-                    idUsuario,
-                    idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
-                    idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
-                    idDestinatario, destinatarioNombre, destinatarioTelefono, destinatarioCorreo, destinatarioPersona,
-                    destinatarioCalle, destinatarioNumero, destinatarioAvenida, destinatarioColonia, destinatarioCp,
-                    destinatarioCiudad, destinatarioEstado, destinatarioReferencia))
+                try
                 {
-                    action = Content("true");
-                }
-                else
-                {
-                    action = Content("false");
-                }
 
+                    idUsuario = Convert.ToInt32(Session["usuarioId"]);
+
+                    if (Orden.Guardar(idOrden, ordenEstado, ordenPrecio, ordenFolio, ordenNumRastreo, ordenFecha,
+                        idUsuario,
+                        idPaquete, paquetePeso, paqueteTamanio, paqueteContenido, paqueteDescripcion,
+                        idCliente, clienteNombre, clienteTelefono, clienteCorreo, clienteRfc, clienteDomicilio,
+                        idDestinatario, destinatarioNombre, destinatarioTelefono, destinatarioCorreo, destinatarioPersona,
+                        destinatarioCalle, destinatarioNumero, destinatarioAvenida, destinatarioColonia, destinatarioCp,
+                        destinatarioCiudad, destinatarioEstado, destinatarioReferencia))
+                    {
+                        action = Content("true");
+                    }
+                    else
+                    {
+                        action = Content("false");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    return Content("false");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return Content("false");
+                action = Content("false");
             }
 
             return action;
