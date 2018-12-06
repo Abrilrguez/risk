@@ -1,5 +1,5 @@
 var municipios = {
-                "AGUASCALIENTES":[
+                "Aguascalientes":[
                         "Aguascalientes",
                         "Asientos",
                         "Calvillo",
@@ -12,21 +12,21 @@ var municipios = {
                         "San José de Gracia",
                         "Tepezalá"
                     ],
-                "BAJA CALIFORNIA":[
+                "Baja California":[
                         "Ensenada",
                         "Mexicali",
                         "Playas de Rosarito",
                         "Tecate",
                         "Tijuana"
                     ],
-                "BAJA CALIFORNIA SUR":[
+                "Baja California Sur":[
                         "Comondú",
                         "La Paz",
                         "Loreto",
                         "Los Cabos",
                         "Mulegé"
                     ],
-                "CAMPECHE":[
+                "Campeche":[
                         "Calakmul",
                         "Calkiní",
                         "Campeche",
@@ -39,7 +39,7 @@ var municipios = {
                         "Palizada",
                         "Tenabo"
                     ],
-                "COAHUILA":[
+                "Coahuila":[
                         "Abasolo",
                         "Acuña",
                         "Allende",
@@ -79,7 +79,7 @@ var municipios = {
                         "Villa Unión",
                         "Zaragoza"
                     ],
-                "COLIMA":[
+                "Colima":[
                         "Armería",
                         "Colima",
                         "Comala",
@@ -91,7 +91,7 @@ var municipios = {
                         "Tecomán",
                         "Villa de Alvarez"
                     ],
-                "CHIAPAS":[
+                "Chiapas":[
                         "Acacoyagua",
                         "Acala",
                         "Acapetahua",
@@ -211,7 +211,7 @@ var municipios = {
                         "Yajalón",
                         "Zinacantán"
                     ],
-                "CHIHUAHUA":[
+                "Chihuahua":[
                         "Ahumada",
                         "Aldama",
                         "Allende",
@@ -280,7 +280,7 @@ var municipios = {
                         "Uruachi",
                         "Valle de Zaragoza"
                     ],
-                "DISTRITO FEDERAL":[
+                "Distrito Federal":[
                         "Alvaro Obregón",
                         "Azcapotzalco",
                         "Benito Juárez",
@@ -298,7 +298,7 @@ var municipios = {
                         "Venustiano Carranza",
                         "Xochimilco"
                     ],
-                "DURANGO":[
+                "Durango":[
                         "Canatlán",
                         "Canelas",
                         "Coneto de Comonfort",
@@ -339,7 +339,7 @@ var municipios = {
                         "Topia",
                         "Vicente Guerrero"
                     ],
-                "GUANAJUATO":[
+                "Guanajuato":[
                         "Abasolo",
                         "Acámbaro",
                         "Allende",
@@ -387,7 +387,7 @@ var municipios = {
                         "Xichú",
                         "Yuriria"
                     ],
-                "GUERRERO":[
+                "Guerrero":[
                         "Acapulco de Juárez",
                         "Acatepec",
                         "Ahuacuotzingo",
@@ -468,7 +468,7 @@ var municipios = {
                         "Zirándaro",
                         "Zitlala"
                     ],
-                "HIDALGO":[
+                "Hidalgo":[
                         "Acatlán",
                         "Acaxochitlán",
                         "Actopan",
@@ -554,7 +554,7 @@ var municipios = {
                         "Zempoala",
                         "Zimapán"
                     ],
-                "JALISCO":[
+                "Jalisco":[
                         "Acatic",
                         "Acatlán de Juárez",
                         "Ahualulco de Mercado",
@@ -680,7 +680,7 @@ var municipios = {
                         "Zapotlán el Grande",
                         "Zapotlanejo"
                     ],
-                "ESTADO DE MEXICO":[
+                "Estado de Mexico":[
                         "Acambay",
                         "Acolman",
                         "Aculco",
@@ -807,7 +807,7 @@ var municipios = {
                         "Zumpahuacán",
                         "Zumpango"
                     ],
-                "MICHOACAN":[
+                "Michoacan":[
                         "Acuitzio",
                         "Aguililla",
                         "Alvaro Obregón",
@@ -922,7 +922,7 @@ var municipios = {
                         "Ziracuaretiro",
                         "Zitácuaro"
                     ],
-                "MORELOS":[
+                "Morelos":[
                         "Amacuzac",
                         "Atlatlahucan",
                         "Axochiapan",
@@ -957,7 +957,7 @@ var municipios = {
                         "Zacatepec de Hidalgo",
                         "Zacualpan de Amilpas"
                     ],
-                "NAYARIT":[
+                "Nayarit":[
                         "Acaponeta",
                         "Ahuacatlán",
                         "Amatlán de Cañas",
@@ -979,7 +979,7 @@ var municipios = {
                         "Tuxpan",
                         "Xalisco"
                     ],
-                "NUEVO LEON":[
+                "Nuevo Leon":[
                         "Abasolo",
                         "Agualeguas",
                         "Allende",
@@ -1032,7 +1032,7 @@ var municipios = {
                         "Vallecillo",
                         "Villaldama"
                     ],
-                "OAXACA":[
+                "Oaxaca":[
                         "Abejones",
                         "Acatlán de Pérez Figueroa",
                         "Animas Trujano",
@@ -1604,7 +1604,7 @@ var municipios = {
                         "Zapotitlán Palmas",
                         "Zimatlán de Alvarez"
                     ],
-                "PUEBLA":[
+                "Puebla":[
                         "Acajete",
                         "Acateno",
                         "Acatlán",
@@ -1823,7 +1823,7 @@ var municipios = {
                         "Zoquiapan",
                         "Zoquitlán"
                     ],
-                "QUERETARO":[
+                "Queretaro":[
                         "Amealco de Bonfil",
                         "Arroyo Seco",
                         "Cadereyta de Montes",
@@ -1843,7 +1843,7 @@ var municipios = {
                         "Tequisquiapan",
                         "Tolimán"
                     ],
-                "QUINTANA ROO":[
+                "Quintana Roo":[
                         "Cozumel",
                         "José María Morelos",
                         "Felipe Carrillo Puerto",
@@ -1855,7 +1855,7 @@ var municipios = {
                         "Benito Juárez",
                         "Bacalar"
                     ],
-                "SAN LUIS POTOSI":[
+                "San Luis Potosi":[
                         "Ahualulco",
                         "Alaquines",
                         "Aquismón",
@@ -1915,7 +1915,7 @@ var municipios = {
                         "Xilitla",
                         "Zaragoza"
                     ],
-                "SINALOA":[
+                "Sinaloa":[
                         "Ahome",
                         "Angostura",
                         "Badiraguato",
@@ -1935,7 +1935,7 @@ var municipios = {
                         "San Ignacio",
                         "Sinaloa"
                     ],
-                "SONORA":[
+                "Sonora":[
                         "Aconchi",
                         "Agua Prieta",
                         "Alamos",
@@ -2009,7 +2009,7 @@ var municipios = {
                         "Villa Pesqueira",
                         "Yécora"
                     ],
-                "TABASCO":[
+                "Tabasco":[
                         "Balancán",
                         "Cárdenas",
                         "Centla",
@@ -2028,7 +2028,7 @@ var municipios = {
                         "Teapa",
                         "Tenosique"
                     ],
-                "TAMAULIPAS":[
+                "Tamaulipas":[
                         "Abasolo",
                         "Aldama",
                         "Altamira",
@@ -2073,7 +2073,7 @@ var municipios = {
                         "Villagrán",
                         "Xicoténcatl"
                     ],
-                "TLAXCALA":[
+                "Tlaxcala":[
                         "Acuamanala de Miguel Hidalgo",
                         "Altzayanca",
                         "Amaxac de Guerrero",
@@ -2135,7 +2135,7 @@ var municipios = {
                         "Zacatelco",
                         "Zitlaltepec de Trinidad Sánchez Santos"
                     ],
-                "VERACRUZ":[
+                "Veracruz":[
                         "Acajete",
                         "Acatlán",
                         "Acayucan",
@@ -2349,7 +2349,7 @@ var municipios = {
                         "Zontecomatlán de López y Fuentes",
                         "Zozocolco de Hidalgo"
                     ],
-                "YUCATAN":[
+                "Yucatan":[
                         "Abalá",
                         "Acanceh",
                         "Akil",
@@ -2457,7 +2457,7 @@ var municipios = {
                         "Yaxkukul",
                         "Yobaín"
                     ],
-                "ZACATECAS":[
+                "Zacatecas":[
                         "Apozol",
                         "Apulco",
                         "Atolinga",
