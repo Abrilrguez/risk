@@ -441,6 +441,7 @@
     <Content Include="Views\Historial\Add.cshtml" />
     <Content Include="Views\Historial\Index.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Rastreo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Practica.Nucleo\Practica.Nucleo.csproj">
