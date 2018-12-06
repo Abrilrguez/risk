@@ -340,7 +340,7 @@ namespace Practica.Nucleo.Entidades
                     .Replace("[DESCRIPCIONPAQUETE]", orden.Paquete.Descripcion)
                     .Replace("[PRECIOPAQUETE]", orden.Precio.ToString())
 
-                    .Replace("[FECHAORDEN]", orden.Fecha.ToString("dd/MM/YYYY"))
+                    .Replace("[FECHAORDEN]", orden.Fecha.ToString("dd/MM/yyyy"))
                     .Replace("[NUMRASTREOORDEN]", orden.NumeroRastreo)
                     .Replace("[ESTADOORDEN]", orden.Estado.ToString());
 

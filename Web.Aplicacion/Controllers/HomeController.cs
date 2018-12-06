@@ -28,8 +28,13 @@ namespace Web.Aplicacion.Controllers
                 {
                     orden = Orden.ObtenerPorFolio(numeroRastreo);
                     IList<Historial> listaHistoriales = new List<Historial>();
+                    orden.Historiales.Reverse();
                     
-                    
+                    foreach (Historial historial in orden.Historiales.Reverse())
+                    {
+                        listaHistoriales.Add(historial);
+                    }
+                    orden.Historiales = listaHistoriales;
                     if (orden == null)
                     {
                         return RedirectToAction("Index", new { error = 1 });
