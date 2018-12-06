@@ -191,6 +191,10 @@
         <section class="shape-2">
             <div class="container">
                 <div class="historial">
+                    @if(orden.Historiales.Count == 0)
+                    {
+                        <h4>No hay estados</h4>
+                    }
                     @foreach (var historial in orden.Historiales)
                     {
                         <hr>

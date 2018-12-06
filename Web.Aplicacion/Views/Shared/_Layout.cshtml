@@ -82,6 +82,22 @@
     <script type="text/javascript">
         var baseUrl = "@Url.Content("~")";
     </script>
+
+    <style>
+        .nav-tabs > li.active > a {
+            color: #fff;
+            background-color: var(--color-principal);
+        }
+
+            .nav-tabs > li.active > a:hover {
+                color: #fff;
+                background-color: #d32e5e;
+            }
+
+        .nav-tabs > li > a {
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -99,13 +115,14 @@
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
                             <li class="nav-item dropdown">
-                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">@Session["usuarioNombre"]</a>
+                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">@Session["usuarioNombre"]
+                                    <i class="icon ion-md-arrow-dropdown" style="padding-left:5px"></i></a>
                                 <div role="menu" class="dropdown-menu message-dd animated zoomIn">
                                     <div class="hd-message-info">
                                         <a href="@Url.Action("Login", "Home")">
                                             <div class="hd-message-sn">
                                                 <div class="hd-mg-ctn">
-                                                    <h3>Cerrar sesion</h3>
+                                                    <h3 style="display: flex;justify-content: space-between;">Cerrar sesion<i class="icon ion-md-log-out"></i></h3>
                                                 </div>
                                             </div>
                                         </a>
@@ -262,12 +279,12 @@
 
                             <li @if (ViewBag.Title == "Usuarios") { <text> class="active" </text>    }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
-                                <a href="@Url.Action("Index", "Usuario")"><i class="icon ion-md-contact"></i>Usuarios</a>
+                                <a href="@Url.Action("Index", "Usuario")"><i class="icon ion-md-person"></i>Usuarios</a>
                             </li>
 
                             <li @if (ViewBag.Title == "Clientes") { <text> class="active" </text>   }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
-                                <a href="@Url.Action("Index", "Cliente")"><i class="icon ion-md-contacts"></i>Clientes</a>
+                                <a href="@Url.Action("Index", "Cliente")"><i class="icon ion-md-people"></i>Clientes</a>
                             </li>
                             <li @if (ViewBag.Title == "Destinatarios") { <text> class="active" </text>  }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
