@@ -58,14 +58,13 @@ function edit() {
 
         });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
         return false;
     }
 }
 
 function del() {
     var id = obtenerId();
-    alert(id);
     if (id != 0) {
         swal({
             title: "¿Estas seguro?",
@@ -101,7 +100,7 @@ function del() {
                 }
             });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.","Seleccione un registro", "error");
         return false;
     }
     cargarTabla();
