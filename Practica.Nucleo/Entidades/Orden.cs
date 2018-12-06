@@ -203,73 +203,83 @@ namespace Practica.Nucleo.Entidades
                                     string destinatarioCiudad, string destinatarioEstado, string destinatarioReferencia)
         {
             bool realizado = false;
-            try
+            if (ordenEstado.ToString() != "" && ordenPrecio.ToString() != "" && ordenFolio != "" && ordenNumRastreo != "" && ordenFecha.ToString() != "" &&
+                paquetePeso != "" && paqueteTamanio != "" && paqueteContenido != "" && paqueteDescripcion != "" &&
+                clienteNombre != "" && clienteTelefono != "" && clienteCorreo != "" && clienteRfc != "" && clienteDomicilio != "" &&
+                destinatarioNombre != "" && destinatarioTelefono != "" && destinatarioCorreo != "" && destinatarioPersona != "" && destinatarioCalle != "" && destinatarioNumero != "" &&
+                destinatarioAvenida != "" && destinatarioColonia != "" && destinatarioCp != "" && destinatarioCiudad != "" && destinatarioEstado != "" && destinatarioReferencia != "")
             {
-
-                Usuario u = Usuario.ObtenerPorId(idUsuario);
-
-                Paquete p = idPaquete == 0 ? new Paquete() : Paquete.ObtenerPorId(idPaquete);
-                p.Peso = paquetePeso;
-                p.Tamanio = paqueteTamanio;
-                p.Contenido = paqueteContenido;
-                p.Descripcion = paqueteDescripcion;
-                if (idPaquete != 0) { p.Update(); } else { p.Save(); }
-
-                Cliente c = idCliente == 0 ? new Cliente() : Cliente.ObtenerPorId(idCliente);
-                c.Nombre = clienteNombre;
-                c.Domicilio = clienteDomicilio;
-                c.Telefono = clienteTelefono;
-                c.Correo = clienteCorreo;
-                c.Rfc = clienteRfc;
-                if (idCliente != 0) { c.Update(); } else { c.Save(); }
-
-                Destinatario d = idDestinatario == 0 ? new Destinatario() : Destinatario.ObtenerPorId(idDestinatario);
-                d.Nombre = destinatarioNombre;
-                d.Calle = destinatarioCalle;
-                d.Numero = destinatarioNumero;
-                d.Avenida = destinatarioAvenida;
-                d.Colonia = destinatarioColonia;
-                d.Cp = destinatarioCp;
-                d.Ciudad = destinatarioCiudad;
-                d.Estado = destinatarioEstado;
-                d.Referencia = destinatarioReferencia;
-                d.Telefono = destinatarioTelefono;
-                d.Correo = destinatarioCorreo;
-                d.Persona = destinatarioPersona;
-                if (idDestinatario != 0) { d.Update(); } else { d.Save(); }
-                
-
-                Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
-                o.Folio = ordenFolio;
-                o.Fecha = ordenFecha;
-                o.Cliente = c;
-                o.Destinatario = d;
-                o.Usuario = u;
-                o.Paquete = p;
-                o.Precio = ordenPrecio;
-                o.NumeroRastreo = ordenNumRastreo;
-                o.Estado = (Estado) ordenEstado;
-
-                string subject = "";
-                if (idOrden != 0)
+                try
                 {
-                    subject = "Información de orden de envío actualizado Trackpack";
-                    o.Update();
-                }
-                else
-                {
-                    subject = "Información de orden de envío Trackpack";
-                    o.Save();
-                }
 
-                EnviarEmail(o, subject);
-                realizado = true;
+                    Usuario u = Usuario.ObtenerPorId(idUsuario);
+
+                    Paquete p = idPaquete == 0 ? new Paquete() : Paquete.ObtenerPorId(idPaquete);
+                    p.Peso = paquetePeso;
+                    p.Tamanio = paqueteTamanio;
+                    p.Contenido = paqueteContenido;
+                    p.Descripcion = paqueteDescripcion;
+                    if (idPaquete != 0) { p.Update(); } else { p.Save(); }
+
+                    Cliente c = idCliente == 0 ? new Cliente() : Cliente.ObtenerPorId(idCliente);
+                    c.Nombre = clienteNombre;
+                    c.Domicilio = clienteDomicilio;
+                    c.Telefono = clienteTelefono;
+                    c.Correo = clienteCorreo;
+                    c.Rfc = clienteRfc;
+                    if (idCliente != 0) { c.Update(); } else { c.Save(); }
+
+                    Destinatario d = idDestinatario == 0 ? new Destinatario() : Destinatario.ObtenerPorId(idDestinatario);
+                    d.Nombre = destinatarioNombre;
+                    d.Calle = destinatarioCalle;
+                    d.Numero = destinatarioNumero;
+                    d.Avenida = destinatarioAvenida;
+                    d.Colonia = destinatarioColonia;
+                    d.Cp = destinatarioCp;
+                    d.Ciudad = destinatarioCiudad;
+                    d.Estado = destinatarioEstado;
+                    d.Referencia = destinatarioReferencia;
+                    d.Telefono = destinatarioTelefono;
+                    d.Correo = destinatarioCorreo;
+                    d.Persona = destinatarioPersona;
+                    if (idDestinatario != 0) { d.Update(); } else { d.Save(); }
+
+
+                    Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
+                    o.Folio = ordenFolio;
+                    o.Fecha = ordenFecha;
+                    o.Cliente = c;
+                    o.Destinatario = d;
+                    o.Usuario = u;
+                    o.Paquete = p;
+                    o.Precio = ordenPrecio;
+                    o.NumeroRastreo = ordenNumRastreo;
+                    o.Estado = (Estado)ordenEstado;
+
+                    string subject = "";
+                    if (idOrden != 0)
+                    {
+                        subject = "Información de orden de envío actualizado Trackpack";
+                        o.Update();
+                    }
+                    else
+                    {
+                        subject = "Información de orden de envío Trackpack";
+                        o.Save();
+                    }
+
+                    EnviarEmail(o, subject);
+                    realizado = true;
+                }   
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                realizado = false;
             }
-            
             return realizado;
         }
 

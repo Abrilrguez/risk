@@ -78,43 +78,56 @@ function guardar() {
         ordenEstado = 3;
     }
 
-    $.ajax({
-        url: baseUrl + "Orden/Guardar/",
-        data: {
-            idUsuario: idUsuario,
-            idOrden: idOrden,
-            ordenEstado: ordenEstado, ordenPrecio: ordenPrecio, ordenFolio: ordenFolio, ordenNumRastreo: ordenNumRastreo, ordenFecha: ordenFecha,
-            idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
-            idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
-            idDestinatario: idDestinatario, destinatarioNombre: destinatarioNombre, destinatarioTelefono: destinatarioTelefono, destinatarioCorreo: destinatarioCorreo, destinatarioPersona: destinatarioPersona,
-            destinatarioCalle: destinatarioCalle, destinatarioNumero: destinatarioNumero, destinatarioAvenida: destinatarioAvenida, destinatarioColonia: destinatarioColonia, destinatarioCp: destinatarioCp,
-            destinatarioCiudad: destinatarioCiudad, destinatarioEstado: destinatarioEstado, destinatarioReferencia: destinatarioReferencia
-        },
-        cache: false,
-        tradicional: true,
-        success: function (data) {
-            if (data == "true") {
-                var modal = $("#mdMain");
-                modal.modal("hide");
+    if (ordenFecha !== "" && ordenFolio !== "" && ordenNumRastreo !== "" && ordenPrecio !== "" && ordenEstado !== "" &&
+        paquetePeso !== "" && paqueteContenido !== "" && paqueteDescripcion !== "" && paqueteTamanio !== "" &&
+        clienteCorreo !== "" && clienteDomicilio !== "" && clienteNombre !== "" && clienteRfc !== "" && clienteTelefono !== "" &&
+        destinatarioAvenida !== "" && destinatarioCalle !== "" && destinatarioCiudad !== "" && destinatarioColonia !== "" && destinatarioCorreo !== "" &&
+        destinatarioCp !== "" && destinatarioEstado !== "" && destinatarioNombre !== "" && destinatarioNumero !== "" && destinatarioPersona !== "" &&
+        destinatarioReferencia !== "" && destinatarioTelefono !== "") {
 
-                cargarTabla();
+        $.ajax({
+            url: baseUrl + "Orden/Guardar/",
+            data: {
+                idUsuario: idUsuario,
+                idOrden: idOrden,
+                ordenEstado: ordenEstado, ordenPrecio: ordenPrecio, ordenFolio: ordenFolio, ordenNumRastreo: ordenNumRastreo, ordenFecha: ordenFecha,
+                idPaquete: idPaquete, paquetePeso: paquetePeso, paqueteTamanio: paqueteTamanio, paqueteContenido: paqueteContenido, paqueteDescripcion: paqueteDescripcion,
+                idCliente: idCliente, clienteNombre: clienteNombre, clienteTelefono: clienteTelefono, clienteCorreo: clienteCorreo, clienteRfc: clienteRfc, clienteDomicilio: clienteDomicilio,
+                idDestinatario: idDestinatario, destinatarioNombre: destinatarioNombre, destinatarioTelefono: destinatarioTelefono, destinatarioCorreo: destinatarioCorreo, destinatarioPersona: destinatarioPersona,
+                destinatarioCalle: destinatarioCalle, destinatarioNumero: destinatarioNumero, destinatarioAvenida: destinatarioAvenida, destinatarioColonia: destinatarioColonia, destinatarioCp: destinatarioCp,
+                destinatarioCiudad: destinatarioCiudad, destinatarioEstado: destinatarioEstado, destinatarioReferencia: destinatarioReferencia
+            },
+            cache: false,
+            tradicional: true,
+            success: function (data) {
+                if (data == "true") {
+                    var modal = $("#mdMain");
+                    modal.modal("hide");
+
+                    cargarTabla();
+                }
+            },
+            error: function (xhr, exception) {
+                swal(exception);
             }
-        },
-        error: function (xhr, exception) {
-            swal(exception);
-        }
 
-    });
-    
-    if (idOrden != 0) {
-        swal("Listo", "Se ha actualizado el usuario", "success");
+        });
+
+        if (idOrden != 0) {
+            swal("Listo", "Se ha actualizado el usuario", "success");
+            activarRenglon();
+
+        } else {
+            swal("Listo", "Se ha guardado el usuario", "success");
+            activarRenglon();
+        }
         activarRenglon();
 
     } else {
-        swal("Listo", "Se ha guardado el usuario", "success");
-        activarRenglon();
+        swal("Error.", "Llene los campos correctamente", "error");
     }
-    activarRenglon();
+
+    
 }
 
 function del() {

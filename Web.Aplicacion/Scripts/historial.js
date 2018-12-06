@@ -125,17 +125,21 @@ function guardar() {
                     var modal = $("#mdMain");
                     modal.modal("hide");
                     activarRenglon();
+                    if (id != 0) {
+                        swal("Listo", "Se ha actualizado el historial", "success");
+                    } else {
+                        swal("Listo", "Se ha guardado el historial", "success");
+                    }
+                } else
+                {
+                    swal("No se puede agregar un estatus", "La orden se marcó como entregada", "error");
                 }
             },
             error: function (xhr, exception) {
 
             }
         });
-        if (id != 0) {
-            swal("Listo", "Se ha actualizado el historial", "success");
-        } else {
-            swal("Listo", "Se ha guardado el historial", "success");
-        }
+       
         cargarTabla();
 }
 

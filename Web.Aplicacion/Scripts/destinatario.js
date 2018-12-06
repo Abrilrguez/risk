@@ -126,24 +126,28 @@ function cargarDatos() {
 }
 
 
+
+
 function guardar() {
     var id = $.trim($("#destinatario-id").val());
     var nombre = $.trim($("#nombre").val());
     var calle = $.trim($("#calle").val());
-    var numero1 = $.trim($("#numero1").val());
-    var numero2 = $.trim($("#numero2").val());
-    var numero3 = $.trim($("#numero3").val());
-    var numero = numero1 + "," + numero2 + "," + numero3;
+    var numero = $.trim($("#numero").val());
     var avenida = $.trim($("#avenida").val());
     var colonia = $.trim($("#colonia").val());
     var cp = $.trim($("#cp").val());
     var ciudad = $.trim($("#municipio").val());
     var estado = $.trim($("#estado").val());
     var referencia = $.trim($("#referencia").val());
-    var telefono = $.trim($("#telefono").val());
+    var telefono1 = $.trim($("#telefono1").val());
+    var telefono2 = $.trim($("#telefono2").val());
+    var telefono3 = $.trim($("#telefono3").val());
+    var telefono = telefono1 + "," + telefono2 + "," + telefono3;
     var correo = $.trim($("#correo").val());
     var persona = $.trim($("#persona").val());
-    
+
+    if (nombre !== "" && calle !== "" && avenida !== "" && colonia !== "" && cp !== "" && ciudad !== "" && estado !== "" && referencia !== "" &&
+        telefono1 !== "" && telefono2 !== "" && telefono3 !== "" && correo !== "" && persona !== "") {
         $.ajax({
             url: baseUrl + "Destinatario/Guardar/",
             data: {
@@ -169,6 +173,9 @@ function guardar() {
             swal("Listo", "Se ha guardado el destinatario", "success");
         }
         cargarTabla();
+    } else {
+        swal("Error.", "Llene los campos correctamente.", "error");
+    }
 }
 
 function obtenerId() {

@@ -28,6 +28,7 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="@Url.Content("~/Content/assets/img/logo/Logo-1.png")">
     <script src="@Url.Content("~/Scripts/rastreo.js")"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -62,6 +63,7 @@
                         </p>
                         <!-- Subscription form-->
                         <form action="@Url.Action("Rastreo", "Home")" class="subscription-form mt-5">
+                            @if(ViewBag.Error != null) {<script>swal("Oh no!", "Ingresa un numero de rastreo valido", "error");</script>}
                             <div class="form-group">
                                 <label>Número de rastreo</label>
                                 <input type="text" name="numeroRastreo" placeholder="Número de 10 digitos" id="numeroRastreo" class="form-control" maxlength="10">
