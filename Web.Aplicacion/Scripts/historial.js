@@ -137,6 +137,7 @@ function guardar() {
             }
         });
     } else {
+        swal("Error.", "Llene los campos correctamente", "error");
 
     }
        
@@ -154,6 +155,7 @@ function edit() {
         });
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
@@ -196,6 +198,7 @@ function del() {
             });
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
     cargarTabla();

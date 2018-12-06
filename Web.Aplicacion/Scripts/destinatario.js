@@ -59,6 +59,7 @@ function edit() {
         });
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }

@@ -41,6 +41,7 @@ function edit() {
         });
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
@@ -83,6 +84,7 @@ function del() {
             });
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
     cargarTabla();
@@ -97,6 +99,7 @@ function changePassword() {
         $('#header-text').text("Cambiar contraseña");
     } else {
         swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
