@@ -105,11 +105,11 @@
                         if (cliente.Nombre.search(expression) != -1 || cliente.Correo.search(expression) != -1) {
                             if ($('#buscar-cliente').val() != "") {
                                 $('#result-cliente').append('<li class="list-group-item link-class list-group-item-info">' + cliente.Nombre + ' | <span class="text-muted">' + cliente.Correo + '</span><span hidden class="text-muted"> |' + cliente.Id + '</span></li>');
-                                $('#cliente-nombre').val("").prop('disabled', false);
-                                $('#cliente-telefono').val("").prop('disabled', false);
-                                $('#cliente-correo').val("").prop('disabled', false);
-                                $('#cliente-rfc').val("").prop('disabled', false);
-                                $('#cliente-domicilio').val("").prop('disabled', false);
+                                $('#cliente-nombre').val("").prop('enabled', false);
+                                $('#cliente-telefono').val("").prop('enabled', false);
+                                $('#cliente-correo').val("").prop('enabled', false);
+                                $('#cliente-rfc').val("").prop('enabled', false);
+                                $('#cliente-domicilio').val("").prop('enabled', false);
 
                             }
 
@@ -128,11 +128,11 @@
         loadCliente(click_text[2]);
         
         $('#idCliente').val(click_text[2]);
-        $('#cliente-nombre').prop('disabled', true);
-        $('#cliente-correo').prop('disabled', true);
-        $('#cliente-rfc').prop('disabled', true);
-        $('#cliente-telefono').prop('disabled', true);
-        $('#cliente-domicilio').prop('disabled', true);
+        $('#cliente-nombre').prop('enabled', true);
+        $('#cliente-correo').prop('enabled', true);
+        $('#cliente-rfc').prop('enabled', true);
+        $('#cliente-telefono').prop('enabled', true);
+        $('#cliente-domicilio').prop('enabled', true);
 
         $("#result-cliente").html('');
         $('#buscar-cliente').val("");
@@ -178,18 +178,18 @@
                         if (destinatario.Nombre.search(expression) != -1 || destinatario.Correo.search(expression) != -1) {
                             if ($('#buscar-destinatario').val() != "") {
                                 $('#result-destinatario').append('<li class="list-group-item link-class list-group-item-info">' + destinatario.Nombre + ' | <span class="text-muted">' + destinatario.Correo + '</span><span hidden class="text-muted"> |' + destinatario.Id + '</span></li>');
-                                $('#destinatario-nombre').val("").prop('disabled', false);
-                                $('#destinatario-telefono').val("").prop('disabled', false);
-                                $('#destinatario-correo').val("").prop('disabled', false);
-                                $('#destinatario-persona').val("").prop('disabled', false);
-                                $('#destinatario-calle').val("").prop('disabled', false);
-                                $('#destinatario-numero').val("").prop('disabled', false);
-                                $('#destinatario-avenida').val("").prop('disabled', false);
-                                $('#destinatario-colonia').val("").prop('disabled', false);
-                                $('#destinatario-cp').val("").prop('disabled', false);
-                                $('#destinatario-ciudad').val("").prop('disabled', false);
-                                $('#destinatario-estado').val("").prop('disabled', false);
-                                $('#destinatario-referencia').val("").prop('disabled', false);
+                                $('#destinatario-nombre').val("").prop('enabled', false);
+                                $('#destinatario-telefono').val("").prop('enabled', false);
+                                $('#destinatario-correo').val("").prop('enabled', false);
+                                $('#destinatario-persona').val("").prop('enabled', false);
+                                $('#destinatario-calle').val("").prop('enabled', false);
+                                $('#destinatario-numero').val("").prop('enabled', false);
+                                $('#destinatario-avenida').val("").prop('enabled', false);
+                                $('#destinatario-colonia').val("").prop('enabled', false);
+                                $('#destinatario-cp').val("").prop('enabled', false);
+                                $('#destinatario-ciudad').val("").prop('enabled', false);
+                                $('#destinatario-estado').val("").prop('enabled', false);
+                                $('#destinatario-referencia').val("").prop('enabled', false);
                             }
 
 
@@ -207,17 +207,17 @@
         loadDestinatario(click_text[2]);
         $('#idDestinatario').val(click_text[2]);
         $('#destinatario-nombre').prop('disabled', true);
-        $('#destinatario-telefono').val("").prop('disabled', true);
-        $('#destinatario-correo').val("").prop('disabled', true);
-        $('#destinatario-persona').val("").prop('disabled', true);
-        $('#destinatario-calle').val("").prop('disabled', true);
-        $('#destinatario-numero').val("").prop('disabled', true);
-        $('#destinatario-avenida').val("").prop('disabled', true);
-        $('#destinatario-colonia').val("").prop('disabled', true);
-        $('#destinatario-cp').val("").prop('disabled', true);
-        $('#destinatario-ciudad').val("").prop('disabled', true);
-        $('#destinatario-estado').val("").prop('disabled', true);
-        $('#destinatario-referencia').val("").prop('disabled', true);
+        $('#destinatario-telefono').val("").prop('enabled', true);
+        $('#destinatario-correo').val("").prop('enabled', true);
+        $('#destinatario-persona').val("").prop('enabled', true);
+        $('#destinatario-calle').val("").prop('enabled', true);
+        $('#destinatario-numero').val("").prop('enabled', true);
+        $('#destinatario-avenida').val("").prop('enabled', true);
+        $('#destinatario-colonia').val("").prop('enabled', true);
+        $('#destinatario-cp').val("").prop('enabled', true);
+        $('#destinatario-ciudad').val("").prop('enabled', true);
+        $('#destinatario-estado').val("").prop('enabled', true);
+        $('#destinatario-referencia').val("").prop('enabled', true);
 
         $("#result-destinatario").html('');
         $('#buscar-destinatario').val("");
