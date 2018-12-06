@@ -2,6 +2,18 @@
     cargarTabla();
 });
 
+
+function obtenerId() {
+    var table = $('#table-clientes').DataTable();
+    var id = 0;
+    if (table.$('tr.info')[0] != undefined) {
+        var selectedIndex = table.$('tr.info')[0]._DT_RowIndex
+        var row = table.row(selectedIndex).data();
+        id = row.Id;
+    }
+    return id;
+}
+
 function cargarTabla() {
     var table = $('#table-clientes').DataTable();
     table.destroy();
@@ -29,21 +41,13 @@ function add() {
 }
 
 function edit() {
-    alert("edit2");
     var modalC = $("#mdContent");
-
-    alert("edit1");
     var id = obtenerId();
-    alert("edit");
     if (id != 0) {
-        alert("if  de edit");
-        $("#mdMain").modal();
-        modalC.load(baseUrl + "Cliente/Edit/" + id, function () {
+        $('#mdMain').modal();
+        modalC.load(baseUrl + 'Cliente/Add/' + id, function () {
             cargarDatos();
-
         });
-
-        alert("editAAA");
     } else {
         swal("Seleccione un registro");
         return false;
@@ -96,9 +100,7 @@ function del() {
 function cargarDatos() {
 
     var id = $.trim($("#cliente-id").val());
-    alert(id);
     if (id != "" && id != 0) {
-        alert("if de cargar datos");
         $.ajax({
             url: baseUrl + "Cliente/ObtenerPorId",
             data: { id: id },
@@ -108,10 +110,10 @@ function cargarDatos() {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 $("#nombre").val(data.Nombre);
-                $("#domicilio").val(data.Direccion);
+                $("#domicilio").val(data.Domicilio);
                 $("#telefono").val(data.Telefono);
-                $("#correo").val(data.Cuenta);
-                $("#rfc").val(data.Rol);
+                $("#correo").val(data.Correo);
+                $("#rfc").val(data.Rfc);
             }
         });
     }
@@ -153,20 +155,10 @@ function guardar() {
         cargarTabla();
     }
     else {
-        swal("Error", "Llene los campos correctamente", "error");
+        swal("Error", "Llene los campos correctamente");
     }
 }
 
-function obtenerId() {
-    var table = $('#table-clientes').DataTable();
-    var id = 0;
-    if (table.$('tr.info')[0] != undefined) {
-        var selectedIndex = table.$('tr.info')[0]._DT_RowIndex
-        var row = table.row(selectedIndex).data();
-        id = row.Id;
-    }
-    return id;
-}
 
 function activarRenglon() {
     var singleSelect = $('.datatable-selection-single').DataTable();

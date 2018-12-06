@@ -2,6 +2,18 @@
     cargarTabla();
 });
 
+
+function obtenerId() {
+    var table = $('#table-destinatarios').DataTable();
+    var id = 0;
+    if (table.$('tr.info')[0] != undefined) {
+        var selectedIndex = table.$('tr.info')[0]._DT_RowIndex
+        var row = table.row(selectedIndex).data();
+        id = row.Id;
+    }
+    return id;
+}
+
 function cargarTabla() {
     var table = $('#table-destinarios').DataTable();
     table.destroy();
@@ -41,7 +53,7 @@ function edit() {
     var id = obtenerId();
     if (id != 0) {
         $("#mdMain").modal();
-        modalC.load(baseUrl + "Destinatario/Edit/" + id, function () {
+        modalC.load(baseUrl + "Destinatario/Add/" + id, function () {
             cargarDatos();
 
         });
@@ -116,7 +128,7 @@ function cargarDatos() {
                
                 $("#estado").val(data.Estado);
                 $("#referencia").val(data.Referencia);
-                $("#Telefono").val(data.Telefono);
+                $("#telefono").val(data.Telefono);
                 $("#correo").val(data.Correo);
                 $("#persona").val(data.Persona);
             }
@@ -178,16 +190,6 @@ function guardar() {
     }
 }
 
-function obtenerId() {
-    var table = $('#table-destinatarios').DataTable();
-    var id = 0;
-    if (table.$('tr.info')[0] != undefined) {
-        var selectedIndex = table.$('tr.info')[0]._DT_RowIndex
-        var row = table.row(selectedIndex).data();
-        id = row.Id;
-    }
-    return id;
-}
 
 function activarRenglon() {
     var singleSelect = $('.datatable-selection-single').DataTable();
