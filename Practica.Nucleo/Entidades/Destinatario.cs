@@ -65,7 +65,7 @@ namespace Practica.Nucleo.Entidades
             return u;
         }
 
-        public static bool Guardar(string nombre, string calle, string numero, string avenida, string colonia, string cp, string ciudad,
+        public static bool Guardar(int id,string nombre, string calle, string numero, string avenida, string colonia, string cp, string ciudad,
             string estado, string referencia, string telefono, string correo, string persona)
         {
             bool realizado = false;

@@ -51,6 +51,7 @@ function add() {
 function edit() {
     var modalC = $("#mdContent");
     var id = obtenerId();
+    alert(id);
     if (id != 0) {
         $("#mdMain").modal();
         modalC.load(baseUrl + "Destinatario/Add/" + id, function () {
@@ -108,7 +109,7 @@ function del() {
 
 function cargarDatos() {
     var id = $.trim($("#destinatario-id").val());
-
+    alert(id);
     if (id != "" && id != 0) {
         $.ajax({
             url: baseUrl + "Destinatario/ObtenerPorId",
@@ -133,7 +134,7 @@ function cargarDatos() {
                 $("#persona").val(data.Persona);
             }
         });
-    }
+    } else{alert("No entro")}
     return false;
 }
 

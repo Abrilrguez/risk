@@ -19,7 +19,7 @@ namespace Web.Aplicacion.Controllers
 
         public ActionResult Add(int id)
         {
-            ViewBag.IdUsuario = id;
+            ViewBag.IdDestinatario = id;
             return PartialView("~/Views/Destinatario/Add.cshtml");
         }
 
@@ -51,7 +51,7 @@ namespace Web.Aplicacion.Controllers
             return Json(u, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Guardar(String nombre, String calle, String numero, String avenida, String colonia, String cp, String ciudad,
+        public ActionResult Guardar(int id,String nombre, String calle, String numero, String avenida, String colonia, String cp, String ciudad,
             String estado, String referencia, String telefono, String correo, String persona)
         {
             ActionResult action = null;
@@ -59,7 +59,7 @@ namespace Web.Aplicacion.Controllers
             {
                 if (nombre!="" && calle != "" && numero != "" && colonia != "" && avenida != "" && cp != "" && ciudad != "" && estado != "" && referencia != "" && telefono != "" && correo != "" && persona != "" )
                 {
-                    if (Destinatario.Guardar(nombre, calle, numero, avenida, colonia, cp, ciudad, estado, referencia, telefono, correo, persona))
+                    if (Destinatario.Guardar(id,nombre, calle, numero, avenida, colonia, cp, ciudad, estado, referencia, telefono, correo, persona))
                     {
                         action = Content("true");
                     }
