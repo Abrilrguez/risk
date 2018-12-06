@@ -129,42 +129,44 @@ function guardar() {
 
     
 }
-
 function del() {
     var id = obtenerId();
-    swal({
-        title: "¿Estás seguro?",
-        text: "¡Una vez borrado no se podrá ver más tu registro!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-        .then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: baseUrl + "Orden/Eliminar",
-                    data: {
-                        id: id
-                    },
-                    cache: false,
-                    tradicional: true,
-                    success: function (data) {
-                        if (data == "true") {
-                            swal("¡Genial!", "La acción se realizó con éxito", "success");
-                            cargarTabla();
-                        } else {
-                            swal("¡Error!", "La acción no se realizó con éxito", "error");
+    if (id != 0) {
+        swal({
+            title: "¿Estas seguro?",
+            text: "Una vez eliminado, no podrás recuperar este historial",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: baseUrl + "Orden/Eliminar/",
+                        data: {
+                            id: id
+                        },
+                        cache: false,
+                        tradicional: true,
+                        success: function (data) {
+                            if (data == "true") {
+                                cargarTabla();
+                            }
+                        },
+                        error: function (xhr, exception) {
+
                         }
-                    },
-                    error: function (xhr, exception) {
-                        swal("¡Error!", "La acción no se realizó con éxito", "error");
-                    }
-                });
-            } else {
-                swal("Tu registro de orden no se elimino con éxito");
-                cargarTabla();
-            }
-        });
+                    });
+                    swal("Listo", "Se ha eliminado correctamente la orden", "success");
+                } else {
+                    swal("Error", "Se ha cancelado la operación de eliminar orden", "error");
+                    cargarTabla();
+                }
+            });
+    } else {
+        swal("Error", "Seleccione un registro de la tabla", "error");
+        return false;
+    }
     cargarTabla();
 }
 function obtenerId() {
