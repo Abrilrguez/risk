@@ -165,6 +165,7 @@ function edit() {
         $('#mdMain').modal();
         modalC.load(baseUrl + 'Historial/Add/' + id, function () {
             cargarDatos();
+            activarRenglon();
         });
     } else {
         swal("Error.", "Seleccione un registro", "error");
