@@ -5,6 +5,48 @@
 @{
     ViewBag.Title = "Historial";
 }
+<!-- Breadcomb area Start-->
+<div class="breadcomb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+                    <div class="row" style="display:flex; align-items:center;">
+                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                            <div class="breadcomb-wp">
+                                <div class="breadcomb-icon">
+                                    <i class="icon ion-md-calendar" style="height:10vh; width:10vh; display:flex; align-items:center;justify-content: center;"></i>
+                                </div>
+                                <div class="breadcomb-ctn" style="display:flex; align-items:center;">
+                                    <h2 style="margin-bottom:0">Historial</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="opciones" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="display:flex; justify-content:end;">
+                            <div class="inbox-btn-st-ls btn-toolbar">
+                                <div class="btn-group ib-btn-gp active-hook nk-email-inbox">
+                                    <button class="btn btn-default btn-sm" onclick="add();">
+                                        <i class="icon ion-md-add-circle"></i>
+                                        Agregar
+                                    </button>
+                                    <button class="btn btn-default btn-sm" onclick="edit();">
+                                        <i class="icon ion-md-create"></i>
+                                        Editar
+                                    </button>
+                                    <button class="btn btn-default btn-sm" onclick="del();">
+                                        <i class="icon ion-md-trash"></i>
+                                        Borrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcomb area End-->
 <!-- Inbox area Start-->
 <div class="inbox-area">
     <div class="container">
@@ -18,28 +60,9 @@
                             <button onclick="cargarTabla();" class="btn search-ib">Buscar</button>
                         </div>
                     </div>
-                    <div class="inbox-btn-st-ls btn-toolbar">
-                        <div class="btn-group ib-btn-gp active-hook nk-email-inbox">
-                            <button class="btn btn-default btn-sm" onclick="add();">
-                                <i class="notika-icon notika-plus-symbol"></i>
-                                Agregar
-                            </button>
-                            <button class="btn btn-default btn-sm">
-                                <i class="notika-icon notika-eye"></i>
-                                Ver orden
-                            </button>
-                            <button class="btn btn-default btn-sm" onclick="edit();">
-                                <i class="notika-icon notika-icon notika-draft"></i>
-                                Editar
-                            </button>
-                            <button class="btn btn-default btn-sm" onclick="del();">
-                                <i class="notika-icon notika-trash"></i>
-                                Borrar
-                            </button>
-                        </div>
-                    </div>
+                    <br />
                     <div class="table-responsive">
-                        <table id="table-historiales" class="table table-striped datatable-selection-single">
+                        <table id="table-historiales" style="display:none" class="table table-striped datatable-selection-single">
                             <thead>
                                 <tr>
                                     <th id="ide" hidden>Id</th>

@@ -1,4 +1,9 @@
-﻿function obtenerIdCurso() {
+﻿$(document).ready(function () {
+    $('#opciones').hide();
+    $('#table-historiales').hide();
+});
+
+function obtenerIdCurso() {
     var folio = $('#folio').val();
     if (folio != "") {
         $.ajax({
@@ -18,24 +23,32 @@
 
 function cargarTabla() {
     obtenerIdCurso();
+    
     var table = $('#table-historiales').DataTable();
     var id = $('#folio').val();
     table.destroy();
-    $('#table-historiales').DataTable({
-        "autoWidth": true,
-        "processing": true,
-        "ajax": baseUrl + "Historial/ObtenerPorOrden/" + id,
-        "columns": [
-            { "data": "Id", visible: false, searchable: false },
-            { "data": "Fecha", className: "fecha" },
-            { "data": "Descripcion" },
-            { "data": "Estado" },
-            { "data": "Ciudad" },
-            { "data": "EstadoPaquete" }
-        ]
-    });
+    if (id != "" && id.length >= 10) {
+        $('#opciones').show();
+        $('#table-historiales').show();
+        $('#table-historiales').DataTable({
+            "autoWidth": true,
+            "processing": true,
+            "ajax": baseUrl + "Historial/ObtenerPorOrden/" + id,
+            "columns": [
+                { "data": "Id", visible: false, searchable: false },
+                { "data": "Fecha", className: "fecha" },
+                { "data": "Descripcion" },
+                { "data": "Estado" },
+                { "data": "Ciudad" },
+                { "data": "EstadoPaquete" }
+            ]
+        });
 
-    activarRenglon();
+        activarRenglon();
+    } else {
+        swal("Oops!", "Ingresa un número de rastreo valido", "error")
+    }
+    
 }
 
 function add() {
