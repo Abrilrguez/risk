@@ -1,16 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Add";
+    Layout = null;
 }
-<script type="text/javascript" src="@Url.Content("~/Scripts/municipios.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/select_estados.js")"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-</script>
-
 
 
 <input type="hidden" name="destinatario-id" id="destinatario-id" value="@ViewBag.IdDestinatario" />
@@ -56,7 +48,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <input type="number" class="form-control input-sm" placeholder="Numero" id="numero">
+                                <input type="text" class="form-control input-sm" placeholder="Numero" id="numero">
                             </div>
                         </div>
                     </div>
@@ -98,7 +90,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <input type="number" class="form-control input-sm" placeholder="Codigo postal" id="cp">
+                                <input type="text" class="form-control input-sm" placeholder="Codigo postal" id="cp">
                             </div>
                         </div>
                     </div>
@@ -112,8 +104,9 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <select type="text" class="form-control input-sm" placeholder="Estado" id="estado"></select>
-                                
+
+                                <input type="text" class="form-control input-sm" placeholder="Estado" id="estado">
+
                             </div>
                         </div>
                     </div>
@@ -127,7 +120,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <select type="text" class="form-control input-sm" placeholder="Municipio" id="municipio"></select>
+                                <input type="text" class="form-control input-sm" placeholder="municipio" id="municipio">
                             </div>
                         </div>
                     </div>
@@ -155,7 +148,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <input type="number" class="form-control input-sm" placeholder="Telefono 1" id="telefono1">
+                                <input type="text" class="form-control input-sm" placeholder="Telefono 1" id="telefono1">
                             </div>
                         </div>
                     </div>
@@ -169,7 +162,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <input type="number" class="form-control input-sm" placeholder="Telefono 2(Opcional)" id="telefono2">
+                                <input type="text" class="form-control input-sm" placeholder="Telefono 2(Opcional)" id="telefono2">
                             </div>
                         </div>
                     </div>
@@ -183,7 +176,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <input type="number" class="form-control input-sm" placeholder="Telefono 3(Opcional)" id="telefono3">
+                                <input type="text" class="form-control input-sm" placeholder="Telefono 3(Opcional)" id="telefono3">
                             </div>
                         </div>
                     </div>
@@ -223,3 +216,4 @@
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="guardar()">Guardar</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+</div>

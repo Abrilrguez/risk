@@ -108,7 +108,6 @@ function del() {
 
 function cargarDatos() {
     var id = $.trim($("#destinatario-id").val());
-
     if (id != "" && id != 0) {
         $.ajax({
             url: baseUrl + "Destinatario/ObtenerPorId",
@@ -119,6 +118,7 @@ function cargarDatos() {
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 $("#nombre").val(data.Nombre);
+                
                 $("#calle").val(data.Calle);
                 $("#numero").val(data.Numero);
                 $("#avenida").val(data.Avenida);
@@ -128,12 +128,12 @@ function cargarDatos() {
                
                 $("#estado").val(data.Estado);
                 $("#referencia").val(data.Referencia);
-                $("#telefono").val(data.Telefono);
+                $("#telefono1").val(data.Telefono);
                 $("#correo").val(data.Correo);
                 $("#persona").val(data.Persona);
             }
         });
-    }
+    } else{alert("No entro")}
     return false;
 }
 
