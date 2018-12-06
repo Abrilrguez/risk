@@ -116,30 +116,35 @@ function guardar() {
     var correo = $.trim($("#correo").val());
     var rfc = $.trim($("#rfc").val());
 
-    $.ajax({
-        url: baseUrl + "Cliente/Guardar/",
-        data: {
-            id: id, nombre: nombre, domicilio: domicilio, telefono: telefono, correo: correo, rfc: rfc
-        },
-        cache: false,
-        tradicional: true,
-        success: function (data) {
-            if (data == "true") {
-                var modal = $("#mdMain");
-                modal.modal("hide");
-                cargarTabla();
-            }
-        },
-        error: function (xhr, exception) {
+    if (nombre !== "" && domicilio !== "" && telefono !== "" && correo !== "" && rfc !== "") {
+        $.ajax({
+            url: baseUrl + "Cliente/Guardar/",
+            data: {
+                id: id, nombre: nombre, domicilio: domicilio, telefono: telefono, correo: correo, rfc: rfc
+            },
+            cache: false,
+            tradicional: true,
+            success: function (data) {
+                if (data == "true") {
+                    var modal = $("#mdMain");
+                    modal.modal("hide");
+                    cargarTabla();
+                }
+            },
+            error: function (xhr, exception) {
 
+            }
+        });
+        if (id != 0) {
+            swal("Listo", "Se ha actualizado el cliente", "success");
+        } else {
+            swal("Listo", "Se ha guardado el cliente", "success");
         }
-    });
-    if (id != 0) {
-        swal("Listo", "Se ha actualizado el cliente", "success");
-    } else {
-        swal("Listo", "Se ha guardado el cliente", "success");
+        cargarTabla();
     }
-    cargarTabla();
+    else {
+        swal("Error", "Llene los campos correctamente", "error");
+    }
 }
 
 function obtenerId() {

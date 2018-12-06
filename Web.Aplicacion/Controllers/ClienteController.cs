@@ -53,21 +53,28 @@ namespace Web.Aplicacion.Controllers
         public ActionResult Guardar(String nombre, String domicilio, String telefono, String correo, String rfc)
         {
             ActionResult action = null;
-            try
+            if (nombre!=""&& domicilio != "" && telefono != "" && correo != "" && rfc != "")
             {
-                if (Cliente.Guardar(nombre, domicilio, telefono, correo, rfc))
+                try
                 {
-                    action = Content("true");
-                }
-                else
-                {
-                    action = Content("false");
-                }
+                    if (Cliente.Guardar(nombre, domicilio, telefono, correo, rfc))
+                    {
+                        action = Content("true");
+                    }
+                    else
+                    {
+                        action = Content("false");
+                    }
 
+                }
+                catch (Exception ex)
+                {
+                    return Content("false");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return Content("false");
+                action = Content("false");
             }
 
             return action;

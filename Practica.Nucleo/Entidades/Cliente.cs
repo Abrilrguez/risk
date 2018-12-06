@@ -67,26 +67,28 @@ namespace Practica.Nucleo.Entidades
         public static bool Guardar(string nombre, string domicilio, string telefono, string correo, string rfc)
         {
             bool realizado = false;
-            try
+            if (nombre != "" && domicilio != "" && telefono != "" && correo != "" && rfc != "")
             {
-                //Usuario u = new Usuario();
-                //if (id != 0) u = ObtenerPorId(id);
+                try
+                {
+                    Cliente u = new Cliente();
+                    u.Nombre = nombre;
+                    u.Domicilio = domicilio;
+                    u.Telefono = telefono;
+                    u.Correo = correo;
+                    u.Rfc = rfc;
+                    u.Save();
 
-                //Usuario u = id == 0 ? new Usuario() : ObtenerPorId(id);
-
-                Cliente u = new Cliente();
-                u.Nombre = nombre;
-                u.Domicilio = domicilio;
-                u.Telefono = telefono;
-                u.Correo = correo;
-                u.Rfc = rfc;
-                u.Save();
-               
-                realizado = true;
+                    realizado = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                realizado = false;
             }
 
             return realizado;
