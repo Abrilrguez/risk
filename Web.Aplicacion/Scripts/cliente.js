@@ -129,7 +129,7 @@ function guardar() {
     var telefono = $.trim($("#telefono").val());
     var correo = $.trim($("#correo").val());
     var rfc = $.trim($("#rfc").val());
-
+    var modal = $("#mdMain");
     if (nombre !== "" && domicilio !== "" && telefono !== "" && correo !== "" && rfc !== "") {
         $.ajax({
             url: baseUrl + "Cliente/Guardar/",
@@ -157,7 +157,7 @@ function guardar() {
         cargarTabla();
     }
     else {
-        swal("Error", "Llene los campos correctamente");
+        swal("Error", "Llene los campos correctamente", "error");
     }
 }
 

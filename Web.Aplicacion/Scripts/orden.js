@@ -27,7 +27,7 @@ function add() {
     activarRenglon();
 }
 function guardar() {
-
+    
     //Orden.
     var idOrden = $.trim($("#orden-id").val());
     var ordenFecha = $.trim($("#orden-fecha").val());
@@ -125,7 +125,7 @@ function guardar() {
 
     } else {
         swal("Error.", "Llene los campos correctamente", "error");
-
+       
     }
 
     
