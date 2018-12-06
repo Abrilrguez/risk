@@ -65,6 +65,7 @@ function edit() {
 
 function del() {
     var id = obtenerId();
+    alert(id);
     if (id != 0) {
         swal({
             title: "¿Estas seguro?",
@@ -133,7 +134,7 @@ function cargarDatos() {
                 $("#persona").val(data.Persona);
             }
         });
-    } else{alert("No entro")}
+    } 
     return false;
 }
 
