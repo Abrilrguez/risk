@@ -12,7 +12,7 @@ namespace Web.Aplicacion.Controllers
     public class UsuarioController : Controller
     {
 
-        [Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
+        //[Attribute.ValidateSession(Rls = new Rol[] {Rol.ADMINISTRADOR})]
         public ActionResult Index()
         {
             IList<OrdenDTO> ordenes = Orden.ObtenerTodos();
