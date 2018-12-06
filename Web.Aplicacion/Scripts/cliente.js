@@ -29,14 +29,21 @@ function add() {
 }
 
 function edit() {
+    alert("edit2");
     var modalC = $("#mdContent");
+
+    alert("edit1");
     var id = obtenerId();
+    alert("edit");
     if (id != 0) {
+        alert("if  de edit");
         $("#mdMain").modal();
         modalC.load(baseUrl + "Cliente/Edit/" + id, function () {
             cargarDatos();
 
         });
+
+        alert("editAAA");
     } else {
         swal("Seleccione un registro");
         return false;
@@ -87,8 +94,11 @@ function del() {
 }
 
 function cargarDatos() {
+
     var id = $.trim($("#cliente-id").val());
+    alert(id);
     if (id != "" && id != 0) {
+        alert("if de cargar datos");
         $.ajax({
             url: baseUrl + "Cliente/ObtenerPorId",
             data: { id: id },

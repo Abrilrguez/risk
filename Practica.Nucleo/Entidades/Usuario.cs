@@ -133,7 +133,7 @@ namespace Practica.Nucleo.Entidades
         public static bool Guardar(int id, string nombre, string direccion, string telefono, string cuenta, int rol, string password)
         {
             bool realizado = false;
-            if (nombre!="" && direccion != "" && telefono != "" && cuenta != "" && rol.ToString() != "" && password != "" )
+            if (nombre!="" && direccion != "" && telefono != "" && cuenta != "" && rol.ToString() != ""  )
             {
                 try
                 {
@@ -151,6 +151,45 @@ namespace Practica.Nucleo.Entidades
                     if (id == 0)
                     {
                         u.Password = password;
+                        u.Save();
+                    }
+                    else
+                    {
+                        u.Update();
+                    }
+
+                    realizado = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            else
+            {
+                realizado = false;
+            }
+
+            return realizado;
+        }
+        public static bool GuardarUsuario(int id, string nombre, string direccion, string telefono, string cuenta, int rol)
+        {
+            bool realizado = false;
+            if (nombre != "" && direccion != "" && telefono != "" && cuenta != "" && rol.ToString() != "")
+            {
+                try
+                {
+                    //Usuario u = new Usuario();
+                    //if (id != 0) u = ObtenerPorId(id);
+                    string sal = GenerarSal();
+                    Usuario u = id == 0 ? new Usuario() : ObtenerPorId(id);
+                    u.Nombre = nombre;
+                    u.Direccion = direccion;
+                    u.Telefono = telefono;
+                    u.Cuenta = cuenta;
+                    u.Rol = (Rol)rol;
+                    if (id == 0)
+                    {
                         u.Save();
                     }
                     else

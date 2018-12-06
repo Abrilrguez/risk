@@ -147,34 +147,70 @@ function guardar() {
         rol = 2;
     }
 
-    if (password == passwordValidar || id != 0 && nombre !== "" && direccion !== "" && telefono !== "" && cuenta !== "" && rol !== "" && password !== "" && passwordValidar !== "" ) {
-        $.ajax({
-            url: baseUrl + "Usuario/Guardar/",
-            data: {
-                id: id, nombre: nombre, direccion: direccion, telefono: telefono, cuenta: cuenta, rol: rol, password: password
-            },
-            cache: false,
-            tradicional: true,
-            success: function (data) {
-                if (data == "true") {
-                    var modal = $("#mdMain");
-                    modal.modal("hide");
-                    activarRenglon();
-                }
-            },
-            error: function (xhr, exception) {
-
-            }
-        });
+    if (nombre !== "" && direccion !== "" && telefono !== "" && cuenta !== "" && rol !== "" || password !== "" || passwordValidar !== "") {
+        
         if (id != 0) {
-            swal("Listo", "Se ha actualizado el usuario", "success");
+            $.ajax({
+                url: baseUrl + "Usuario/Guardar/",
+                data: {
+                    id: id, nombre: nombre, direccion: direccion, telefono: telefono, cuenta: cuenta, rol: rol
+                },
+                cache: false,
+                tradicional: true,
+                success: function (data) {
+                    if (data == "true") {
+                        var modal = $("#mdMain");
+                        modal.modal("hide");
+                        activarRenglon();
+                        
+                        swal("Listo", "Se ha actualizado el usuario", "success");
+                        
+                    } else {
+                        alert("Error");
+                    }
+                },
+                error: function (xhr, exception) {
+
+                }
+            });
+            
+            cargarTabla();
         } else {
-            swal("Listo", "Se ha guardado el usuario", "success");
+            if (password === passwordValidar) {
+                $.ajax({
+                    url: baseUrl + "Usuario/Guardar/",
+                    data: {
+                        id: id, nombre: nombre, direccion: direccion, telefono: telefono, cuenta: cuenta, rol: rol, password: password
+                    },
+                    cache: false,
+                    tradicional: true,
+                    success: function (data) {
+                        if (data == "true") {
+                            var modal = $("#mdMain");
+                            modal.modal("hide");
+                            activarRenglon();
+
+                            swal("Listo", "Se ha guardado el usuario", "success");
+
+                        }
+                    },
+                    error: function (xhr, exception) {
+
+                    }
+                });
+
+                cargarTabla();
+            } else {
+                swal("Error.", "Las contraseñas no coinciden.", "error");
+            }
+            activarRenglon();
         }
-        cargarTabla();
+        activarRenglon();
     } else {
         swal("Error", "Llene los datos correctamente", "warning");
+        activarRenglon();
     }
+    activarRenglon();
 }
 
 function actualizarPassword() {
