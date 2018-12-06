@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Showtracker landing page</title>
+    <title>Trackpack - Inicio</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -49,153 +49,6 @@
             </div>
         </nav>
     </header>
-    <!-- Login Modal-->
-    <div id="info" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade bd-example-modal-lg">
-        <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body p-4 p-lg-5">
-                    <h2>Rastreo y seguimiento</h2>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="mb-0">Número de rastreo</p>
-                            <h5 id="orden-numrastreo"></h5>
-                        </div>
-                        <div class="col-6">
-                            <p class="mb-0">Destino</p>
-                            <h5 id="orden-destino"></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="mb-0">Estado</p>
-                            <h5 class="mb-0">Envio entregado a El Brayan</h5>
-                            <p>04 de Diciembre del 2018 a las 07:16 p.m.</p>
-                            <p>
-                                <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse"
-                                        aria-expanded="false" aria-controls="collapse">
-                                    Más información del envio
-                                </button>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <p class="mb-0">Precio</p>
-                            <h5 id="orden-precio">$124.00 M/N</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="collapse multi-collapse" id="collapse">
-                                <div class="card card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>Remitente</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Nombre</p>
-                                            <h6 id="remitente-nombre">Eiprols Rguez</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Domicilio</p>
-                                            <h6 id="remitente-domicilio">Ciudad de México - Guaymas</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Telefono</p>
-                                            <h6 id="remitente-telefono">Ciudad de México - Guaymas</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Correo</p>
-                                            <h6 id="remitente-correo">rguez@gmail.com</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">RFC</p>
-                                            <h6 id="remitente-rfc">asd234567 098</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-12">
-                                            <h5>Destinatario</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Nombre</p>
-                                            <h6 id="destinatario-nombre">Eiprols Rguez</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Persona que recogera</p>
-                                            <h6 id="destinatario-persona">asd234567 098</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Correo</p>
-                                            <h6 id="destinatario-correo">rguez@gmail.com</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Teléfono 1</p>
-                                            <h6 id="destinatario-telefono">622 100 0000</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Teléfono 2</p>
-                                            <h6 id="destinatario-telefono2">622 100 0000</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Teléfono 3</p>
-                                            <h6 id="destinatario-telefono3" >622 100 0000</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Código postal</p>
-                                            <h6 id="destinatario-cp">asd244567 098</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Calle</p>
-                                            <h6 id="destinatario-calle">rguez@gmail.com</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Número</p>
-                                            <h6 id="destinatario-numero">rguez@gmail.com</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <p class="mb-0">Colonia</p>
-                                            <h6 id="destinatario-colonia">asd244567 098</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Ciudad</p>
-                                            <h6 id="destinatario-ciudad">rguez@gmail.com</h6>
-                                        </div>
-                                        <div class="col-4">
-                                            <p class="mb-0">Estado</p>
-                                            <h6 id="destinatario-estado">asd234567 098</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p class="mb-0">Referencia</p>
-                                            <h6 id="destinatario-referencia">asd244567 098</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="historial">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="page-holder">
         <!-- Hero Section-->
         <section class="hero shape-1">
@@ -208,11 +61,11 @@
                             simple, lo encontrarás con nosotros. 📦
                         </p>
                         <!-- Subscription form-->
-                        <form action="#" class="subscription-form mt-5">
+                        <form action="@Url.Action("Rastreo", "Home")" class="subscription-form mt-5">
                             <div class="form-group">
                                 <label>Número de rastreo</label>
-                                <input type="text" name="numero-rastreo" placeholder="Número de 10 digitos" id="numero-rastreo" class="form-control" maxlength="10">
-                                <button class="btn btn-primary" onclick="rastrear();">
+                                <input type="text" name="numeroRastreo" placeholder="Número de 10 digitos" id="numeroRastreo" class="form-control" maxlength="10">
+                                <button class="btn btn-primary" type="submit" onclick="">
                                     Rastrea tu
                                     paquete
                                 </button>

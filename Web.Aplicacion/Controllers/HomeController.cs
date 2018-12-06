@@ -14,6 +14,20 @@ namespace Web.Aplicacion.Controllers
             return View();
         }
 
+        public ActionResult Rastreo(String numeroRastreo)
+        {
+            Orden orden = new Orden();
+            try
+            {
+                orden = Orden.ObtenerPorFolio(numeroRastreo);
+            }
+            catch (Exception ae)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return View(orden);
+        }
+
         public ActionResult Ayuda()
         {
             return View();

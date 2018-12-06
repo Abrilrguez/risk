@@ -1,0 +1,244 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trackpack - Rastreo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap/css/bootstrap.min.css")">
+    <!-- Ionicons CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/ionicons.min.css")">
+    <!-- Device mockups CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/device-mockups.css")">
+    <!-- Google fonts - Source Sans Pro-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <!-- Swiper sLider-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/swiper/swiper.min.css")">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.default.css")" id="theme-stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/img/logo/Logo-1.png")">
+    <script src="@Url.Content("~/Scripts/rastreo.js")"></script>
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script type="text/javascript">
+        var baseUrl = "@Url.Content("~")";
+    </script>
+</head>
+
+<body>
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Navbar brand--><a href="index.html" class="navbar-brand font-weight-bold">
+                    <img src="@Url.Content("~/Content/assets/img/logo/logo.png")" alt="..."
+                         class="img-fluid">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div id="info" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade bd-example-modal-lg">
+        <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @{ var orden = Model;}
+    <div class="page-holder">
+        <section class="hero shape-1 py-5">
+            <div class="container">
+                <h2>Rastreo y seguimiento</h2>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="mb-0">Número de rastreo</p>
+                        <h5 id="orden-numrastreo">@orden.NumeroRastreo</h5>
+                    </div>
+                    <div class="col-6">
+                        <p class="mb-0">Destino</p>
+                        <h5 id="orden-destino">@orden.Destinatario.Ciudad</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p class="mb-0">Estado</p>
+                        <h5 class="mb-0">@orden.Estado</h5>
+                        <p>@orden.Fecha</p>
+                        <p>
+                            <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse"
+                                    aria-expanded="false" aria-controls="collapse">
+                                Más información del envio
+                            </button>
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <p class="mb-0">Precio</p>
+                        <h5 id="orden-precio">$@orden.Precio M/N</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="collapse multi-collapse" id="collapse">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Remitente</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Nombre</p>
+                                        <h6 id="remitente-nombre">@orden.Cliente.Nombre</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Domicilio</p>
+                                        <h6 id="remitente-domicilio">@orden.Cliente.Domicilio</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Telefono</p>
+                                        <h6 id="remitente-telefono">@orden.Cliente.Telefono</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Correo</p>
+                                        <h6 id="remitente-correo">@orden.Cliente.Correo</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">RFC</p>
+                                        <h6 id="remitente-rfc">@orden.Cliente.Rfc</h6>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5>Destinatario</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Nombre</p>
+                                        <h6 id="destinatario-nombre">@orden.Destinatario.Nombre</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Persona que recogera</p>
+                                        <h6 id="destinatario-persona">@orden.Destinatario.Persona</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Correo</p>
+                                        <h6 id="destinatario-correo">@orden.Destinatario.Correo</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Teléfono 1</p>
+                                        <h6 id="destinatario-telefono">@orden.Destinatario.Telefono</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Teléfono 2</p>
+                                        <h6 id="destinatario-telefono2">622 100 0000</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Teléfono 3</p>
+                                        <h6 id="destinatario-telefono3">622 100 0000</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Código postal</p>
+                                        <h6 id="destinatario-cp">@orden.Destinatario.Cp</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Calle</p>
+                                        <h6 id="destinatario-calle">@orden.Destinatario.Calle</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Número</p>
+                                        <h6 id="destinatario-numero">@orden.Destinatario.Numero</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p class="mb-0">Colonia</p>
+                                        <h6 id="destinatario-colonia">@orden.Destinatario.Colonia</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Ciudad</p>
+                                        <h6 id="destinatario-ciudad">@orden.Destinatario.Ciudad</h6>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="mb-0">Estado</p>
+                                        <h6 id="destinatario-estado">@orden.Destinatario.Estado</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="mb-0">Referencia</p>
+                                        <h6 id="destinatario-referencia">@orden.Destinatario.Referencia</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="shape-2">
+            <div class="container">
+                <div class="historial">
+                    @foreach (var historial in orden.Historiales)
+                    {
+                        <hr>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-3">
+                                <h6>@historial.Fecha</h6>
+                            </div>
+                            <div class="col-9">
+                                <h4>@historial.EstadoPaquete - @historial.Descripcion</h4>
+                                <p>@historial.Ciudad, @historial.Estado</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <!-- Copyrights-->
+            <div class="copyrights">
+                <!-- Social menu-->
+
+                <p class="copyrights-text mb-0">Copyright &copy; 2018 All rights reserved - Trackpack &copy;</p>
+                <p class="copyrights-text mb-0">
+                    Coded by <a href="https://bootstrapious.com/landing-pages" target="_blank"
+                                class="copyrights-link">Bootstrapious</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript files-->
+    <script src="@Url.Content("~/Scripts/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/popper.js/popper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Scripts/swiper/swiper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/front.js")"></script>
+</body>
+</html>
