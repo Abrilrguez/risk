@@ -133,34 +133,41 @@ namespace Practica.Nucleo.Entidades
         public static bool Guardar(int id, string nombre, string direccion, string telefono, string cuenta, int rol, string password)
         {
             bool realizado = false;
-            try
+            if (nombre!="" && direccion != "" && telefono != "" && cuenta != "" && rol.ToString() != "" && password != "" )
             {
-                //Usuario u = new Usuario();
-                //if (id != 0) u = ObtenerPorId(id);
-                string sal = GenerarSal();
-                Usuario u = id == 0 ? new Usuario() : ObtenerPorId(id);
-                u.Nombre = nombre;
-                u.Direccion = direccion;
-                u.Telefono = telefono;
-                u.Cuenta = cuenta;
-                u.Rol = (Rol)rol;
-                u.Sal = sal;
-                password = Encrypt(password, sal);
-                if (id == 0)
+                try
                 {
-                    u.Password = password;
-                    u.Save();
-                }
-                else
-                {
-                    u.Update();
-                }
+                    //Usuario u = new Usuario();
+                    //if (id != 0) u = ObtenerPorId(id);
+                    string sal = GenerarSal();
+                    Usuario u = id == 0 ? new Usuario() : ObtenerPorId(id);
+                    u.Nombre = nombre;
+                    u.Direccion = direccion;
+                    u.Telefono = telefono;
+                    u.Cuenta = cuenta;
+                    u.Rol = (Rol)rol;
+                    u.Sal = sal;
+                    password = Encrypt(password, sal);
+                    if (id == 0)
+                    {
+                        u.Password = password;
+                        u.Save();
+                    }
+                    else
+                    {
+                        u.Update();
+                    }
 
-                realizado = true;
+                    realizado = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                realizado = false;
             }
 
             return realizado;

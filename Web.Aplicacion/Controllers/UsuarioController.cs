@@ -61,22 +61,30 @@ namespace Web.Aplicacion.Controllers
         public ActionResult Guardar(int id, String nombre, String direccion, String telefono, String cuenta, int rol, String password)
         {
             ActionResult action = null;
-            try
+            if(nombre != "" && direccion != "" && telefono != "" && cuenta != "" && rol.ToString() != "" && password != "")
             {
-                if (Usuario.Guardar(id, nombre, direccion, telefono, cuenta, rol, password))
+                try
                 {
-                    action = Content("true");
+                    if (Usuario.Guardar(id, nombre, direccion, telefono, cuenta, rol, password))
+                    {
+                        action = Content("true");
+                    }
+                    else
+                    {
+                        action = Content("false");
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    action = Content("false");
+                    return Content("false");
                 }
+            }
+            else
+            {
+                action = Content("false");
+            }
                 
-            }
-            catch (Exception ex)
-            {
-                return Content("false");
-            }
 
             return action;
         }

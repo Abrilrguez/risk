@@ -147,7 +147,7 @@ function guardar() {
         rol = 2;
     }
 
-    if (password == passwordValidar || id != 0) {
+    if (password == passwordValidar || id != 0 && nombre !== "" && direccion !== "" && telefono !== "" && cuenta !== "" && rol !== "" && password !== "" && passwordValidar !== "" ) {
         $.ajax({
             url: baseUrl + "Usuario/Guardar/",
             data: {
@@ -173,7 +173,7 @@ function guardar() {
         }
         cargarTabla();
     } else {
-        swal("Error", "Las contraseñas no coinciden", "warning");
+        swal("Error", "Llene los datos correctamente", "warning");
     }
 }
 

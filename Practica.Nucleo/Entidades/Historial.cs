@@ -136,63 +136,71 @@ namespace Practica.Nucleo.Entidades
         public static bool Guardar(int id, string descripcion, string ciudad, string estado,int estadoPaquete, int idUsuario, String idOrden)
         {
             bool realizado = false;
-            try
+            if(descripcion != "" && ciudad != "" && estado != "" && estadoPaquete.ToString() != "")
             {
-                Orden o = Orden.ObtenerPorFolio(idOrden);
-                if (o.Estado.ToString() != "ENTREGADO")
+
+                try
                 {
-                    Usuario u = Usuario.ObtenerPorId(idUsuario);
-                    Historial h = id == 0 ? new Historial() : ObtenerPorId(id);
-                    h.Fecha = DateTime.Now;
-                    h.Descripcion = descripcion;
-                    h.Estado = estado;
-                    h.Ciudad = ciudad;
-                    h.EstadoPaquete = (Estado)estadoPaquete;
-                    h.Usuario = u;
-
-
-                    string subject = "La localizacion de tu paquete se ha actualizado.";
-                    if (id != 0)
+                    Orden o = Orden.ObtenerPorFolio(idOrden);
+                    if (o.Estado.ToString() != "ENTREGADO")
                     {
+                        Usuario u = Usuario.ObtenerPorId(idUsuario);
+                        Historial h = id == 0 ? new Historial() : ObtenerPorId(id);
+                        h.Fecha = DateTime.Now;
+                        h.Descripcion = descripcion;
+                        h.Estado = estado;
+                        h.Ciudad = ciudad;
+                        h.EstadoPaquete = (Estado)estadoPaquete;
+                        h.Usuario = u;
 
-                        if ((int)h.EstadoPaquete == 2)
-                        {
-                            subject = "Tu paquete ha sido entregado.";
-                            o.Estado = (Estado)2;
-                        }
-                        if ((int)h.EstadoPaquete == 3)
-                        {
-                            subject = "Tu paquete ha sido cancelado.";
-                            o.Estado = (Estado)2;
-                        }
-                        o.Update();
-                        h.Update();
-                    }
-                    else
-                    {
 
-                        IList<Historial> historiales = o.Historiales;
-                        historiales.Add(h);
-                        o.Historiales = historiales;
-                        if ((int)h.EstadoPaquete == 2)
+                        string subject = "La localizacion de tu paquete se ha actualizado.";
+                        if (id != 0)
                         {
-                            subject = "Tu paquete ha sido entregado.";
-                            o.Estado = (Estado)2;
+
+                            if ((int)h.EstadoPaquete == 2)
+                            {
+                                subject = "Tu paquete ha sido entregado.";
+                                o.Estado = (Estado)2;
+                            }
+                            if ((int)h.EstadoPaquete == 3)
+                            {
+                                subject = "Tu paquete ha sido cancelado.";
+                                o.Estado = (Estado)2;
+                            }
+                            o.Update();
+                            h.Update();
                         }
-                        if ((int)h.EstadoPaquete == 3)
+                        else
                         {
-                            subject = "Tu paquete ha sido cancelado.";
-                            o.Estado = (Estado)3;
+
+                            IList<Historial> historiales = o.Historiales;
+                            historiales.Add(h);
+                            o.Historiales = historiales;
+                            if ((int)h.EstadoPaquete == 2)
+                            {
+                                subject = "Tu paquete ha sido entregado.";
+                                o.Estado = (Estado)2;
+                            }
+                            if ((int)h.EstadoPaquete == 3)
+                            {
+                                subject = "Tu paquete ha sido cancelado.";
+                                o.Estado = (Estado)3;
+                            }
+                            o.Update();
                         }
-                        o.Update();
+                        EnviarEmail(h, idOrden, subject);
+                        realizado = true;
                     }
-                    EnviarEmail(h, idOrden, subject);
-                    realizado = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                realizado = false;
             }
 
             return realizado;

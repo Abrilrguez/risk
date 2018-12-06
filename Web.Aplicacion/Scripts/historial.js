@@ -110,9 +110,7 @@ function guardar() {
     if (estado === "CANCELADO") {
         estado = 3;
     }
-
-    //obtenerLatLng();
-    
+    if (descripcion !== "" && estado !== "" && ciudad !== "" && estadoPaquete !== "" &&) {
         $.ajax({
             url: baseUrl + "Historial/Guardar/",
             data: {
@@ -130,8 +128,7 @@ function guardar() {
                     } else {
                         swal("Listo", "Se ha guardado el historial", "success");
                     }
-                } else
-                {
+                } else {
                     swal("No se puede agregar un estatus", "La orden se marcó como entregada", "error");
                 }
             },
@@ -139,6 +136,9 @@ function guardar() {
 
             }
         });
+    } else {
+
+    }
        
         cargarTabla();
 }

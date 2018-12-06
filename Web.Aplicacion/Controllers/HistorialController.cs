@@ -65,22 +65,25 @@ namespace Web.Aplicacion.Controllers
         public ActionResult Guardar(int id, String descripcion, String ciudad, String estado, int estadoPaquete, int idUsuario, String idOrden)
         {
             ActionResult action = null;
-            try
+            if (descripcion!=""&& ciudad != "" && estado != "" && estadoPaquete.ToString() != "" )
             {
-                idUsuario = Convert.ToInt32(Session["usuarioId"]);
-                if (Historial.Guardar(id, descripcion, ciudad, estado,estadoPaquete, idUsuario, idOrden))
+                try
                 {
-                    action = Content("true");
-                }
-                else
-                {
-                    action = Content("false");
-                }
+                    idUsuario = Convert.ToInt32(Session["usuarioId"]);
+                    if (Historial.Guardar(id, descripcion, ciudad, estado, estadoPaquete, idUsuario, idOrden))
+                    {
+                        action = Content("true");
+                    }
+                    else
+                    {
+                        action = Content("false");
+                    }
 
-            }
-            catch (Exception ex)
-            {
-                return Content("false");
+                }
+                catch (Exception ex)
+                {
+                    return Content("false");
+                }
             }
 
             return action;
