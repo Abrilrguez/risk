@@ -58,7 +58,8 @@ function edit() {
 
         });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
@@ -100,7 +101,7 @@ function del() {
                 }
             });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.","Seleccione un registro", "error");
         return false;
     }
     cargarTabla();
@@ -133,7 +134,7 @@ function cargarDatos() {
                 $("#persona").val(data.Persona);
             }
         });
-    } else{alert("No entro")}
+    } 
     return false;
 }
 

@@ -40,7 +40,8 @@ function edit() {
             $('#label_passwordValidar').remove();
         });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
@@ -82,7 +83,8 @@ function del() {
             }
             });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
     cargarTabla();
@@ -96,7 +98,8 @@ function changePassword() {
         modalC.load(baseUrl + 'Usuario/ChangePassword/' + id, {});
         $('#header-text').text("Cambiar contraseña");
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }

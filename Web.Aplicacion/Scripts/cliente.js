@@ -49,7 +49,8 @@ function edit() {
             cargarDatos();
         });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
 }
@@ -91,7 +92,8 @@ function del() {
                 }
             });
     } else {
-        swal("Seleccione un registro");
+        swal("Error.", "Seleccione un registro", "error");
+        activarRenglon();
         return false;
     }
     cargarTabla();
