@@ -50,14 +50,14 @@ namespace Web.Aplicacion.Controllers
             return Json(u, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Guardar(String nombre, String domicilio, String telefono, String correo, String rfc)
+        public ActionResult Guardar(int id,String nombre, String domicilio, String telefono, String correo, String rfc)
         {
             ActionResult action = null;
             if (nombre!=""&& domicilio != "" && telefono != "" && correo != "" && rfc != "")
             {
                 try
                 {
-                    if (Cliente.Guardar(nombre, domicilio, telefono, correo, rfc))
+                    if (Cliente.Guardar(id,nombre, domicilio, telefono, correo, rfc))
                     {
                         action = Content("true");
                     }
