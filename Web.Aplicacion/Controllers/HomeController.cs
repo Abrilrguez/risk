@@ -27,6 +27,9 @@ namespace Web.Aplicacion.Controllers
                 try
                 {
                     orden = Orden.ObtenerPorFolio(numeroRastreo);
+                    IList<Historial> listaHistoriales = new List<Historial>();
+                    
+                    
                     if (orden == null)
                     {
                         return RedirectToAction("Index", new { error = 1 });
