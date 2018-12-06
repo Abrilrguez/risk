@@ -69,34 +69,37 @@ namespace Practica.Nucleo.Entidades
             string estado, string referencia, string telefono, string correo, string persona)
         {
             bool realizado = false;
-            try
+            if (nombre!=""&& calle != "" && numero != "" && avenida != "" && colonia != "" && cp != "" && ciudad != "" && estado != "" && referencia != "" && telefono != "" && correo != "" && persona != "")
             {
-                //Usuario u = new Usuario();
-                //if (id != 0) u = ObtenerPorId(id);
+                try
+                {
+                    //Usuario u = new Usuario();
+                    //if (id != 0) u = ObtenerPorId(id);
 
-                //Destinatario u = id == 0 ? new Destinatario() : ObtenerPorId(id);
-                Destinatario u = new Destinatario();
-                u.Nombre = nombre;
-                u.Calle = calle;
-                u.Numero = numero;
-                u.Avenida = avenida;
-                u.Colonia = colonia;
-                u.Cp = cp;
-                u.Ciudad = ciudad;
-                u.Estado = estado;
-                
+                    //Destinatario u = id == 0 ? new Destinatario() : ObtenerPorId(id);
+                    Destinatario u = new Destinatario();
+                    u.Nombre = nombre;
+                    u.Calle = calle;
+                    u.Numero = numero;
+                    u.Avenida = avenida;
+                    u.Colonia = colonia;
+                    u.Cp = cp;
+                    u.Ciudad = ciudad;
+                    u.Estado = estado;
 
-                u.Referencia = referencia;
-                u.Telefono = telefono;
-                u.Correo = correo;
-                u.Persona = persona;
-                u.Save();
 
-                realizado = true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                    u.Referencia = referencia;
+                    u.Telefono = telefono;
+                    u.Correo = correo;
+                    u.Persona = persona;
+                    u.Save();
+
+                    realizado = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
 
             return realizado;

@@ -57,13 +57,21 @@ namespace Web.Aplicacion.Controllers
             ActionResult action = null;
             try
             {
-                if (Destinatario.Guardar(nombre, calle, numero, avenida, colonia, cp, ciudad, estado, referencia, telefono, correo, persona))
+                if (nombre!="" && calle != "" && numero != "" && colonia != "" && avenida != "" && cp != "" && ciudad != "" && estado != "" && referencia != "" && telefono != "" && correo != "" && persona != "" )
                 {
-                    action = Content("true");
+                    if (Destinatario.Guardar(nombre, calle, numero, avenida, colonia, cp, ciudad, estado, referencia, telefono, correo, persona))
+                    {
+                        action = Content("true");
+                    }
+                    else
+                    {
+                        action = Content("false");
+                    }
                 }
                 else
                 {
                     action = Content("false");
+
                 }
 
             }
