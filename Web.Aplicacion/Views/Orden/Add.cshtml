@@ -149,6 +149,7 @@
                 cache: false,
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    $('#cliente-id').val(data.Id);
                     $("#cliente-nombre").val(data.Nombre);
                     $("#cliente-domicilio").val(data.Domicilio);
                     $("#cliente-telefono").val(data.Telefono);
@@ -235,6 +236,7 @@
                 cache: false,
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
+                    $('#destinatario-id').val(data.Id);
                     $("#destinatario-nombre").val(data.Nombre);
                     $("#destinatario-calle").val(data.Calle);
                     $("#destinatario-numero").val(data.Numero);
