@@ -110,7 +110,7 @@ function guardar() {
     if (estado === "CANCELADO") {
         estado = 3;
     }
-    if (descripcion !== "" && estado !== "" && ciudad !== "" && estadoPaquete !== "" &&) {
+    if (descripcion !== "" && estado !== "" && ciudad !== "" && estadoPaquete !== "") {
         $.ajax({
             url: baseUrl + "Historial/Guardar/",
             data: {
