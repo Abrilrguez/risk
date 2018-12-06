@@ -3,8 +3,6 @@
     ViewBag.Title = "Add";
 }
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/municipios.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/select_estados.js")"></script>
 
 <input type="hidden" name="estado-id" id="estado-id" value="@ViewBag.IdEstado" />
 
@@ -36,7 +34,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <select type="text" class="form-control input-sm" placeholder="Estado" id="estado"></select>
+                                <input type="text" class="form-control input-sm" placeholder="Estado" id="estado"/>
                             </div>
                         </div>
                     </div>
@@ -50,7 +48,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                             <div class="nk-int-st">
-                                <select type="text" class="form-control input-sm" placeholder="Municipio" id="municipio"></select>
+                                <input type="text" class="form-control input-sm" placeholder="Municipio" id="municipio"/>
                             </div>
                         </div>
                     </div>

@@ -152,15 +152,12 @@ function guardar() {
     var ciudad = $.trim($("#municipio").val());
     var estado = $.trim($("#estado").val());
     var referencia = $.trim($("#referencia").val());
-    var telefono1 = $.trim($("#telefono1").val());
-    var telefono2 = $.trim($("#telefono2").val());
-    var telefono3 = $.trim($("#telefono3").val());
-    var telefono = telefono1 + "," + telefono2 + "," + telefono3;
+    var telefono = $.trim($("#telefono").val());
     var correo = $.trim($("#correo").val());
     var persona = $.trim($("#persona").val());
 
     if (nombre !== "" && calle !== "" && avenida !== "" && colonia !== "" && cp !== "" && ciudad !== "" && estado !== "" && referencia !== "" &&
-        telefono1 !== "" && telefono2 !== "" && telefono3 !== "" && correo !== "" && persona !== "") {
+        telefono1 !== ""  && correo !== "" && persona !== "") {
         $.ajax({
             url: baseUrl + "Destinatario/Guardar/",
             data: {
