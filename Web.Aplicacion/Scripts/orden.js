@@ -103,7 +103,6 @@ function guardar() {
                 if (data == "true") {
                     var modal = $("#mdMain");
                     modal.modal("hide");
-
                     cargarTabla();
                 }
             },

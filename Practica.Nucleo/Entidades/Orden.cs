@@ -247,7 +247,7 @@ namespace Practica.Nucleo.Entidades
 
                     Orden o = idOrden == 0 ? new Orden() : Orden.ObtenerPorId(idOrden);
                     o.Folio = ordenFolio;
-                    o.Fecha = ordenFecha;
+                    o.Fecha = DateTime.Now;
                     o.Cliente = c;
                     o.Destinatario = d;
                     o.Usuario = u;
