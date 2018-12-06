@@ -47,6 +47,8 @@
     <!-- notika icon CSS
         ============================================ -->
     <link rel="stylesheet" href="@Url.Content("~/Content/css/notika-custom-icon.css")">
+    <!-- Ionicons CSS-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/ionicons.min.css")">
     <!-- wave CSS
         ============================================ -->
     <link rel="stylesheet" href="@Url.Content("~/Content/css/wave/waves.min.css")">
@@ -255,24 +257,24 @@
                         {
 
                             <li @if (ViewBag.Title == "Orden") { <text> class="active" </text>    }>
-                                <a href="@Url.Action("Index", "Orden")"><i class="notika-icon notika-edit"></i> Orden</a>
+                                <a href="@Url.Action("Index", "Orden")"><i class="icon ion-md-paper"></i>Orden</a>
                             </li>
 
                             <li @if (ViewBag.Title == "Usuarios") { <text> class="active" </text>    }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
-                                <a href="@Url.Action("Index", "Usuario")"><i class="notika-icon notika-edit"></i> Usuarios</a>
+                                <a href="@Url.Action("Index", "Usuario")"><i class="icon ion-md-contact"></i>Usuarios</a>
                             </li>
 
                             <li @if (ViewBag.Title == "Clientes") { <text> class="active" </text>   }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
-                                <a href="@Url.Action("Index", "Cliente")"><i class="notika-icon notika-edit"></i> Clientes</a>
+                                <a href="@Url.Action("Index", "Cliente")"><i class="icon ion-md-contacts"></i>Clientes</a>
                             </li>
                             <li @if (ViewBag.Title == "Destinatarios") { <text> class="active" </text>  }
                                 @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text>  }>
-                                <a href="@Url.Action("Index", "Destinatario")"><i class="notika-icon notika-edit"></i> Destinatarios</a>
+                                <a href="@Url.Action("Index", "Destinatario")"><i class="icon ion-md-mail-open"></i>Destinatarios</a>
                             </li>
                             <li @if (ViewBag.Title == "Historial") { <text> class="active" </text>   }>
-                                <a href="@Url.Action("Index", "Historial")"><i class="notika-icon notika-edit"></i> Historial</a>
+                                <a href="@Url.Action("Index", "Historial")"><i class="icon ion-md-calendar"></i>Historial</a>
                             </li>
                         }
                     </ul>
