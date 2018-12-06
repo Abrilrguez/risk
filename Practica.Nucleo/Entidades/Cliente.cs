@@ -64,20 +64,21 @@ namespace Practica.Nucleo.Entidades
             return c;
         }
 
-        public static bool Guardar(string nombre, string domicilio, string telefono, string correo, string rfc)
+        public static bool Guardar(int id,string nombre, string domicilio, string telefono, string correo, string rfc)
         {
             bool realizado = false;
             if (nombre != "" && domicilio != "" && telefono != "" && correo != "" && rfc != "")
             {
                 try
                 {
-                    Cliente u = new Cliente();
+                    Cliente u = id == 0 ? new Cliente() : ObtenerPorId(id);
                     u.Nombre = nombre;
                     u.Domicilio = domicilio;
                     u.Telefono = telefono;
                     u.Correo = correo;
                     u.Rfc = rfc;
-                    u.Save();
+                    if (id != 0) { u.Update(); } else { u.Save(); }
+                   
 
                     realizado = true;
                 }
