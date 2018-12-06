@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
+
         ============================================ -->
+
     <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/img/logo/Logo-1.png")">
     <!-- Google Fonts
         ============================================ -->
@@ -53,19 +55,22 @@
         ============================================ -->
     <script src="@Url.Content("~/Scripts/vendor/modernizr-2.8.3.min.js")"></script>
 
+
     <script type="text/javascript">
         var baseUrl = "@Url.Content("~")";
+        
     </script>
 </head>
+
 
 <body>
 
     <div class="login-content">
         <!-- Login -->
-        <div class="nk-block toggled" id="l-login">
+        <div class="nk-block toggled " id="l-login">
             @if (ViewBag.Message != null)
             {
-                <p>@ViewBag.Message</p>
+                <p class="alert alert-danger alert-mg-b-0">@ViewBag.Message</p>
             }
             <form class="nk-form" role="form" action="@Url.Action("Login", "Home")" method="post">
                 <div class="input-group">

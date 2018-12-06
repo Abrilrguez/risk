@@ -59,9 +59,13 @@ namespace Web.Aplicacion.Controllers
             {
                 string cuenta = model["cuenta"].Trim();
                 string password = model["password"].Trim();
-                Usuario u = Usuario.ObtenerPorLogin(cuenta, password);
-                
-                if (u != null)
+                Usuario u= null;
+                if (cuenta!="" && password!="")
+                {
+                    u = Usuario.ObtenerPorLogin(cuenta, password);
+                }
+
+                if (u != null )
                 {
                     HttpCookie ck = new HttpCookie("ckPractica");
 
