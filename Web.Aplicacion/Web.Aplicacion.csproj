@@ -221,6 +221,12 @@
     <Content Include="Content\css\animation\animation-custom.css" />
     <Content Include="Content\css\bootstrap-select\bootstrap-select.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\css\c3\c3.min.css" />
     <Content Include="Content\css\chosen\chosen-sprite.png" />
     <Content Include="Content\css\chosen\chosen.css" />
@@ -233,6 +239,7 @@
     <Content Include="Content\css\color-picker\wheel.png" />
     <Content Include="Content\css\cropper\cropper.min.css" />
     <Content Include="Content\css\datapicker\datepicker3.css" />
+    <Content Include="Content\css\device-mockups.css" />
     <Content Include="Content\css\dialog\dialog.css" />
     <Content Include="Content\css\dialog\sweetalert2.min.css" />
     <Content Include="Content\css\dropzone\dropzone.css" />
@@ -263,6 +270,7 @@
     <Content Include="Content\css\img\widgets\2.png" />
     <Content Include="Content\css\img\widgets\4.png" />
     <Content Include="Content\css\img\widgets\6.png" />
+    <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\jvectormap\jquery-jvectormap-2.0.3.css" />
     <Content Include="Content\css\main.css" />
@@ -278,7 +286,9 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\scrollbar\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\summernote\summernote.css" />
+    <Content Include="Content\css\swiper\swiper.min.css" />
     <Content Include="Content\css\themesaller-forms.css" />
     <Content Include="Content\css\wave\button.css" />
     <Content Include="Content\css\wave\waves.min.css" />
@@ -288,6 +298,7 @@
     <Content Include="Content\css\images\sort_both.png" />
     <Content Include="Content\css\images\sort_desc.png" />
     <Content Include="Content\css\images\sort_desc_disabled.png" />
+    <Content Include="Content\fonts\ionicons.svg" />
     <Content Include="CustomErrors\Errors.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Content\css\fonts\fontawesome-webfont.svg" />
@@ -303,6 +314,10 @@
     <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootstrap-select\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\js\bootstrap.min.js" />
     <Content Include="Scripts\charts\area-chart.js" />
     <Content Include="Scripts\charts\bar-chart.js" />
     <Content Include="Scripts\charts\Chart.js" />
@@ -346,6 +361,7 @@
     <Content Include="Scripts\flot\jquery.flot.resize.js" />
     <Content Include="Scripts\flot\jquery.flot.time.js" />
     <Content Include="Scripts\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\front.js" />
     <Content Include="Scripts\google.maps\google.maps-active.js" />
     <Content Include="Scripts\google.maps\google.maps2-active.js" />
     <Content Include="Scripts\historial.js" />
@@ -353,7 +369,14 @@
     <Content Include="Scripts\icheck\icheck.min.js" />
     <Content Include="Scripts\jasny-bootstrap.min.js" />
     <Content Include="Scripts\jquery-price-slider.js" />
+    <Content Include="Scripts\jquery.cookie\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.cookie\MIT-LICENSE.txt" />
     <Content Include="Scripts\jquery.scrollUp.min.js" />
+    <Content Include="Scripts\jquery\core.js" />
+    <Content Include="Scripts\jquery\jquery.js" />
+    <Content Include="Scripts\jquery\jquery.min.js" />
+    <Content Include="Scripts\jquery\jquery.slim.js" />
+    <Content Include="Scripts\jquery\jquery.slim.min.js" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-2.0.2.min.js" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-world-mill-en.js" />
     <Content Include="Scripts\jvectormap\jvectormap-active.js" />
@@ -371,6 +394,18 @@
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\orden.js" />
     <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\popper.js\esm\popper-utils.js" />
+    <Content Include="Scripts\popper.js\esm\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js\esm\popper.js" />
+    <Content Include="Scripts\popper.js\esm\popper.min.js" />
+    <Content Include="Scripts\popper.js\popper-utils.js" />
+    <Content Include="Scripts\popper.js\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js\popper.js" />
+    <Content Include="Scripts\popper.js\popper.min.js" />
+    <Content Include="Scripts\popper.js\umd\popper-utils.js" />
+    <Content Include="Scripts\popper.js\umd\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js\umd\popper.js" />
+    <Content Include="Scripts\popper.js\umd\popper.min.js" />
     <Content Include="Scripts\rangle-slider\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\rangle-slider\jquery-ui-touch-punch.min.js" />
     <Content Include="Scripts\rangle-slider\rangle-active.js" />
@@ -381,6 +416,10 @@
     <Content Include="Scripts\summernote\summernote-active.js" />
     <Content Include="Scripts\summernote\summernote-updated.min.js" />
     <Content Include="Scripts\summernote\summernote.min.js" />
+    <Content Include="Scripts\swiper\swiper.esm.bundle.js" />
+    <Content Include="Scripts\swiper\swiper.esm.js" />
+    <Content Include="Scripts\swiper\swiper.js" />
+    <Content Include="Scripts\swiper\swiper.min.js" />
     <Content Include="Scripts\tawk-chat.js" />
     <Content Include="Scripts\todo\jquery.todo.js" />
     <Content Include="Scripts\usuario.js" />
@@ -426,6 +465,10 @@
     <Content Include="Content\css\fonts\notika-icon.eot" />
     <Content Include="Content\css\fonts\notika-icon.ttf" />
     <Content Include="Content\css\fonts\notika-icon.woff" />
+    <Content Include="Content\fonts\ionicons.eot" />
+    <Content Include="Content\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\ionicons.woff" />
+    <Content Include="Content\fonts\ionicons.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Ayuda.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -442,6 +485,8 @@
     <Content Include="Views\Historial\Index.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\Rastreo.cshtml" />
+    <Content Include="Scripts\jquery.cookie\component.json" />
+    <Content Include="Scripts\jquery.cookie\cookie.jquery.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Practica.Nucleo\Practica.Nucleo.csproj">
