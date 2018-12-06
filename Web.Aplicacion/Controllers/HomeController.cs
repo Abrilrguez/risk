@@ -11,21 +11,38 @@ namespace Web.Aplicacion.Controllers
     {
         public ActionResult Index()
         {
+            var error = Request["error"];
+            if (error != null)
+            {
+                ViewBag.error = "Ingresa un número de rastreo valido";
+            }
             return View();
         }
 
         public ActionResult Rastreo(String numeroRastreo)
         {
-            Orden orden = new Orden();
-            try
+            if (numeroRastreo != null && numeroRastreo != "")
             {
-                orden = Orden.ObtenerPorFolio(numeroRastreo);
+                Orden orden = new Orden();
+                try
+                {
+                    orden = Orden.ObtenerPorFolio(numeroRastreo);
+                    if (orden == null)
+                    {
+                        return RedirectToAction("Index", new { error = 1 });
+                    }
+                }
+                catch (Exception ae)
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                return View(orden);
             }
-            catch (Exception ae)
+            else
             {
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Index", new { error = 1 });
             }
-            return View(orden);
+            
         }
 
         public ActionResult Ayuda()
