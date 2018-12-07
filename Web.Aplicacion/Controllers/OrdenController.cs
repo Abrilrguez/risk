@@ -110,10 +110,10 @@ namespace Web.Aplicacion.Controllers
 
         public ActionResult ObtenerPorId(int id)
         {
-            Orden o = new Orden();
+            OrdenDTO o = new OrdenDTO();
             try
             {
-                o = Orden.ObtenerPorId(id);
+                o = Orden.ObtenerPorIdDTO(id);
             }
             catch (Exception ex)
             {

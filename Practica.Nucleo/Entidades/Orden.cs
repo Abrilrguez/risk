@@ -155,6 +155,40 @@ namespace Practica.Nucleo.Entidades
         }
 
 
+        public static OrdenDTO ObtenerPorIdDTO(int id)
+        {
+            Orden o = new Orden();
+            OrdenDTO dto = new OrdenDTO();
+            try
+            {
+                using (ISession session = Persistent.SessionFactory.OpenSession())
+                {
+                    ICriteria crit = session.CreateCriteria(o.GetType());
+                    crit.Add(Expression.Eq("Id", id));
+                    o = (crit.UniqueResult<Orden>());
+
+                    dto.Id = o.Id;
+                    dto.Folio = o.Folio;
+                    dto.NumeroRastreo = o.NumeroRastreo;
+                    dto.Fecha = o.Fecha.ToString("dd/MM/yyyy");
+                    dto.Precio = o.Precio;
+                    dto.Estado = o.Estado.ToString();
+                    dto.Paquete = o.Paquete;
+                    dto.Usuario = o.Usuario;
+                    dto.Historiales = o.Historiales;
+                    dto.Destinatario = o.Destinatario;
+                    dto.Cliente = o.Cliente;
+                    
+                    
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dto;
+        }
         public static Orden ObtenerPorId(int id)
         {
             Orden o = new Orden();
@@ -166,7 +200,7 @@ namespace Practica.Nucleo.Entidades
                     crit.Add(Expression.Eq("Id", id));
                     o = (crit.UniqueResult<Orden>());
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -174,7 +208,6 @@ namespace Practica.Nucleo.Entidades
             }
             return o;
         }
-
         public static Orden ObtenerPorFolio(String folio)
         {
             Orden o = new Orden();
