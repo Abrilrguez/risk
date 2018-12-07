@@ -30,7 +30,7 @@
                                         <i class="icon ion-md-create"></i>
                                         Editar
                                     </button>
-                                    <button class="btn btn-default btn-sm" onclick="del();">
+                                    <button @if (Session["usuarioRol"].ToString() == "EMPLEADO") { <text> style="display:none" </text> } class="btn btn-default btn-sm" onclick="del();">
                                         <i class="icon ion-md-trash"></i>
                                         Borrar
                                     </button>
