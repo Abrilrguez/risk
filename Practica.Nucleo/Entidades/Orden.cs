@@ -352,7 +352,7 @@ namespace Practica.Nucleo.Entidades
                 mmsg.To.Add(orden.Destinatario.Correo);
                 mmsg.Subject = subject;
                 mmsg.SubjectEncoding = Encoding.UTF8;
-
+                string auxBody = body;
                 body = body.Replace("[NOMBRECLIENTE]", orden.Cliente.Nombre)
                     .Replace("[DOMICILIOCLIENTE]", orden.Cliente.Domicilio)
                     .Replace("[TELEFONOCLIENTE]", orden.Cliente.Telefono)
@@ -382,6 +382,7 @@ namespace Practica.Nucleo.Entidades
                 mmsg.IsBodyHtml = true;
                 mmsg.From = new MailAddress("track.paack@gmail.com");
                 client.Send(mmsg);
+                body = auxBody;
             }
             catch (Exception ex)
             {
